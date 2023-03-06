@@ -66,6 +66,10 @@ const globalSlice = createSlice({
     closeModalLogout(state) {
       state.isModalLogoutOpen = false;
     },
+    closeModal(state) {
+      state.isModalAddTransactionOpen = false;
+      state.isModalLogoutOpen = false;
+    },
   },
   extraReducers: builder => {
     builder
@@ -80,6 +84,7 @@ export const {
   openModalLogout,
   closeModalAddTransaction,
   closeModalLogout,
+  closeModal,
 } = globalSlice.actions;
 
 export const globalReducer = globalSlice.reducer;
