@@ -1,13 +1,11 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = 'https://wallet.goit.ua/api';
+import { backend } from 'redux/auth/authOperation';
 
 export const fetchTransactions = createAsyncThunk(
   'transactions/fetchTransactions',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/transactions');
+      const response = await backend.get('/transactions');
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -19,7 +17,7 @@ export const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
   async (data, thunkAPI) => {
     try {
-      const response = await axios.post('/transactions', data);
+      const response = await backend.post('/transactions', data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -31,7 +29,7 @@ export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
   async (transactionId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/transactions/${transactionId}`);
+      const response = await backend.delete(`/transactions/${transactionId}`);
 
       return response.data.id;
     } catch (e) {
@@ -44,7 +42,7 @@ export const updateTransaction = createAsyncThunk(
   'transactions/updateTransaction',
   async (transactionId, thunkAPI) => {
     try {
-      const response = await axios.patch(`/transactions/${transactionId}`);
+      const response = await backend.patch(`/transactions/${transactionId}`);
 
       return response.data.id;
     } catch (e) {
@@ -57,7 +55,7 @@ export const fetchCategories = createAsyncThunk(
   'transactions/fetchCategories',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`/transaction-categories`);
+      const response = await backend.get(`/transaction-categories`);
 
       return response.data;
     } catch (e) {
@@ -70,7 +68,7 @@ export const summaryTransactions = createAsyncThunk(
   'transactions/summaryTransactions',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`/transactions-summary`);
+      const response = await backend.get(`/transactions-summary`);
 
       return response.data;
     } catch (e) {

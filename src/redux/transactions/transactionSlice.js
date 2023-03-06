@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchTransactions,
   addTransaction,
@@ -7,39 +7,13 @@ import {
   fetchCategories,
   summaryTransactions,
 } from './operations';
+import { logIn, fetchCurrentUser } from 'redux/auth/authOperation';
 
 const initialState = {
   categories: [],
   transactions: [],
-  summary: {},
-  isLoading: false,
-  error: null,
-  balanceAfter: 0,
-};
-
-const extraActions = [
-  fetchTransactions,
-  addTransaction,
-  deleteTransaction,
-  updateTransaction,
-  fetchCategories,
-  summaryTransactions,
-];
-
-const getActions = type => extraActions.map(action => action[type]);
-
-const handlePending = state => {
-  state.isLoading = true;
-};
-
-const handleFulfilled = state => {
-  state.isLoading = false;
-  state.error = null;
-};
-
-const handleRejected = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = payload;
+  summary: [],
+  balance: 0,
 };
 
 const transactionsSlice = createSlice({
@@ -55,20 +29,20 @@ const transactionsSlice = createSlice({
 
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.transactions = [payload, ...state.transactions];
-        state.balanceAfter = payload;
-        //?????
+        state.balance = payload.balanceAfter;
       })
 
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.transactions = state.transactions.filter(
           transaction => transaction.id !== payload
         );
+        state.balance = payload.balanceAfter;
       })
       .addCase(updateTransaction.fulfilled, (state, { payload }) => {
-        state.transactions = state.transactions.map(
-          transaction => (transaction.id !== payload.id ? transaction : payload)
-          //????учитівать ли тут balanceAfter
+        state.transactions = state.transactions.map(transaction =>
+          transaction.id !== payload.id ? transaction : payload
         );
+        state.balance = payload.balanceAfter;
       })
       .addCase(fetchCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
@@ -76,9 +50,12 @@ const transactionsSlice = createSlice({
       .addCase(summaryTransactions.fulfilled, (state, { payload }) => {
         state.summary = payload;
       })
-      .addMatcher(isAnyOf(...getActions('pending')), handlePending)
-      .addMatcher(isAnyOf(...getActions('fulfilled')), handleFulfilled)
-      .addMatcher(isAnyOf(...getActions('rejected')), handleRejected),
+      .addCase(logIn.fulfilled, (state, { payload }) => {
+        state.balance = payload.balance;
+      })
+      .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
+        state.balance = payload.balance;
+      }),
 });
 
 export const transactionsReducer = transactionsSlice.reducer;

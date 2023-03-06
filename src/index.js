@@ -11,16 +11,17 @@ import { BrowserRouter } from 'react-router-dom';
 
 // import 'utils/i18n';
 import './utils/i18n';
+
 import { Loader } from 'components/Loader/Loader';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <PersistGate loading={null} persistor={persistor}>
-      <Provider store={store}>
-        <BrowserRouter>
+    <BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <Provider store={store}>
           <App />
-        </BrowserRouter>
-      </Provider>
-    </PersistGate>
+        </Provider>
+      </PersistGate>
+    </BrowserRouter>
   </React.StrictMode>
 );
