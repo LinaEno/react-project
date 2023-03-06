@@ -140,7 +140,10 @@ const RegistrationForm = () => {
         {errors?.name && (
           <div style={{ color: 'red' }}>{errors.name.message}</div>
         )}
-        <button type="submit">Register</button>
+        <button type="submit">
+          Register
+          {/* <NavLink to={'/'}>Register</NavLink> */}
+        </button>
         <button type="submit">
           <NavLink to={'/login'}>Log in</NavLink>
         </button>
