@@ -3,8 +3,13 @@ import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAd
 import { ButtonLogout } from 'components/ButtonLogout/ButtonLogout';
 import { Currency } from 'components/Currency/Currency';
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
+
+import { TransactionsList } from 'components/TransactionsList/TransactionsList'
+
+
 import ModalLogout from 'components/ModalLogout/ModalLogout';
 import Navigation from 'components/Navigation/Navigation';
+
 import { useSelector } from 'react-redux';
 import {
   selectLogoutModalOpen,
@@ -33,6 +38,7 @@ const DashboardPage = () => {
           <div>Add Transaction Info</div>
         </ModalContainer>
       )}
+      <TransactionsList/>
     </div>
   );
 };
