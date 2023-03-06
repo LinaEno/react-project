@@ -1,5 +1,3 @@
-import { Dna } from 'react-loader-spinner';
-
 import {
   CurrencyStyled,
   ListStyled,
@@ -9,9 +7,10 @@ import {
   ImgStyledRectangle,
 } from './Currency.styled';
 
-import { useFetchCurrency } from 'services/currencyApi'; 
+import { useFetchCurrency } from 'services/currencyApi';
 import Vector from '../../images/Currency/Vector.png';
 import Rectangle from '../../images/Currency/Rectangle.png';
+import { Loader } from 'components/Loader/Loader';
 
 export const Currency = () => {
   const data = useFetchCurrency();
@@ -26,19 +25,7 @@ export const Currency = () => {
   return (
     <>
       {!data.length > 0 ? (
-        <Dna
-          height="150"
-          width="150"
-          ariaLabel="dna-loading"
-          wrapperStyle={{
-            // position: 'absolute',
-            bottom: 'auto',
-            left: 'auto',
-            zIndex: '0',
-          }}
-          wrapperClass="dna-wrapper"
-          visible={true}
-        />
+        <Loader />
       ) : (
         <CurrencyStyled>
           <ImgStyledRectangle src={Rectangle} alt="img" />
@@ -52,8 +39,8 @@ export const Currency = () => {
             {allCurrency.map(({ rateBuy, currencyCodeA, rateSell }) => (
               <li key={currencyCodeA}>
                 {(currencyCodeA === 840 && <p>USD</p>) ||
-                (currencyCodeA === 978 && <p>EUR</p>) ||
-                (currencyCodeA === 985 && <p>PLN</p>)  }
+                  (currencyCodeA === 978 && <p>EUR</p>) ||
+                  (currencyCodeA === 985 && <p>PLN</p>)}
                 <p>{rateBuy}</p>
                 <p>{rateSell.toFixed(2)}</p>
               </li>
