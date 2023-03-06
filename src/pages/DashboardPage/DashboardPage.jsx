@@ -1,8 +1,15 @@
+import Balance from 'components/Balance/Balance';
 import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import { ButtonLogout } from 'components/ButtonLogout/ButtonLogout';
+import { Currency } from 'components/Currency/Currency';
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
+
 import { TransactionsList } from 'components/TransactionsList/TransactionsList'
-import React from 'react';
+
+
+import ModalLogout from 'components/ModalLogout/ModalLogout';
+import Navigation from 'components/Navigation/Navigation';
+
 import { useSelector } from 'react-redux';
 import {
   selectLogoutModalOpen,
@@ -19,9 +26,12 @@ const DashboardPage = () => {
       <ButtonLogout />
       {isModalLogoutOpen && (
         <ModalContainer>
-          <div>Logout Info</div>
+          <ModalLogout />
         </ModalContainer>
       )}
+      <Navigation />
+      <Balance />
+      <Currency />
       <ButtonAddTransactions />
       {isModalAddTransactionOpen && (
         <ModalContainer>
