@@ -49,7 +49,7 @@ const TRANSACTIONS_MOCK = [
 
 export function TransactionsList ({ transaction = TRANSACTIONS_MOCK }) {
   const dispatch = useDispatch();
-  const transactions = useSelector(selectTransactionsWithCategories);
+  // const transactions = useSelector(selectTransactionsWithCategories);
   
   
   useEffect(() => {
