@@ -19,7 +19,6 @@ const initialState = {
   isModalLogoutOpen: false,
   isLoading: false,
   error: null,
-  balance: 0,
 };
 
 const extraActions = [

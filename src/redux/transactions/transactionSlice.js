@@ -7,11 +7,13 @@ import {
   fetchCategories,
   summaryTransactions,
 } from './operations';
+import { logIn, fetchCurrentUser } from 'redux/auth/authOperation';
 
 const initialState = {
   categories: [],
   transactions: [],
   summary: {},
+  balance: 0,
 };
 
 const transactionsSlice = createSlice({
@@ -35,18 +37,25 @@ const transactionsSlice = createSlice({
         state.transactions = state.transactions.filter(
           transaction => transaction.id !== payload
         );
+        state.balance = payload.balanceAfter;
       })
       .addCase(updateTransaction.fulfilled, (state, { payload }) => {
-        state.transactions = state.transactions.map(
-          transaction => (transaction.id !== payload.id ? transaction : payload)
-          //????учитівать ли тут balanceAfter
+        state.transactions = state.transactions.map(transaction =>
+          transaction.id !== payload.id ? transaction : payload
         );
+        state.balance = payload.balanceAfter;
       })
       .addCase(fetchCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
       })
       .addCase(summaryTransactions.fulfilled, (state, { payload }) => {
         state.summary = payload;
+      })
+      .addCase(logIn.fulfilled, (state, { payload }) => {
+        state.balance = payload.balanceAfter;
+      })
+      .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
+        state.balance = payload.balanceAfter;
       }),
 });
 
