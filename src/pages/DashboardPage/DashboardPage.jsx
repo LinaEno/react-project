@@ -1,7 +1,9 @@
+import Balance from 'components/Balance/Balance';
 import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import { ButtonLogout } from 'components/ButtonLogout/ButtonLogout';
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
-import React from 'react';
+import ModalLogout from 'components/ModalLogout/ModalLogout';
+import Navigation from 'components/Navigation/Navigation';
 import { useSelector } from 'react-redux';
 import {
   selectLogoutModalOpen,
@@ -18,9 +20,11 @@ const DashboardPage = () => {
       <ButtonLogout />
       {isModalLogoutOpen && (
         <ModalContainer>
-          <div>Logout Info</div>
+          <ModalLogout />
         </ModalContainer>
       )}
+      <Navigation />
+      <Balance />
       <ButtonAddTransactions />
       {isModalAddTransactionOpen && (
         <ModalContainer>

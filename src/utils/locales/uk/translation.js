@@ -8,4 +8,7 @@ export const uk = {
     btnReg: 'Зареєструватися',
     btnLogIn: 'Авторизуватися',
   },
+  balance: {
+    balance: 'Ваш баланс',
+  },
 };
