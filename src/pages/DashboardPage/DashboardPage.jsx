@@ -1,5 +1,6 @@
 import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import { ButtonLogout } from 'components/ButtonLogout/ButtonLogout';
+import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -24,7 +25,7 @@ const DashboardPage = () => {
       <ButtonAddTransactions />
       {isModalAddTransactionOpen && (
         <ModalContainer>
-          <div>Add Transaction Info</div>
+          <ModalAddTransaction />
         </ModalContainer>
       )}
     </div>

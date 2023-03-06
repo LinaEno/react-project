@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import { Overlay, ModalBox, CloseButton } from './ModalContainer.styled';
 import { useDispatch } from 'react-redux';
 import { closeModal } from 'redux/global/slice';
+import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
 const modalRoot = document.getElementById('modal-root');
 
