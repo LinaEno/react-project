@@ -51,10 +51,10 @@ const transactionsSlice = createSlice({
         state.summary = payload;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
-        state.balance = payload.balanceAfter;
+        state.balance = payload.balance;
       })
       .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
-        state.balance = payload.balanceAfter;
+        state.balance = payload.balance;
       }),
 });
 
