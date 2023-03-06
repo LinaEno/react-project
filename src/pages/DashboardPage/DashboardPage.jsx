@@ -1,6 +1,7 @@
 import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import { ButtonLogout } from 'components/ButtonLogout/ButtonLogout';
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
+import { TransactionsList } from 'components/TransactionsList/TransactionsList'
 import React from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -27,6 +28,7 @@ const DashboardPage = () => {
           <div>Add Transaction Info</div>
         </ModalContainer>
       )}
+      <TransactionsList/>
     </div>
   );
 };
