@@ -1,4 +1,5 @@
 import { ButtonLogout } from 'components/ButtonLogout/ButtonLogout';
+import LangSwitcher from 'components/LangSwitcher/LangSwitcher';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
@@ -27,6 +28,7 @@ export const Header = () => {
         </LogoTitle>
       </LogoBox>
       <UserBox>
+        <LangSwitcher />
         <UserName>Hello!{userName}</UserName>
         {!isMobile && <Delimiter>|</Delimiter>}
         <ButtonLogout />

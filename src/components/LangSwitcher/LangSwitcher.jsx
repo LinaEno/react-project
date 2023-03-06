@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { langs } from 'services/i18next';
+import { langs } from 'utils/i18n';
 import { Box, Separator, Button } from './LangSwitcher.styled';
 
 export const LangSwitcher = () => {
