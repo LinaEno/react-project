@@ -4,14 +4,19 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { selectRefreshed } from 'redux/auth/authSelectors';
 import { Loader } from './Loader/Loader';
+import RegisterPage from 'pages/RegisterPage/RegisterPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
+import { selectError } from 'redux/transactions/selectors';
+import { fetchCurrentUser } from 'redux/auth/authOperation';
+import DashboardPage from 'pages/DashboardPage/DashboardPage';
 
 export const App = () => {
-  const error = useSelector();
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectRefreshed);
 
   useEffect(() => {
-    dispatch();
+    dispatch(fetchCurrentUser());
   }, [dispatch]);
 
   useEffect(() => {
@@ -19,24 +24,24 @@ export const App = () => {
       toast.error('Oops. Something went wrong 😭');
     }
   }, [error]);
-  // return (
-  //   <>
-  //     {isRefreshing ? (
-  //       <Loader />
-  //     ) : (
-  //       <Suspense fallback={<Loader />}>
-  //         <Routes>
-  //           <Route path="/" element={<DashboardPage />}>
-  //             <Route path="home" element={<HomePage />} />
+  return (
+    //   <>
+    //     {isRefreshing ? (
+    //       <Loader />
+    //     ) : (
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<DashboardPage />}>
+          {/* //             <Route path="home" element={<HomePage />} />
   //             <Route path="diagram" element={<SummaryPage />} />
-  //             {isMobile && <Route path="currency" element={<Currency />} />}
-  //           </Route>
-  //           <Route path="/login" element={<LoginPage />} />
-  //           <Route path="/register" element={<RegisterPage />} />
-  //           <Route path="*" element={<PageNotFound404 />} />
-  //         </Routes>
-  //       </Suspense>
-  //     )}
-  //   </>
-  // );
+  //             {isMobile && <Route path="currency" element={<Currency />} />} */}
+        </Route>
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        {/* //           <Route path="*" element={<PageNotFound404 />} /> */}
+      </Routes>
+    </Suspense>
+    //     )}
+    //   </>
+  );
 };

@@ -9,5 +9,5 @@ export const LoaderBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${p => p.theme.colors.opacity};
+  /* background-color: ${p => p.theme.colors.opacity}; */
 `;
