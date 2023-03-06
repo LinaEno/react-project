@@ -12,7 +12,7 @@ import { logIn, fetchCurrentUser } from 'redux/auth/authOperation';
 const initialState = {
   categories: [],
   transactions: [],
-  summary: {},
+  summary: [],
   balance: 0,
 };
 
