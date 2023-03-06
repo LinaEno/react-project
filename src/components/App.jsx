@@ -10,6 +10,7 @@ import { selectError } from 'redux/transactions/selectors';
 import { fetchCurrentUser } from 'redux/auth/authOperation';
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import CurrencyPage from 'pages/Currency/Currency';
+import  WeatherPage from 'components/WeatherApp/WeatherApp';
 
 export const App = () => {
   const error = useSelector(selectError);
@@ -32,7 +33,9 @@ export const App = () => {
     //     ) : (
 
     <Suspense fallback={<Loader />}>
+       <WeatherPage />
       <Routes>
+        
         <Route path="/" element={<DashboardPage />}>
           {/* <Route path="home" element={<HomePage />} />
           <Route path="diagram" element={<SummaryPage />} /> */}
