@@ -8,8 +8,6 @@ const initialState = {
   isRefreshing: true,
 };
 
-//////////////////////////////////////////////
-
 const authSlice = createSlice({
   name: 'auth',
   initialState,

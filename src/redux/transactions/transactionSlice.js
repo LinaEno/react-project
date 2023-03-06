@@ -30,7 +30,6 @@ const transactionsSlice = createSlice({
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.transactions = [payload, ...state.transactions];
         state.balance = payload.balanceAfter;
-        //?????
       })
 
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
