@@ -32,13 +32,13 @@ export const App = () => {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<DashboardPage />}>
-          {/* //             <Route path="home" element={<HomePage />} />
+          {/* // <Route path="home" element={<HomePage />} />
   //             <Route path="diagram" element={<SummaryPage />} />
-  //             {isMobile && <Route path="currency" element={<Currency />} />} */}
+  //             <Route path="currency" element={<Currency />} />*/}
         </Route>
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-        {/* //           <Route path="*" element={<PageNotFound404 />} /> */}
+        {/* <Route path="*" element={<PageNotFound404 />} /> */}
       </Routes>
     </Suspense>
     //     )}

@@ -20,21 +20,25 @@ export const langs = {
 //   },
 // };
 
-i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
-  // supportedLngs: [langs.EN, langs.UK],
-  fallbackLng: langs.EN,
-  // whitelist: ['en', 'uk'],
-  debug: true,
-  // resources: {
-  //   uk: { translation: 'uk' },
-  //   en: { translation: 'en' },
-  // },
-  // resources,
-  // backend: {
-  //   loadPath: '/locales/{{lng}}/translation.json',
-  //   loadPath: '../../public/locales/{{lng}}/translation.json',
-  //   loadPath: '/locales/{{lng}}/{{ns}}.json',
-  // },
-});
+i18n
+  .use(Backend)
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    // supportedLngs: [langs.EN, langs.UK],
+    fallbackLng: langs.EN,
+    // whitelist: ['en', 'uk'],
+    debug: true,
+    resources: {
+      uk: { translation: 'uk' },
+      en: { translation: 'en' },
+    },
+    // resources,
+    // backend: {
+    //   loadPath: '/locales/{{lng}}/translation.json',
+    //   loadPath: '../../public/locales/{{lng}}/translation.json',
+    //   loadPath: '/locales/{{lng}}/{{ns}}.json',
+    // },
+  });
 
 export default i18n;
