@@ -31,7 +31,6 @@ export default function ModalAddTransaction() {
     );
     reset();
   };
-  console.log(options);
   return (
     <section>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">

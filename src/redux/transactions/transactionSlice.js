@@ -13,7 +13,6 @@ const initialState = {
   categories: [],
   transactions: [],
   summary: [],
-  balance: 0,
 };
 
 const transactionsSlice = createSlice({
@@ -22,27 +21,22 @@ const transactionsSlice = createSlice({
 
   extraReducers: builder =>
     builder
-
       .addCase(fetchTransactions.fulfilled, (state, { payload }) => {
         state.transactions = payload;
       })
-
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.transactions = [payload, ...state.transactions];
-        state.balance = payload.balanceAfter;
       })
-
-      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
-        state.transactions = state.transactions.filter(
-          transaction => transaction.id !== payload
-        );
-        state.balance = payload.balanceAfter;
-      })
+      // .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+      //   state.transactions = state.transactions.filter(
+      //     transaction => transaction.id !== payload
+      //   ); 
+      //   state.balance = payload.balanceAfter ?? 0;
+      // })
       .addCase(updateTransaction.fulfilled, (state, { payload }) => {
         state.transactions = state.transactions.map(transaction =>
           transaction.id !== payload.id ? transaction : payload
         );
-        state.balance = payload.balanceAfter;
       })
       .addCase(fetchCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
@@ -50,12 +44,6 @@ const transactionsSlice = createSlice({
       .addCase(summaryTransactions.fulfilled, (state, { payload }) => {
         state.summary = payload;
       })
-      .addCase(logIn.fulfilled, (state, { payload }) => {
-        state.balance = payload.balance;
-      })
-      .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
-        state.balance = payload.balance;
-      }),
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
