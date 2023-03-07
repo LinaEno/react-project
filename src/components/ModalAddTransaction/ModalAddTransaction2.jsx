@@ -1,55 +1,36 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getUserName, selectToken } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
-
 import { useTranslation } from 'react-i18next';
 import { addTransaction } from 'redux/transactions/operations';
 import { selectCategories } from 'redux/transactions/selectors';
-
 export default function ModalAddTransaction2() {
-  const { register, handleSubmit, formState, reset, getValues, getFieldState } =
-    useForm({
-      //    resolver: yupResolver(schema),
-    });
+  const categories = useSelector(selectCategories);
+  const { register, handleSubmit, watch, reset } = useForm({
+    //    resolver: yupResolver(schema),
+  });
   const dispatch = useDispatch();
-  //   const [transactionType, setTransactionType] = useState('EXPENSE');
-  //   console.log(transactionType);
-  //   const changeTransactionType = type => {
-  //     switch (type) {
-  //       case 'INCOME':
-  //         setTransactionType('INCOME');
-  //         return;
-  //       case 'EXPENSE':
-  //         setTransactionType('EXPENSE');
-  //         return;
-  //       default:
-  //         return;
-  //     }
-  //   };
-  //   console.log(getValues('type'));
-  console.log(getFieldState('type', formState));
-
+  const { type, categoryId } = watch();
+  const options = categories.filter(category => {
+    return category.type === type;
+  });
   const onSubmit = ({ transactionDate, type, categoryId, comment, amount }) => {
     dispatch(
-      addTransaction({ transactionDate, type, categoryId, comment, amount })
+      addTransaction({
+        transactionDate,
+        type,
+        categoryId: type === 'INCOME' ? options[0].id : categoryId,
+        comment,
+        amount,
+      })
     );
-
     reset();
   };
-
-  const categories = useSelector(selectCategories);
-  console.log(categories);
-
-  const income = categories.filter(category => category.type === 'INCOME');
-
-  const expense = categories.filter(category => category.type !== 'INCOME');
-
+  console.log(options);
   return (
     <section>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -68,13 +49,14 @@ export default function ModalAddTransaction2() {
             type="radio"
             name="type"
             value="EXPENSE"
-            checked
           />
           Expense
         </label>
-
-        <select {...register('categoryId')}>
-          {expense.map(category => {
+        <select
+          {...register('categoryId')}
+          // style={{ opacity: type === 'INCOME' ? 0 : 1 }}
+        >
+          {options.map(category => {
             return (
               <option key={category.id} value={category.id}>
                 {category.name}
@@ -82,7 +64,6 @@ export default function ModalAddTransaction2() {
             );
           })}
         </select>
-
         <label>
           <input type="number" {...register('amount')} placeholder="0.00" />
         </label>
