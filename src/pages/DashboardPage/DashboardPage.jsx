@@ -20,6 +20,7 @@ import {
   selectModalAddTransactionOpen,
 } from 'redux/global/selectors';
 import Weather from 'components/WeatherApp/WeatherApp';
+import ModalAddTransaction2 from 'components/ModalAddTransaction/ModalAddTransaction2';
 
 const DashboardPage = () => {
   const isModalAddTransactionOpen = useSelector(selectModalAddTransactionOpen);
@@ -36,11 +37,12 @@ const DashboardPage = () => {
       <Navigation />
       <Balance />
       <Currency />
-      <Weather />
+      {/* <Weather /> */}
       <ButtonAddTransactions />
       {isModalAddTransactionOpen && (
         <ModalContainer>
-          <ModalAddTransaction />
+          {/* <ModalAddTransaction /> */}
+          <ModalAddTransaction2 />
         </ModalContainer>
       )}
       <TransactionsList />

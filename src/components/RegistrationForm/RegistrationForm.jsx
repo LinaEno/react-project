@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { registration } from 'redux/auth/authOperation';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getUserName } from 'redux/auth/authSelectors';
+import { getUserName, selectToken } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
 
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 
 const schema = yup
   .object({
-    name: yup.string().required(),
+    username: yup.string().required(),
     email: yup.string().email().required(),
     password: yup
       .string()
@@ -36,30 +36,25 @@ const RegistrationForm = () => {
     formState: { errors },
     reset,
     getValues,
-    watch,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(getUserName);
+  const token = useSelector(selectToken);
 
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(false);
 
-  let password = watch('password', '');
-
   const { t } = useTranslation();
 
-  console.log(t);
-
   useEffect(() => {
-    if (user !== null) navigate('/');
-  }, [user, navigate]);
+    if (token !== null) navigate('/');
+  }, [token, navigate]);
 
-  const onSubmit = ({ name, email, password, cpassword }) => {
-    dispatch(registration({ name, email, password, cpassword }));
+  const onSubmit = ({ username, email, password }) => {
+    dispatch(registration({ username, email, password }));
 
     reset();
   };
@@ -135,15 +130,16 @@ const RegistrationForm = () => {
           <div style={{ color: 'red' }}>{errors.cpassword.message}</div>
         )}
         <label>
-          <input type="text" {...register('name')} placeholder="First name" />
+          <input
+            type="text"
+            {...register('username')}
+            placeholder="First name"
+          />
         </label>
         {errors?.name && (
           <div style={{ color: 'red' }}>{errors.name.message}</div>
         )}
-        <button type="submit">
-          Register
-          {/* <NavLink to={'/'}>Register</NavLink> */}
-        </button>
+        <button type="submit">Register</button>
         <button type="submit">
           <NavLink to={'/login'}>Log in</NavLink>
         </button>

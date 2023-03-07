@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { closeModalAddTransaction } from 'redux/global/slice';
 import { addTransaction } from 'redux/transactions/operations';
 import Categories from './Categories';
 
@@ -12,11 +14,29 @@ import Categories from './Categories';
 
 export default function ModalAddTransaction() {
   const dispatch = useDispatch();
+  const [transactionType, setTransactionType] = useState('');
 
+  // const changeTransactionType = e => {
+
+  //   switch (e.target.value) {
+  //     case 'INCOME':
+  //       console.log(e.target.value);
+  //       setTransactionType('INCOME');
+  //       break;
+  //     case 'EXPENSE':
+  //       console.log(e.target.value);
+  //       setTransactionType('EXPENSE');
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  //   console.log(e.target.value);
+  // };
   const handleSubmit = e => {
     e.preventDefault();
     const { transactionDate, type, categoryId, comment, amount } =
       e.target.elements;
+    console.log(e.target.value);
 
     const transaction = {
       transactionDate: transactionDate.value,
@@ -25,10 +45,11 @@ export default function ModalAddTransaction() {
       comment: comment.value,
       amount: amount.value,
     };
-    console.log(transaction);
+    // console.log(transaction);
     dispatch(addTransaction(transaction));
     e.target.reset();
   };
+  // console.log(transactionType);
 
   return (
     <form
@@ -41,15 +62,19 @@ export default function ModalAddTransaction() {
           type="radio"
           id="transactionChoice1"
           name="type"
-          value="income"
+          value="INCOME"
+          // onChange={changeTransactionType}
+          // onChange={e => changeTransactionType(e)}
         />
 
         <input
           type="radio"
           id="transactionChoice2"
           name="type"
-          value="expense"
-          //   checked
+          value="EXPENSE"
+          // onChange={changeTransactionType}
+          // onChange={e => changeTransactionType(e)}
+          // checked
         />
         <label htmlFor="transactionChoice2">Expense</label>
       </div>
@@ -60,7 +85,8 @@ export default function ModalAddTransaction() {
         </option>
         <option value="value3">value3</option>
       </select> */}
-      <Categories />
+      {transactionType === 'EXPENSE' && <Categories />}
+
       <label>
         <input placeholder="0.00" type="text" name="amount" required />
       </label>
@@ -75,7 +101,12 @@ export default function ModalAddTransaction() {
       <label>
         <input placeholder="Comment" type="text" name="comment" />
       </label>
-      <button type="submit">Add</button>
+      <button
+        type="submit"
+        // onClick={() => dispatch(closeModalAddTransaction())}
+      >
+        Add
+      </button>
       <button type="button">Cancel</button>
     </form>
   );

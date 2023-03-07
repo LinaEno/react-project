@@ -18,8 +18,8 @@ export const Currency = () => {
   if (data.length > 0) {
     const usd = data[0];
     const eur = data[1];
-    const pln = data[2];
-    allCurrency = [usd, eur, pln];
+
+    allCurrency = [usd, eur];
   }
 
   return (
@@ -36,15 +36,17 @@ export const Currency = () => {
           </ListStyled>
           <ImgStyledVector src={Vector} alt="img" />
           <TypeStyled>
-            {allCurrency.map(({ rateBuy, currencyCodeA, rateSell }) => (
-              <li key={currencyCodeA}>
-                {(currencyCodeA === 840 && <p>USD</p>) ||
-                  (currencyCodeA === 978 && <p>EUR</p>) ||
-                  (currencyCodeA === 985 && <p>PLN</p>)}
-                <p>{rateBuy}</p>
-                <p>{rateSell.toFixed(2)}</p>
-              </li>
-            ))}
+            {allCurrency.map(({ rateBuy, currencyCodeA, rateSell }) => {
+              console.log(currencyCodeA);
+              return (
+                <li key={currencyCodeA}>
+                  {currencyCodeA === 840 && <p>USD</p>}
+                  {currencyCodeA === 978 && <p>EUR</p>}
+                  <p>{rateBuy}</p>
+                  <p>{rateSell.toFixed(2)}</p>
+                </li>
+              );
+            })}
           </TypeStyled>
         </CurrencyStyled>
       )}
