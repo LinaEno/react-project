@@ -9,6 +9,8 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import { selectError } from 'redux/transactions/selectors';
 import { fetchCurrentUser } from 'redux/auth/authOperation';
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
+import CurrencyPage from 'pages/Currency/Currency';
+import WeatherPage from 'components/WeatherApp/WeatherApp';
 
 export const App = () => {
   const error = useSelector(selectError);
@@ -29,12 +31,13 @@ export const App = () => {
     //     {isRefreshing ? (
     //       <Loader />
     //     ) : (
+
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<DashboardPage />}>
           {/* <Route path="home" element={<HomePage />} />
-              <Route path="diagram" element={<SummaryPage />} />
-              <Route path="currency" element={<Currency />} />*/}
+          <Route path="diagram" element={<SummaryPage />} /> */}
+          {/* <Route path="/" element={<CurrencyPage />} /> */}
         </Route>
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />

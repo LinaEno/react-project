@@ -8,4 +8,7 @@ export const en = {
     btnReg: 'Register',
     btnLogIn: 'Log in',
   },
+  balance: {
+    balance: 'Your balance',
+  },
 };
