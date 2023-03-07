@@ -55,6 +55,7 @@ export default function ModalAddTransaction() {
         </label>
         <select
           {...register('categoryId')}
+
           // style={{ opacity: type === 'INCOME' ? 0 : 1 }}
         >
           {options.map(category => {
