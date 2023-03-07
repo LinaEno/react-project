@@ -38,7 +38,7 @@ export const LogoTitle = styled.h1`
 export const UserBox = styled.div`
   display: flex;
   gap: 8px;
-  align-items: baseline;
+  align-items: center;
 
   @media screen and (min-width: 768px) {
     gap: 12px;
@@ -47,9 +47,13 @@ export const UserBox = styled.div`
 export const UserName = styled.p`
   font-family: 'Circe';
   font-size: 18px;
-  color: rgba(189, 189, 189, 1);
+  color: #bdbdbd;
 `;
 
 export const Delimiter = styled.span`
-  color: rgba(189, 189, 189, 1);
+  display: block;
+  height: 30px;
+  color: #bdbdbd;
+  background-color: #bdbdbd;
+  border: 1px solid #bdbdbd;
 `;
