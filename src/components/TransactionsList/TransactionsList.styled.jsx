@@ -27,9 +27,16 @@ export const Table = styled.table`
     box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
   }
 
+  td {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+  }
+
   th {
     background-color: #eee;
     font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
   }
 
 .editButton{
@@ -49,4 +56,21 @@ export const Table = styled.table`
       display: none;
     }
   }
+
+  buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
 `;
+
+export const DeleteButton = styled.button`
+  padding: 4px 12px;
+  background: #24CCA7;
+  border-radius: 18px;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+
+`
