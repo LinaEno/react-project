@@ -39,8 +39,8 @@ export const App = () => {
           <Route path="diagram" element={<SummaryPage />} /> */}
           {/* <Route path="/" element={<CurrencyPage />} /> */}
         </Route>
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         {/* <Route path="*" element={<PageNotFound404 />} /> */}
       </Routes>
     </Suspense>
