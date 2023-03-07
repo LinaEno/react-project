@@ -8,11 +8,21 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { addTransaction } from 'redux/transactions/operations';
 import { selectCategories } from 'redux/transactions/selectors';
+import {selectModalTransactionData} from 'redux/global/selectors';
 
 export default function ModalAddTransaction() {
   const categories = useSelector(selectCategories);
+  const modalTransactionData = useSelector(selectModalTransactionData);
+  console.log(modalTransactionData);
   const { register, handleSubmit, watch, reset } = useForm({
     //    resolver: yupResolver(schema),
+    defaultValues: {
+      type: modalTransactionData?.category.type,
+      amount: Math.abs(modalTransactionData?.amount),
+      transactionDate: modalTransactionData?.transactionDate,
+      comment: modalTransactionData?.comment,
+      categoryId: modalTransactionData?.categoryId
+    },
   });
   const dispatch = useDispatch();
   const { type } = watch();
@@ -26,7 +36,7 @@ export default function ModalAddTransaction() {
         type,
         categoryId: type === 'INCOME' ? options[0].id : categoryId,
         comment,
-        amount: type === 'INCOME' ? Number(amount) : -Number(amount),
+        amount: type === 'INCOME' ? Number(amount) : -Number(amount)
       })
     );
     reset();
@@ -41,6 +51,7 @@ export default function ModalAddTransaction() {
             type="radio"
             name="type"
             value="INCOME"
+            
           />
         </label>
         <label>
@@ -49,11 +60,13 @@ export default function ModalAddTransaction() {
             type="radio"
             name="type"
             value="EXPENSE"
+            
           />
           Expense
         </label>
         <select
           {...register('categoryId')}
+          
 
           // style={{ opacity: type === 'INCOME' ? 0 : 1 }}
         >
