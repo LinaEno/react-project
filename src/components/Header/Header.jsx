@@ -29,6 +29,7 @@ export const Header = () => {
       </LogoBox>
       <UserBox>
         <LangSwitcher />
+
         <UserName>{userName}</UserName>
         {!isMobile && <Delimiter>|</Delimiter>}
         <ButtonLogout />
