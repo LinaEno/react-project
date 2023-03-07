@@ -37,7 +37,6 @@ export const Currency = () => {
           <ImgStyledVector src={Vector} alt="img" />
           <TypeStyled>
             {allCurrency.map(({ rateBuy, currencyCodeA, rateSell }) => {
-              console.log(currencyCodeA);
               return (
                 <li key={currencyCodeA}>
                   {currencyCodeA === 840 && <p>USD</p>}
