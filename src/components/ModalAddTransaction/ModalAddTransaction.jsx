@@ -1,113 +1,91 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { closeModalAddTransaction } from 'redux/global/slice';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { getUserName, selectToken } from 'redux/auth/authSelectors';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { addTransaction } from 'redux/transactions/operations';
-import Categories from './Categories';
-
-//     {
-//   "transactionDate": "string",
-//   "type": "INCOME",
-//   "categoryId": "string",
-//   "comment": "string",
-//   "amount": 0
-// }
+import { selectCategories } from 'redux/transactions/selectors';
 
 export default function ModalAddTransaction() {
+  const categories = useSelector(selectCategories);
+  const { register, handleSubmit, watch, reset } = useForm({
+    //    resolver: yupResolver(schema),
+  });
   const dispatch = useDispatch();
-  const [transactionType, setTransactionType] = useState('');
-
-  // const changeTransactionType = e => {
-
-  //   switch (e.target.value) {
-  //     case 'INCOME':
-  //       console.log(e.target.value);
-  //       setTransactionType('INCOME');
-  //       break;
-  //     case 'EXPENSE':
-  //       console.log(e.target.value);
-  //       setTransactionType('EXPENSE');
-  //       break;
-  //     default:
-  //       return;
-  //   }
-  //   console.log(e.target.value);
-  // };
-  const handleSubmit = e => {
-    e.preventDefault();
-    const { transactionDate, type, categoryId, comment, amount } =
-      e.target.elements;
-    console.log(e.target.value);
-
-    const transaction = {
-      transactionDate: transactionDate.value,
-      type: type.value,
-      categoryId: categoryId.value,
-      comment: comment.value,
-      amount: amount.value,
-    };
-    // console.log(transaction);
-    dispatch(addTransaction(transaction));
-    e.target.reset();
+  const { type } = watch();
+  const options = categories.filter(category => {
+    return category.type === type;
+  });
+  const onSubmit = ({ transactionDate, type, categoryId, comment, amount }) => {
+    dispatch(
+      addTransaction({
+        transactionDate,
+        type,
+        categoryId: type === 'INCOME' ? options[0].id : categoryId,
+        comment,
+        amount: type === 'INCOME' ? Number(amount) : -Number(amount),
+      })
+    );
+    reset();
   };
-  // console.log(transactionType);
-
+  console.log(options);
   return (
-    <form
-      style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
-      onSubmit={handleSubmit}
-    >
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-        <label htmlFor="transactionChoice1">Income</label>
-        <input
-          type="radio"
-          id="transactionChoice1"
-          name="type"
-          value="INCOME"
-          // onChange={changeTransactionType}
-          // onChange={e => changeTransactionType(e)}
-        />
-
-        <input
-          type="radio"
-          id="transactionChoice2"
-          name="type"
-          value="EXPENSE"
-          // onChange={changeTransactionType}
-          // onChange={e => changeTransactionType(e)}
-          // checked
-        />
-        <label htmlFor="transactionChoice2">Expense</label>
-      </div>
-      {/* <select name="categoryId">
-        <option value="value1">value1</option>
-        <option value="value2" selected>
-          value2
-        </option>
-        <option value="value3">value3</option>
-      </select> */}
-      {transactionType === 'EXPENSE' && <Categories />}
-
-      <label>
-        <input placeholder="0.00" type="text" name="amount" required />
-      </label>
-      <label>
-        <input
-          placeholder="01.01.2023"
-          type="date"
-          name="transactionDate"
-          required
-        />
-      </label>
-      <label>
-        <input placeholder="Comment" type="text" name="comment" />
-      </label>
-      <button
-        type="submit"
-        // onClick={() => dispatch(closeModalAddTransaction())}
-      >
-        Add
-      </button>
-      <button type="button">Cancel</button>
-    </form>
+    <section>
+      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+        <label>
+          Income
+          <input
+            {...register('type')}
+            type="radio"
+            name="type"
+            value="INCOME"
+          />
+        </label>
+        <label>
+          <input
+            {...register('type')}
+            type="radio"
+            name="type"
+            value="EXPENSE"
+          />
+          Expense
+        </label>
+        <select
+          {...register('categoryId')}
+          // style={{ opacity: type === 'INCOME' ? 0 : 1 }}
+        >
+          {options.map(category => {
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
+          })}
+        </select>
+        <label>
+          <input type="number" {...register('amount')} placeholder="0.00" />
+        </label>
+        <label>
+          <input
+            type="date"
+            {...register('transactionDate')}
+            placeholder="01.01.2023"
+          />
+        </label>
+        <label>
+          <input type="text" {...register('comment')} placeholder="Comment" />
+        </label>
+        <button
+          type="submit"
+          // onClick={() => dispatch(closeModalAddTransaction())}
+        >
+          Add
+        </button>
+        <button type="button">Cancel</button>
+      </form>
+    </section>
   );
 }
