@@ -3,9 +3,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { registration } from 'redux/auth/authOperation';
+import { logIn, registration } from 'redux/auth/authOperation';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getUserName } from 'redux/auth/authSelectors';
+import { getUserName, selectToken } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
 
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
@@ -27,25 +27,22 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    watch,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(getUserName);
+  const token = useSelector(selectToken);
 
   const [toggle, setToggle] = useState(false);
 
-  let password = watch('password', '');
-
   useEffect(() => {
-    if (user !== null) navigate('/');
-  }, [user, navigate]);
+    if (token !== null) navigate('/');
+  }, [token, navigate]);
 
-  const onSubmit = ({ name, email, password, cpassword }) => {
-    dispatch(registration({ name, email, password, cpassword }));
+  const onSubmit = ({ email, password }) => {
+    dispatch(logIn({ email, password }));
 
     reset();
   };

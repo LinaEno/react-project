@@ -1,7 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { FcQuestions } from 'react-icons/fc';
 import { logOut } from 'redux/auth/authOperation';
 import { closeModalLogout } from 'redux/global/slice';
+import { Wrapper, Content, Question, ButtonsList, Button } from './ModalLogout.styled';
+
 
 const ModalLogout = () => {
   const dispatch = useDispatch();
@@ -9,17 +12,20 @@ const ModalLogout = () => {
   const closeModal = () => dispatch(closeModalLogout());
 
   return (
-    <div>
-      <p>Are you sure you want to Logout</p>
-      <div>
-        <button type="button" onClick={() => dispatch(logOut())}>
-          <NavLink to={'/login'}>Yes</NavLink>
-        </button>
-        <button type="button" onClick={closeModal}>
-          No
-        </button>
-      </div>
-    </div>
+    <Wrapper>
+      <Question>Are you sure you want to Logout?</Question>
+      <Content>
+      <FcQuestions size="144px" />
+        <ButtonsList>
+          <Button type="button" onClick={() => dispatch(logOut())}>
+            <NavLink to={'/login'}>Yes</NavLink>
+          </Button>
+          <Button type="button" onClick={closeModal}>
+            No
+          </Button>
+        </ButtonsList>
+      </Content>
+    </Wrapper>
   );
 };
 

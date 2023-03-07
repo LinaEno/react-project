@@ -1,7 +1,6 @@
-import { MdAddCircle } from 'react-icons/md';
-import { Button } from './ButtonAddTransactions.styled';
 import { useDispatch } from 'react-redux';
 import { openModalAddTransaction } from 'redux/global/slice';
+import { Button, Icon } from './ButtonAddTransactions.styled';
 
 export const ButtonAddTransactions = () => {
   const dispatch = useDispatch();
@@ -12,7 +11,7 @@ export const ButtonAddTransactions = () => {
       aria-label="Add transaction"
       onClick={() => dispatch(openModalAddTransaction())}
     >
-      <MdAddCircle size={44} />
+      <Icon />
     </Button>
   );
 };

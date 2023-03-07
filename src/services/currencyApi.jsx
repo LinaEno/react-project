@@ -8,14 +8,11 @@ export async function fetchMonoApi() {
 
 export const useFetchCurrency = () => {
   const [details, setDetails] = useState([]);
-  
 
   useEffect(() => {
     fetchMonoApi().then(data => {
-      console.log(data);
       setDetails(data);
     });
-
   }, [details]);
 
   return details;

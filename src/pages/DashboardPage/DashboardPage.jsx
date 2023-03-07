@@ -1,11 +1,15 @@
 import Balance from 'components/Balance/Balance';
 import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
+import { Header } from 'components/Header/Header';
 import { ButtonLogout } from 'components/ButtonLogout/ButtonLogout';
+
+import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
+
 import { Currency } from 'components/Currency/Currency';
+
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
 
-import { TransactionsList } from 'components/TransactionsList/TransactionsList'
-
+import { TransactionsList } from 'components/TransactionsList/TransactionsList';
 
 import ModalLogout from 'components/ModalLogout/ModalLogout';
 import Navigation from 'components/Navigation/Navigation';
@@ -15,6 +19,8 @@ import {
   selectLogoutModalOpen,
   selectModalAddTransactionOpen,
 } from 'redux/global/selectors';
+import Weather from 'components/WeatherApp/WeatherApp';
+import ModalAddTransaction2 from 'components/ModalAddTransaction/ModalAddTransaction2';
 
 const DashboardPage = () => {
   const isModalAddTransactionOpen = useSelector(selectModalAddTransactionOpen);
@@ -22,8 +28,7 @@ const DashboardPage = () => {
 
   return (
     <div>
-      Hello
-      <ButtonLogout />
+      <Header />
       {isModalLogoutOpen && (
         <ModalContainer>
           <ModalLogout />
@@ -32,13 +37,15 @@ const DashboardPage = () => {
       <Navigation />
       <Balance />
       <Currency />
+      {/* <Weather /> */}
       <ButtonAddTransactions />
       {isModalAddTransactionOpen && (
         <ModalContainer>
-          <div>Add Transaction Info</div>
+          {/* <ModalAddTransaction /> */}
+          <ModalAddTransaction2 />
         </ModalContainer>
       )}
-      <TransactionsList/>
+      <TransactionsList />
     </div>
   );
 };

@@ -10,6 +10,7 @@ import { selectError } from 'redux/transactions/selectors';
 import { fetchCurrentUser } from 'redux/auth/authOperation';
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import CurrencyPage from 'pages/Currency/Currency';
+import WeatherPage from 'components/WeatherApp/WeatherApp';
 
 export const App = () => {
   const error = useSelector(selectError);
@@ -38,8 +39,8 @@ export const App = () => {
           <Route path="diagram" element={<SummaryPage />} /> */}
           {/* <Route path="/" element={<CurrencyPage />} /> */}
         </Route>
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         {/* <Route path="*" element={<PageNotFound404 />} /> */}
       </Routes>
     </Suspense>

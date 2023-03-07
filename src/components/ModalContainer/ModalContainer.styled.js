@@ -1,4 +1,23 @@
 import styled from 'styled-components';
+import { ReactComponent as CloseIcon } from '../../images/svg/close.svg';
+
+export const ModalMobile = styled.div`
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid black;
+  z-index: 100;
+  transform: translateX(-50%);
+
+  @media screen and (max-width: 767.98px) {
+    max-width: 480px;
+  }
+`;
 
 export const Overlay = styled.div`
   position: fixed;
@@ -15,8 +34,8 @@ export const Overlay = styled.div`
 
 export const ModalBox = styled.div`
   position: relative;
-  width: 540px;
-  height: 508px;
+  min-width: 540px;
+  min-height: 508px;
   padding: 40px;
   background-color: #fff;
   border-radius: 20px;
@@ -24,21 +43,21 @@ export const ModalBox = styled.div`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
+  top: 12px;
+  right: 12px;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  color: #ccc;
+  width: 32px;
+  height: 32px;
+  color: #000000;
   background-color: transparent;
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: color 250ms linear;
-  &:hover,
-  :focus {
-    color: #000000;
-  }
+`;
+
+export const Icon = styled(CloseIcon)`
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
 `;
