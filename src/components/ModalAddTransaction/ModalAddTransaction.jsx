@@ -8,11 +8,15 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { addTransaction } from 'redux/transactions/operations';
 import { selectCategories } from 'redux/transactions/selectors';
+import { closeModalAddTransaction } from 'redux/global/slice';
 
 export default function ModalAddTransaction() {
   const categories = useSelector(selectCategories);
   const { register, handleSubmit, watch, reset } = useForm({
     //    resolver: yupResolver(schema),
+    defaultValues: {
+      type: 'EXPENSE',
+    },
   });
   const dispatch = useDispatch();
   const { type } = watch();
@@ -53,10 +57,14 @@ export default function ModalAddTransaction() {
           />
           Expense
         </label>
+
         <select
           {...register('categoryId')}
-
-          // style={{ opacity: type === 'INCOME' ? 0 : 1 }}
+          style={{
+            opacity: type === 'INCOME' ? 0 : 1,
+            width: type === 'INCOME' ? 0 : '100px',
+            height: type === 'INCOME' ? 0 : '20px',
+          }}
         >
           {options.map(category => {
             return (
@@ -79,13 +87,13 @@ export default function ModalAddTransaction() {
         <label>
           <input type="text" {...register('comment')} placeholder="Comment" />
         </label>
+        <button type="submit">Add</button>
         <button
-          type="submit"
-          // onClick={() => dispatch(closeModalAddTransaction())}
+          type="button"
+          onClick={() => dispatch(closeModalAddTransaction())}
         >
-          Add
+          Cancel
         </button>
-        <button type="button">Cancel</button>
       </form>
     </section>
   );
