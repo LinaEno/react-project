@@ -2,7 +2,11 @@ import Balance from 'components/Balance/Balance';
 import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import { Header } from 'components/Header/Header';
 import { ButtonLogout } from 'components/ButtonLogout/ButtonLogout';
+
+import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
+
 import { Currency } from 'components/Currency/Currency';
+
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
 
 import { TransactionsList } from 'components/TransactionsList/TransactionsList';
@@ -36,7 +40,7 @@ const DashboardPage = () => {
       <ButtonAddTransactions />
       {isModalAddTransactionOpen && (
         <ModalContainer>
-          <div>Add Transaction Info</div>
+          <ModalAddTransaction />
         </ModalContainer>
       )}
       <TransactionsList />
