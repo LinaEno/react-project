@@ -9,8 +9,7 @@ import {
   DateWrapper,
   IconStyled,
   DegStyled,
-  ErroreMessage,
-  WindStyled,
+  ErrorMessage,
 } from './WeatherApp.styled';
 
 function Weather() {
@@ -82,12 +81,9 @@ function Weather() {
 
   return (
     <WeatherWrapper>
-      <WeatherName>
-        Weather <span> 🌤 </span>
-      </WeatherName>
+      <WeatherName>Weather</WeatherName>
       <div>
         <CitySearch
-          autoFocus
           type="text"
           placeholder="Search City.."
           name="query"
@@ -99,9 +95,9 @@ function Weather() {
 
       {weather.error && (
         <>
-          <ErroreMessage>
+          <ErrorMessage>
             <span style={{ fontSize: '26px' }}> Sorry, City not found</span>
-          </ErroreMessage>
+          </ErrorMessage>
         </>
       )}
 
@@ -109,7 +105,11 @@ function Weather() {
         <div>
           <CityName>
             <h2>
-              {weather.data.name}, <span>{weather.data.sys.country}</span>
+              {weather.data.name}{' '}
+              <span>
+                {Math.round(weather.data.main.temp)}
+                <DegStyled> &deg;C </DegStyled>
+              </span>
             </h2>
           </CityName>
           <DateWrapper>
@@ -120,13 +120,7 @@ function Weather() {
               src={`https://openweathermap.org/img/wn/${weather.data.weather[0].icon}@2x.png`}
               alt={weather.data.weather[0].description}
             />
-            {Math.round(weather.data.main.temp)}
-            <DegStyled> &deg;C </DegStyled>
           </IconStyled>
-          <WindStyled>
-            <p>{weather.data.weather[0].description.toUpperCase()}</p>
-            <p>Wind Speed: {weather.data.wind.speed}m/s</p>
-          </WindStyled>
         </div>
       )}
     </WeatherWrapper>

@@ -1,7 +1,8 @@
+
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTransaction } from 'redux/transactions/operations';
 import { selectCategories } from 'redux/transactions/selectors';
@@ -12,7 +13,6 @@ import { selectModalTransactionData } from 'redux/global/selectors';
 import { closeModalAddTransaction } from 'redux/global/slice';
 
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
 
 // import 'moment/min/locales';
 // import 'moment/locale/en';
@@ -46,8 +46,6 @@ export default function ModalAddTransaction() {
     },
   });
 
-  // console.log(errors);
-
   const dispatch = useDispatch();
   const { type } = watch();
   const options = categories.filter(category => {
@@ -74,7 +72,6 @@ export default function ModalAddTransaction() {
         })
       ).unwrap();
     }
-    console.log({ transactionDate, type, categoryId, comment, amount });
     reset();
     dispatch(closeModalAddTransaction());
   };
@@ -136,7 +133,6 @@ export default function ModalAddTransaction() {
         <label>
           <input type="number" {...register('amount')} placeholder="0.00" />
         </label>
-
         <Controller
           control={control}
           name="transactionDate"
@@ -148,7 +144,6 @@ export default function ModalAddTransaction() {
                 value={new Date(value)}
                 viewMode="time"
                 initialValue={Date.now()}
-                // initialValue={new Date()}
                 dateFormat={true}
                 timeFormat={false}
                 isValidDate={disableFutureDt}
@@ -165,15 +160,6 @@ export default function ModalAddTransaction() {
             );
           }}
         />
-
-        {/* <label>
-          <input
-            type="date"
-            {...register('transactionDate')}
-            placeholder="01.01.2023"
-            disabled={isEdit}
-          />
-        </label> */}
         <label>
           <input
             type="text"

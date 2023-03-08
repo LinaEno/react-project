@@ -1,6 +1,6 @@
 import Layout from 'components/Layout/Layout';
 import { TransactionsList } from 'components/TransactionsList/TransactionsList';
-import React from 'react';
+import WithAuthRedirect from 'hoc/WithAuthRedirect';
 
 const HomePage = () => {
   return (
@@ -11,4 +11,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default WithAuthRedirect(HomePage, '/');

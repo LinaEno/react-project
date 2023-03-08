@@ -12,8 +12,9 @@ import Vector from '../../images/Currency/Vector.png';
 import Rectangle from '../../images/Currency/Rectangle.png';
 import { Loader } from 'components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
+import Weather from 'components/WeatherApp/WeatherApp';
 export const Currency = () => {
-     const { t } = useTranslation();
+  const { t } = useTranslation();
   const data = useFetchCurrency();
   let allCurrency;
   if (data.length > 0) {
@@ -48,6 +49,7 @@ export const Currency = () => {
               );
             })}
           </TypeStyled>
+          <Weather />
         </CurrencyStyled>
       )}
     </>

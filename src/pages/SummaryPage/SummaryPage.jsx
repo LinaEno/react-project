@@ -1,6 +1,7 @@
 import { Chart } from 'components/Chart/Chart';
 import Layout from 'components/Layout/Layout';
 import { StatisticBox } from 'components/StatisticBox/StatisticBox';
+import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { StatisticTitle, Wrap } from './SummaryPage.styled';
 
 function SummaryPage() {
@@ -16,4 +17,4 @@ function SummaryPage() {
   );
 }
 
-export default SummaryPage;
+export default WithAuthRedirect(SummaryPage, '/diagram');
