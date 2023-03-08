@@ -54,11 +54,14 @@ export function TransactionsList() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
+  if (transactions.length === 0) return null;
+
   const handleDeleteTransaction = transactionId => {
     dispatch(deleteTransaction(transactionId)).then(() => {
       dispatch(fetchTransactions());
     });
   };
+
 
   return (
     <Table>
@@ -69,12 +72,15 @@ export function TransactionsList() {
           ))}
         </tr>
       </thead>
+
       <tbody>
         {transactions.map(transaction => (
           <tr key={transaction.id}>
             <td>{moment(transaction.transactionDate).format('L')}</td>
             <td>{transaction.type === 'INCOME' ? '+' : '-'}</td>
-            <td>{transaction.category?.name}</td>
+
+            <td>{transaction?.category?.name}</td>
+
             <td>{transaction.comment}</td>
             <Text type={transaction.type}>{Math.abs(transaction.amount)}</Text>
             <td className="buttonsContainer">
