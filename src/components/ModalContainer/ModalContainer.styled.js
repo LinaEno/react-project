@@ -3,16 +3,19 @@ import { ReactComponent as CloseIcon } from '../../images/svg/close.svg';
 
 export const ModalMobile = styled.div`
   position: fixed;
-  top: 80px;
+  top: 0;
   left: 50%;
   width: 100%;
   height: 100vh;
-  margin: 0 auto;
-  padding: 20px;
+
   background-color: #fff;
-  border: 1px solid black;
   z-index: 100;
   transform: translateX(-50%);
+`;
+
+export const ModalWrapper = styled.div`
+  margin: 0 auto;
+  padding: 20px;
 
   @media screen and (max-width: 767.98px) {
     max-width: 480px;
