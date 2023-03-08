@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,12 +13,17 @@ import { selectModalTransactionData } from 'redux/global/selectors';
 
 import { closeModalAddTransaction } from 'redux/global/slice';
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import 'moment/locale/uk';
+import moment from 'moment';
+
 export default function ModalAddTransaction() {
   const { t } = useTranslation();
   const categories = useSelector(selectCategories);
   const modalTransactionData = useSelector(selectModalTransactionData);
-  console.log(modalTransactionData);
-  const { register, handleSubmit, watch, reset } = useForm({
+  // console.log(modalTransactionData);
+  const { register, handleSubmit, watch, reset, control } = useForm({
     //    resolver: yupResolver(schema),
     defaultValues: {
       type: modalTransactionData?.category.type,
@@ -36,7 +41,7 @@ export default function ModalAddTransaction() {
     return category.type === type;
   });
   const onSubmit = ({ transactionDate, type, categoryId, comment, amount }) => {
-    dispatch(
+    const ttt = dispatch(
       addTransaction({
         transactionDate,
         type,
@@ -45,29 +50,40 @@ export default function ModalAddTransaction() {
         amount: type === 'INCOME' ? Number(amount) : -Number(amount),
       })
     );
+    console.log(ttt);
     reset();
   };
+  const [startDate, setStartDate] = useState(new Date());
   return (
     <section>
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-        <label>
-          {t('modalAddTransactionIncomesType')}
-          <input
-            {...register('type')}
-            type="radio"
-            name="type"
-            value="INCOME"
-          />
-        </label>
-        <label>
-          <input
-            {...register('type')}
-            type="radio"
-            name="type"
-            value="EXPENSE"
-          />
-          {t('modalAddTransactionOutcomesType')}
-        </label>
+
+      <h2 style={{ textAlign: 'center' }}>Add transaction</h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete="off"
+        style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
+      >
+        <div>
+          <label>
+           {t('modalAddTransactionIncomesType')}
+            <input
+              {...register('type')}
+              type="radio"
+              name="type"
+              value="INCOME"
+            />
+          </label>
+          <label>
+            <input
+              {...register('type')}
+              type="radio"
+              name="type"
+              value="EXPENSE"
+            />
+            {t('modalAddTransactionOutcomesType')}
+          </label>
+        </div>
+
 
         <select
           {...register('categoryId')}
@@ -88,13 +104,30 @@ export default function ModalAddTransaction() {
         <label>
           <input type="number" {...register('amount')} placeholder="0.00" />
         </label>
-        <label>
+        <Controller
+          control={control}
+          name="transactionDate"
+          // {...register('transactionDate')}
+          render={({ field }) => (
+            <DatePicker
+              placeholderText={moment(startDate).format('L')}
+              showIcon
+              // maxDate={addDays(new Date(), 5)}
+              onChange={date => field.onChange(date)}
+              selected={field.value}
+              // selected={startDate}
+              dateFormat="dd.MM.yyyy"
+            />
+          )}
+        />
+
+        {/* <label>
           <input
             type="date"
             {...register('transactionDate')}
             placeholder="01.01.2023"
           />
-        </label>
+        </label> */}
         <label>
           <input type="text" {...register('comment')} placeholder={t('modalAddTransactionComment')}/>
         </label>
