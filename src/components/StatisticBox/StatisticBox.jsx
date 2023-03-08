@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { summaryTransactions } from 'redux/transactions/operations';
 
-import { selectTransactionsWithCategories } from 'redux/transactions/selectors';
+import {
+  selectExpenseSum,
+  selectIncomeSum,
+  selectSummary,
+  selectTransactions,
+  selectTransactionsWithCategories,
+} from 'redux/transactions/selectors';
 
 import {
   SelectsList,
@@ -52,30 +59,51 @@ const colors = [
 ];
 
 export function StatisticBox() {
-  const transactions = useSelector(selectTransactionsWithCategories);
-  const income = transactions.filter(t => t.type === 'INCOME');
-  const expense = transactions.filter(t => t.type === 'EXPENSE');
+  const summary = useSelector(selectSummary);
+  const expense = useSelector(selectExpenseSum);
+  const income = useSelector(selectIncomeSum);
+  const dispatch = useDispatch();
+  const all = useSelector(selectTransactions);
+  let expenses = summary.filter(el => el.total < 0);
+  console.log(expenses);
 
-  console.log(transactions);
+  if (expenses.length > 0) {
+    expenses = expenses.map((el, i) => ({
+      ...el,
+      color: colors[i],
+    }));
+  }
 
-  const totalIncome = income.reduce((ac, el) => {
-    return ac + el.amount;
-  }, 0);
-
-  const totalExpense = expense.reduce((ac, el) => {
-    return ac + el.amount;
-  }, 0);
+  const [monthDropdownShown, setMonthDropdownShown] = useState(false);
+  const [yearDropdownShown, setYearDropdownShown] = useState(false);
 
   const now = new Date();
+
   const [month, setMonth] = useState(now.getMonth());
   const [year, setYear] = useState(now.getFullYear());
 
+  useEffect(() => {
+    dispatch(summaryTransactions({ month: +month + 1, year }));
+  }, [dispatch, month, year, all]);
+
   function handleMonthChange(e) {
     setMonth(e.target.dataset.value);
+    toggleMonthDropdown();
   }
 
   function handleYearChange(e) {
     setYear(e.target.dataset.value);
+    toggleYearDropdown();
+  }
+
+  function toggleMonthDropdown() {
+    setMonthDropdownShown(state => !state);
+    setYearDropdownShown(false);
+  }
+
+  function toggleYearDropdown() {
+    setYearDropdownShown(state => !state);
+    setMonthDropdownShown(false);
   }
 
   return (
@@ -84,7 +112,7 @@ export function StatisticBox() {
         <DropdownMenu>
           <SelectButton>{months[month]}</SelectButton>
 
-          <SelectDate name="month" className="dropdown-child">
+          <SelectDate name="month">
             <Drop data-value="0" onClick={handleMonthChange}>
               January
             </Drop>
@@ -125,7 +153,7 @@ export function StatisticBox() {
         </DropdownMenu>
         <DropdownMenu>
           <SelectButton>{year}</SelectButton>
-          <SelectDate name="year" className="dropdown-child">
+          <SelectDate name="year">
             <Drop data-value="2019" onClick={handleYearChange}>
               2019
             </Drop>
@@ -151,22 +179,22 @@ export function StatisticBox() {
             <TH>Sum</TH>
           </TR>
         </THead>
-        {expense.length > 0 && (
+        {expenses.length > 0 && (
           <TableBody>
-            {expense.map(transaction => (
-              <TableRow key={transaction.id}>
-                <Color>{transaction.category?.name}</Color>
-                <td>{Math.abs(transaction.amount)}</td>
+            {expenses.map(el => (
+              <TableRow key={el.name}>
+                <Color>{el.name}</Color>
+                <td>{Math.abs(el.total)}</td>
               </TableRow>
             ))}
           </TableBody>
         )}
       </Table>
       <Sum>
-        Expenses: <Expenses>{Math.abs(totalExpense)}</Expenses>
+        Expenses: <Expenses>{Math.abs(expense)}</Expenses>
       </Sum>
       <Sum>
-        Income:<Income>{totalIncome}</Income>
+        Income:<Income>{income}</Income>
       </Sum>
     </WrapperTable>
   );

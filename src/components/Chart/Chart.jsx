@@ -4,6 +4,8 @@ import { DoughnutBox, ChartContainer, ChartLabel } from './Chart.styled';
 import { useSelector } from 'react-redux';
 import {
   selectCategories,
+  selectPeriodTotal,
+  selectSummary,
   selectTransactionsWithCategories,
 } from 'redux/transactions/selectors';
 import { selectUserBalance } from 'redux/auth/authSelectors';
@@ -18,22 +20,16 @@ ChartJS.overrides.doughnut.plugins = {
 };
 
 export function Chart() {
-  const transactions = useSelector(selectTransactionsWithCategories);
+  const total = useSelector(selectPeriodTotal);
+  const summary = useSelector(selectSummary);
 
-  const expense = transactions.filter(t => t.type === 'EXPENSE');
-
-  const dataExpense = expense.map(i => Math.abs(i.amount));
-
-  console.log(dataExpense);
-  const total = useSelector(selectUserBalance);
-  const categoriesLabesData = expense.map(elem => elem.category?.name);
-  console.log(categoriesLabesData);
+  const expenses = summary.filter(el => el.total < 0);
 
   const data = {
-    labels: categoriesLabesData,
+    labels: expenses.map(el => el.name),
     datasets: [
       {
-        data: dataExpense,
+        data: expenses.map(el => el.total.toString().replace('-', '')),
         backgroundColor: [
           '#FED057',
           '#FFD8D0',
