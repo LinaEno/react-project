@@ -46,8 +46,6 @@ export default function ModalAddTransaction() {
     },
   });
 
-  // console.log(errors);
-
   const dispatch = useDispatch();
   const { type } = watch();
   const options = categories.filter(category => {
@@ -74,7 +72,6 @@ export default function ModalAddTransaction() {
         })
       ).unwrap();
     }
-    console.log({ transactionDate, type, categoryId, comment, amount });
     reset();
     dispatch(closeModalAddTransaction());
   };
@@ -136,7 +133,6 @@ export default function ModalAddTransaction() {
         <label>
           <input type="number" {...register('amount')} placeholder="0.00" />
         </label>
-
         <Controller
           control={control}
           name="transactionDate"
@@ -165,15 +161,6 @@ export default function ModalAddTransaction() {
             );
           }}
         />
-
-        {/* <label>
-          <input
-            type="date"
-            {...register('transactionDate')}
-            placeholder="01.01.2023"
-            disabled={isEdit}
-          />
-        </label> */}
         <label>
           <input
             type="text"

@@ -13,7 +13,11 @@ import { useTranslation } from 'react-i18next';
 
 const schema = yup
   .object({
-    username: yup.string().required(),
+    username: yup
+      .string()
+      .required()
+      .min(2, 'Username length should be at least 2 characters')
+      .max(12, 'Username cannot exceed more than 12 characters'),
     email: yup.string().email().required(),
     password: yup
       .string()
