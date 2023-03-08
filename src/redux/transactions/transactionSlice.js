@@ -38,7 +38,7 @@ const transactionsSlice = createSlice({
       // .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
       //   state.transactions = state.transactions.filter(
       //     transaction => transaction.id !== payload
-      //   ); 
+      //   );
       //   state.balance = payload.balanceAfter ?? 0;
       // })
       .addCase(updateTransaction.fulfilled, (state, { payload }) => {
@@ -51,7 +51,7 @@ const transactionsSlice = createSlice({
       })
       .addCase(summaryTransactions.fulfilled, (state, { payload }) => {
         state.summary = payload.balance;
-      })
+      }),
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
