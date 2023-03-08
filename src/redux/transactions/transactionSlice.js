@@ -12,12 +12,20 @@ import { logIn, fetchCurrentUser } from 'redux/auth/authOperation';
 const initialState = {
   categories: [],
   transactions: [],
+  page: 0,
+  perPage: 8,
   summary: [],
 };
 
 const transactionsSlice = createSlice({
   name: 'transactions',
   initialState: initialState,
+
+  reducers: {
+    setPage: (state, { payload }) => {
+      state.page = payload;
+    },
+  },
 
   extraReducers: builder =>
     builder
@@ -47,3 +55,5 @@ const transactionsSlice = createSlice({
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
+
+export const { setPage } = transactionsSlice.actions;

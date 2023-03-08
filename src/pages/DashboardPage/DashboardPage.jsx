@@ -19,6 +19,7 @@ import {
 } from 'redux/global/selectors';
 import Weather from 'components/WeatherApp/WeatherApp';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
+import { Pagination } from 'components/Pagination/Pagination';
 
 const DashboardPage = () => {
   const isModalAddTransactionOpen = useSelector(selectModalAddTransactionOpen);
@@ -44,6 +45,7 @@ const DashboardPage = () => {
         </ModalContainer>
       )}
       <TransactionsList />
+      <Pagination />
     </div>
   );
 };

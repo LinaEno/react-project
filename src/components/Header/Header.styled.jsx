@@ -45,7 +45,7 @@ export const UserBox = styled.div`
   }
 `;
 export const UserName = styled.p`
-  font-family: 'Circe';
+  /* font-family: 'Circe'; */
   font-size: 18px;
   color: #bdbdbd;
 `;
@@ -53,7 +53,6 @@ export const UserName = styled.p`
 export const Delimiter = styled.span`
   display: block;
   height: 30px;
-  color: #bdbdbd;
   background-color: #bdbdbd;
   border: 1px solid #bdbdbd;
 `;
