@@ -50,7 +50,7 @@ const transactionsSlice = createSlice({
         state.categories = payload;
       })
       .addCase(summaryTransactions.fulfilled, (state, { payload }) => {
-        state.summary = payload;
+        state.summary = payload.balance;
       })
 });
 
