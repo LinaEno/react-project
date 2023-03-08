@@ -11,6 +11,7 @@ import { selectCategories } from 'redux/transactions/selectors';
 import { closeModalAddTransaction } from 'redux/global/slice';
 
 export default function ModalAddTransaction() {
+  const { t } = useTranslation();
   const categories = useSelector(selectCategories);
   const { register, handleSubmit, watch, reset } = useForm({
     //    resolver: yupResolver(schema),
@@ -40,7 +41,7 @@ export default function ModalAddTransaction() {
     <section>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <label>
-          Income
+          {t('modalAddTransactionIncomesType')}
           <input
             {...register('type')}
             type="radio"
@@ -55,7 +56,7 @@ export default function ModalAddTransaction() {
             name="type"
             value="EXPENSE"
           />
-          Expense
+          {t('modalAddTransactionOutcomesType')}
         </label>
 
         <select
@@ -85,14 +86,14 @@ export default function ModalAddTransaction() {
           />
         </label>
         <label>
-          <input type="text" {...register('comment')} placeholder="Comment" />
+          <input type="text" {...register('comment')} placeholder={t('modalAddTransactionComment')}/>
         </label>
-        <button type="submit">Add</button>
+        <button type="submit"> {t('modalAddTransactionAcceptBtn')}</button>
         <button
           type="button"
           onClick={() => dispatch(closeModalAddTransaction())}
         >
-          Cancel
+          {t('modalAddTransactionCancelBtn')}
         </button>
       </form>
     </section>
