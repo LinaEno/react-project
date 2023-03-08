@@ -52,7 +52,7 @@ export const Button = styled.button`
   }
 `;
 
-export const Navigate = styled(NavLink)`
+export const StyledNavLink = styled(NavLink)`
 display: flex;
 height: 50px;
 justify-content: center;

@@ -3,16 +3,38 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { logIn, registration } from 'redux/auth/authOperation';
+import { logIn } from 'redux/auth/authOperation';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getUserName, selectToken } from 'redux/auth/authSelectors';
+import { selectToken } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
 
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 
+import {
+  Preview,
+  Title,
+  LoginSection,
+  Content,
+  FormBox,
+  LogoBox,
+  Link,
+  Label,
+  Icon,
+  Eye,
+  Input,
+  ButtonsList,
+  Button,
+  StyledNavLink,
+} from './LoginForm.styled';
+import { ReactComponent as Logo } from '../../images/svg/logo.svg';
+import { ReactComponent as FrameLogin } from '../../images/svg/frameLogin.svg';
+import emailIcon from '../../images/svg/email.svg';
+import passIcon from '../../images/svg/password.svg';
+import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
+
 const schema = yup
   .object({
-    email: yup.string().email().required(),
+    email: yup.string().email().required('E-mail is required'),
     password: yup
       .string()
       .required('Password is required')
@@ -48,50 +70,71 @@ const LoginForm = () => {
   };
 
   return (
-    <section>
-      <h2>Wallet</h2>
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-        <label>
-          <input type="email" {...register('email')} placeholder="E-mail" />
-        </label>
-        {errors?.email && (
-          <div style={{ color: 'red' }}>{errors.email.message}</div>
-        )}
-        <label>
-          <input
-            type={toggle ? 'text' : 'password'}
-            {...register('password')}
-            placeholder="Password"
-          />
-          {!toggle ? (
-            <i
-              id="passlock"
-              onClick={() => {
-                setToggle(!toggle);
-              }}
-            >
-              <BsEyeSlashFill />
-            </i>
-          ) : (
-            <i
-              id="showpass"
-              onClick={() => {
-                setToggle(!toggle);
-              }}
-            >
-              <BsEyeFill />
-            </i>
+    <LoginSection>
+      <Default>
+      <Preview>
+        <Tablet><FrameLogin width={260} height={250} /></Tablet>
+        <Desktop><FrameLogin width={435} height={420} /></Desktop>
+      <Title>Finance App</Title>
+      </Preview>
+      </Default>
+      <Content>
+        <LogoBox>
+          <Mobile>
+            <Logo width={30} height={30} />
+          </Mobile>
+          <Default>
+            <Logo width={40} height={40} />
+          </Default>
+          <Link>Wallet</Link>
+        </LogoBox>
+        <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+          <Label>
+            <Icon src={emailIcon} alt="email" />
+            <Input type="email" {...register('email')} placeholder="E-mail" />
+          </Label>
+          {errors?.email && (
+            <div style={{ color: 'red' }}>{errors.email.message}</div>
           )}
-        </label>
-        {errors?.password && (
-          <div style={{ color: 'red' }}>{errors.password.message}</div>
-        )}
-        <button type="submit">Log in</button>
-        <button type="submit">
-          <NavLink to={'/register'}>Register</NavLink>
-        </button>
-      </form>
-    </section>
+          <Label>
+            <Icon src={passIcon} alt="email" />
+            <Input
+              type={toggle ? 'text' : 'password'}
+              {...register('password')}
+              placeholder="Password"
+            />
+            {!toggle ? (
+              <Eye
+                id="passlock"
+                onClick={() => {
+                  setToggle(!toggle);
+                }}
+              >
+                <BsEyeSlashFill />
+              </Eye>
+            ) : (
+              <Eye
+                id="showpass"
+                onClick={() => {
+                  setToggle(!toggle);
+                }}
+              >
+                <BsEyeFill />
+              </Eye>
+            )}
+          </Label>
+          {errors?.password && (
+            <div style={{ color: 'red' }}>{errors.password.message}</div>
+          )}
+          <ButtonsList>
+            <Button type="submit">Log in</Button>
+            <Button type="submit">
+              <StyledNavLink to={'/register'}>Register</StyledNavLink>
+            </Button>
+          </ButtonsList>
+        </FormBox>
+      </Content>
+    </LoginSection>
   );
 };
 
