@@ -20,16 +20,7 @@ export const Default = ({ children }) => {
   return isNotMobile ? children : null;
 };
 
-  export const Retina = ({ children }) => {
-    const isRetina = useMediaQuery({ minResolution: '2dppx' });
-    return isRetina ? children : null;
-  } 
-  export const NotRetina = ({ children }) => {
-    const isRetina = useMediaQuery({ maxResolution: '2dppx' });
-    return isRetina ? children : null;
-  }
-
-
-
-//   Example 
-{/* <Default><FcQuestions size="144px" /></Default> */}
+//   Example
+{
+  /* <Default><FcQuestions size="144px" /></Default> */
+}

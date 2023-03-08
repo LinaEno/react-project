@@ -18,7 +18,7 @@ export const addTransaction = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await backend.post('/transactions', data);
-      thunkAPI.dispatch(fetchCurrentUser())
+      thunkAPI.dispatch(fetchCurrentUser());
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -31,7 +31,7 @@ export const deleteTransaction = createAsyncThunk(
   async (transactionId, thunkAPI) => {
     try {
       await backend.delete(`/transactions/${transactionId}`);
-      thunkAPI.dispatch(fetchCurrentUser())
+      thunkAPI.dispatch(fetchCurrentUser());
       return transactionId;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -44,12 +44,14 @@ export const updateTransaction = createAsyncThunk(
   async (data, thunkAPI) => {
     console.log(data);
     try {
+
       const response = await backend.patch(`/transactions/${data.id}`, {
         amount: data.amount,
         comment: data.comment
       });
       thunkAPI.dispatch(fetchCurrentUser())
       return response.data;
+
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -69,11 +71,17 @@ export const fetchCategories = createAsyncThunk(
   }
 );
 
+const now = new Date();
+const currentMonth = now.getMonth() + 1;
+const currentYear = now.getFullYear();
+
 export const summaryTransactions = createAsyncThunk(
   'transactions/summaryTransactions',
-  async (_, thunkAPI) => {
+  async (date = { month: currentMonth, year: currentYear }, thunkAPI) => {
     try {
-      const response = await backend.get(`/transactions-summary`);
+      const response = await backend.get(
+        `transactions-summary?month=${date.month}&year=${date.year}`
+      );
 
       return response.data;
     } catch (e) {

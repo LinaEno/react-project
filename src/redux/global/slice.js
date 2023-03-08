@@ -91,7 +91,7 @@ export const {
   closeModalAddTransaction,
   closeModalLogout,
   closeModal,
-  openModalEditTransaction
+  openModalEditTransaction,
 } = globalSlice.actions;
 
 export const globalReducer = globalSlice.reducer;
