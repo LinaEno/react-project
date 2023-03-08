@@ -46,6 +46,8 @@ export function TransactionsList() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
+  if (transactions.length === 0) return null;
+
   return (
     <Table>
       <thead>
@@ -55,12 +57,13 @@ export function TransactionsList() {
           ))}
         </tr>
       </thead>
+
       <tbody>
         {transactions.map(transaction => (
           <tr key={transaction.id}>
             <td>{transaction.transactionDate}</td>
             <td>{transaction.type === 'INCOME' ? '+' : '-'}</td>
-            <td>{transaction.category.name}</td>
+            <td>{transaction?.category?.name}</td>
             <td>{transaction.comment}</td>
             <td>{transaction.amount}</td>
             <td className="buttonsContainer">

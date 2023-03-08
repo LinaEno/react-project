@@ -19,6 +19,9 @@ import {
 } from 'redux/global/selectors';
 import Weather from 'components/WeatherApp/WeatherApp';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
+import { StatisticTitle, Wrap } from 'pages/SummaryPage/SummaryPage.styled';
+import { Chart } from 'components/Chart/Chart';
+import { StatisticBox } from 'components/StatisticBox/StatisticBox';
 
 const DashboardPage = () => {
   const isModalAddTransactionOpen = useSelector(selectModalAddTransactionOpen);
@@ -44,6 +47,13 @@ const DashboardPage = () => {
         </ModalContainer>
       )}
       <TransactionsList />
+      <div>
+        <StatisticTitle>Statistics</StatisticTitle>
+        <Wrap>
+          <Chart />
+          <StatisticBox />
+        </Wrap>
+      </div>
     </div>
   );
 };
