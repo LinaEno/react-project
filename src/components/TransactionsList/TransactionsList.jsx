@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { ReactComponent as EditIcon } from 'images/Icon.svg';
+
+import { useTranslation } from 'react-i18next';
+
 import { Table, DeleteButton, Text } from './TransactionsList.styled';
+
 import {
   fetchTransactions,
   fetchCategories,
@@ -39,6 +43,7 @@ const columns = [
 ];
 
 export function TransactionsList() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactionsWithCategories);
 
