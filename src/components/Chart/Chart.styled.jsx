@@ -8,10 +8,11 @@ export const DoughnutBox = styled(Doughnut)`
 `;
 
 export const ChartContainer = styled.div`
+  width: 288px;
+  height: 288px;
   position: relative;
   display: grid;
   place-items: center;
-  width: 100%;
 `;
 
 export const ChartLabel = styled.p`
@@ -20,6 +21,7 @@ export const ChartLabel = styled.p`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
+  /* font-family: Circle; */
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
