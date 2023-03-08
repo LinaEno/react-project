@@ -60,10 +60,11 @@ export default function ModalAddTransaction() {
           comment,
           amount: type === 'INCOME' ? Number(amount) : -Number(amount),
         })
-      );
+      ).unwrap();
     }
 
     reset();
+    dispatch(closeModalAddTransaction());
   };
 
   return (
@@ -152,9 +153,7 @@ export default function ModalAddTransaction() {
           />
         </label>
 
-        <button type="submit">
-          <NavLink to={'/'}>{t('modalAddTransactionAcceptBtn')}</NavLink>
-        </button>
+        <button type="submit">{t('modalAddTransactionAcceptBtn')}</button>
 
         <button
           type="button"
