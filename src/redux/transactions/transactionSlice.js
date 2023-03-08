@@ -33,6 +33,7 @@ const transactionsSlice = createSlice({
         state.transactions = payload;
       })
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
+        console.log(payload);
         state.transactions = [payload, ...state.transactions];
       })
       // .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
@@ -42,6 +43,8 @@ const transactionsSlice = createSlice({
       //   state.balance = payload.balanceAfter ?? 0;
       // })
       .addCase(updateTransaction.fulfilled, (state, { payload }) => {
+        console.log(payload);
+        console.log(state);
         state.transactions = state.transactions.map(transaction =>
           transaction.id !== payload.id ? transaction : payload
         );
