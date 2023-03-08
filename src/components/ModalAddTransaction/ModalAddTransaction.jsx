@@ -11,12 +11,15 @@ import { selectModalTransactionData } from 'redux/global/selectors';
 
 import { closeModalAddTransaction } from 'redux/global/slice';
 
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import 'moment/locale/uk';
-import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+
+// import 'moment/min/locales';
+// import 'moment/locale/en';
+import 'moment/locale/uk';
+import moment from 'moment';
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
 
 export default function ModalAddTransaction() {
   const { t } = useTranslation();
@@ -25,16 +28,25 @@ export default function ModalAddTransaction() {
 
   const isEdit = !!modalTransactionData;
 
-  const { register, handleSubmit, watch, reset } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm({
     //    resolver: yupResolver(schema),
     defaultValues: {
       type: modalTransactionData?.category?.type ?? 'EXPENSE',
       amount: Math.abs(modalTransactionData?.amount),
-      transactionDate: modalTransactionData?.transactionDate,
+      transactionDate: modalTransactionData?.transactionDate ?? new Date(),
       comment: modalTransactionData?.comment,
       categoryId: modalTransactionData?.categoryId,
     },
   });
+
+  // console.log(errors);
 
   const dispatch = useDispatch();
   const { type } = watch();
@@ -52,7 +64,7 @@ export default function ModalAddTransaction() {
         })
       );
     } else {
-      dispatch(
+      const desp = dispatch(
         addTransaction({
           transactionDate,
           type,
@@ -61,11 +73,16 @@ export default function ModalAddTransaction() {
           amount: type === 'INCOME' ? Number(amount) : -Number(amount),
         })
       );
+      console.log(desp);
     }
-
+    console.log({ transactionDate, type, categoryId, comment, amount });
     reset();
   };
 
+  const today = moment();
+  const disableFutureDt = current => {
+    return current.isBefore(today);
+  };
   return (
     <section>
       <h2 style={{ textAlign: 'center' }}>
@@ -119,31 +136,44 @@ export default function ModalAddTransaction() {
         <label>
           <input type="number" {...register('amount')} placeholder="0.00" />
         </label>
-        {/* <Controller
+
+        <Controller
           control={control}
           name="transactionDate"
-          {...register('transactionDate')}
-          render={({ field }) => (
-            <DatePicker
-              placeholderText={moment(startDate).format('L')}
-              showIcon
-              // maxDate={addDays(new Date(), 5)}
-              onChange={date => field.onChange(date)}
-              selected={field.value}
-              // selected={startDate}
-              dateFormat="dd.MM.yyyy"
-            />
-          )}
-        /> */}
+          required
+          render={({ field }) => {
+            const { onChange, name, value } = field;
+            return (
+              <Datetime
+                value={new Date(value)}
+                viewMode="time"
+                initialValue={Date.now()}
+                // initialValue={new Date()}
+                dateFormat={true}
+                timeFormat={false}
+                isValidDate={disableFutureDt}
+                closeOnSelect={true}
+                onChange={moment => {
+                  onChange({
+                    target: {
+                      name,
+                      value: moment.toISOString(),
+                    },
+                  });
+                }}
+              />
+            );
+          }}
+        />
 
-        <label>
+        {/* <label>
           <input
             type="date"
             {...register('transactionDate')}
             placeholder="01.01.2023"
             disabled={isEdit}
           />
-        </label>
+        </label> */}
         <label>
           <input
             type="text"
@@ -152,10 +182,7 @@ export default function ModalAddTransaction() {
           />
         </label>
 
-        <button type="submit">
-          <NavLink to={'/'}>{t('modalAddTransactionAcceptBtn')}</NavLink>
-        </button>
-
+        <button type="submit">{t('modalAddTransactionAcceptBtn')}</button>
         <button
           type="button"
           onClick={() => dispatch(closeModalAddTransaction())}
