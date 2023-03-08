@@ -22,7 +22,7 @@ export default function ModalAddTransaction() {
   const { t } = useTranslation();
   const categories = useSelector(selectCategories);
   const modalTransactionData = useSelector(selectModalTransactionData);
-  // console.log(modalTransactionData);
+  console.log(modalTransactionData);
   const { register, handleSubmit, watch, reset, control } = useForm({
     //    resolver: yupResolver(schema),
     defaultValues: {
@@ -39,7 +39,7 @@ export default function ModalAddTransaction() {
     return category.type === type;
   });
   const onSubmit = ({ transactionDate, type, categoryId, comment, amount }) => {
-    const ttt = dispatch(
+    dispatch(
       addTransaction({
         transactionDate,
         type,
@@ -48,13 +48,12 @@ export default function ModalAddTransaction() {
         amount: type === 'INCOME' ? Number(amount) : -Number(amount),
       })
     );
-    console.log(ttt);
+
     reset();
   };
   const [startDate, setStartDate] = useState(new Date());
   return (
     <section>
-
       <h2 style={{ textAlign: 'center' }}>Add transaction</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -63,7 +62,7 @@ export default function ModalAddTransaction() {
       >
         <div>
           <label>
-           {t('modalAddTransactionIncomesType')}
+            {t('modalAddTransactionIncomesType')}
             <input
               {...register('type')}
               type="radio"
@@ -81,7 +80,6 @@ export default function ModalAddTransaction() {
             {t('modalAddTransactionOutcomesType')}
           </label>
         </div>
-
 
         <select
           {...register('categoryId')}
@@ -102,10 +100,10 @@ export default function ModalAddTransaction() {
         <label>
           <input type="number" {...register('amount')} placeholder="0.00" />
         </label>
-        <Controller
+        {/* <Controller
           control={control}
           name="transactionDate"
-          // {...register('transactionDate')}
+          {...register('transactionDate')}
           render={({ field }) => (
             <DatePicker
               placeholderText={moment(startDate).format('L')}
@@ -117,17 +115,21 @@ export default function ModalAddTransaction() {
               dateFormat="dd.MM.yyyy"
             />
           )}
-        />
+        /> */}
 
-        {/* <label>
+        <label>
           <input
             type="date"
             {...register('transactionDate')}
             placeholder="01.01.2023"
           />
-        </label> */}
+        </label>
         <label>
-          <input type="text" {...register('comment')} placeholder={t('modalAddTransactionComment')}/>
+          <input
+            type="text"
+            {...register('comment')}
+            placeholder={t('modalAddTransactionComment')}
+          />
         </label>
         <button type="submit"> {t('modalAddTransactionAcceptBtn')}</button>
         <button

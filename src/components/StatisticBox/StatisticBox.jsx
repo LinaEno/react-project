@@ -155,7 +155,7 @@ export function StatisticBox() {
           <TableBody>
             {expense.map(transaction => (
               <TableRow key={transaction.id}>
-                <Color>{transaction.category.name}</Color>
+                <Color>{transaction.category?.name}</Color>
                 <td>{Math.abs(transaction.amount)}</td>
               </TableRow>
             ))}
