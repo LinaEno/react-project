@@ -1,13 +1,14 @@
+
+import { useForm } from 'react-hook-form';
+
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { getUserName, selectToken } from 'redux/auth/authSelectors';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { addTransaction } from 'redux/transactions/operations';
 import { selectCategories } from 'redux/transactions/selectors';
+import {updateTransaction} from 'redux/transactions/operations';
 
 import { selectModalTransactionData } from 'redux/global/selectors';
 
@@ -22,46 +23,56 @@ export default function ModalAddTransaction() {
   const { t } = useTranslation();
   const categories = useSelector(selectCategories);
   const modalTransactionData = useSelector(selectModalTransactionData);
-  console.log(modalTransactionData);
-  const { register, handleSubmit, watch, reset, control } = useForm({
+
+
+  const isEdit = !!modalTransactionData;
+
+  const { register, handleSubmit, watch, reset } = useForm({
     //    resolver: yupResolver(schema),
     defaultValues: {
-      type: modalTransactionData?.category.type ?? 'EXPENSE',
+      type: modalTransactionData?.category?.type  ?? 'EXPENSE',
       amount: Math.abs(modalTransactionData?.amount),
       transactionDate: modalTransactionData?.transactionDate,
       comment: modalTransactionData?.comment,
-      categoryId: modalTransactionData?.categoryId,
+      categoryId: modalTransactionData?.categoryId
+
     },
   });
+
   const dispatch = useDispatch();
   const { type } = watch();
   const options = categories.filter(category => {
     return category.type === type;
   });
+
   const onSubmit = ({ transactionDate, type, categoryId, comment, amount }) => {
-    console.log(transactionDate);
-    dispatch(
-      addTransaction({
-        transactionDate,
-        type,
-        categoryId: type === 'INCOME' ? options[0].id : categoryId,
-        comment,
+
+    if (isEdit) {
+      dispatch(updateTransaction({
+        id: modalTransactionData.id,
         amount: type === 'INCOME' ? Number(amount) : -Number(amount),
-      })
-    );
+        comment,
+      }))
+    } else {
+      dispatch(
+        addTransaction({
+          transactionDate,
+          type,
+          categoryId: type === 'INCOME' ? options[0].id : categoryId,
+          comment,
+          amount: type === 'INCOME' ? Number(amount) : -Number(amount)
+        })
+      );
+    }
 
     reset();
   };
-  const [startDate, setStartDate] = useState(new Date());
 
   return (
     <section>
-      <h2 style={{ textAlign: 'center' }}>Add transaction</h2>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        autoComplete="off"
-        style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
-      >
+    <h2 style={{ textAlign: 'center' }}>Add transaction</h2>
+      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              
         <div>
           <label>
             {t('modalAddTransactionIncomesType')}
@@ -70,6 +81,7 @@ export default function ModalAddTransaction() {
               type="radio"
               name="type"
               value="INCOME"
+              disabled={isEdit}
             />
           </label>
           <label>
@@ -78,6 +90,7 @@ export default function ModalAddTransaction() {
               type="radio"
               name="type"
               value="EXPENSE"
+              disabled={isEdit}
             />
             {t('modalAddTransactionOutcomesType')}
           </label>
@@ -85,6 +98,8 @@ export default function ModalAddTransaction() {
 
         <select
           {...register('categoryId')}
+          disabled={isEdit}
+
           style={{
             opacity: type === 'INCOME' ? 0 : 1,
             width: type === 'INCOME' ? 0 : '100px',
@@ -124,6 +139,7 @@ export default function ModalAddTransaction() {
             type="date"
             {...register('transactionDate')}
             placeholder="01.01.2023"
+            disabled={isEdit}
           />
         </label>
         <label>
@@ -133,7 +149,9 @@ export default function ModalAddTransaction() {
             placeholder={t('modalAddTransactionComment')}
           />
         </label>
+
         <button type="submit"> {t('modalAddTransactionAcceptBtn')}</button>
+
         <button
           type="button"
           onClick={() => dispatch(closeModalAddTransaction())}
