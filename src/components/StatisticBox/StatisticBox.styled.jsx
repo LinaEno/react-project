@@ -40,7 +40,7 @@ export const SelectDate = styled.ul`
   position: absolute;
   margin-bottom: 0;
   padding: 0;
-  display: none;
+  opacity: 0;
   background-color: #e5e5e5;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
@@ -49,16 +49,6 @@ export const SelectDate = styled.ul`
 
   &:not-last-child {
     margin-right: 32px;
-  }
-`;
-
-export const DropdownMenu = styled.div`
-  position: relative;
-  margin-bottom: 20px;
-  z-index: 100;
-
-  &:hover .dropdown-child {
-    display: block;
   }
 `;
 
@@ -155,29 +145,28 @@ export const Color = styled.td`
     height: 24px;
     border-radius: 2px;
     margin-right: 16px;
-    background-color: #6e78e8;
+    background-color: ${props => props.color};
   }
 `;
 
-// export const TableRow = styled.tr`
-//   position: relative;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding: 14px 20px;
-//   width: 100%;
-//   &::after {
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     content: '';
-//     width: 100%;
-//     height: 1px;
-//     background-color: #dcdcdf;
-//   }
-// `;
+export const DropdownMenu = styled.div`
+  position: relative;
+  margin-bottom: 20px;
+  z-index: 100;
 
-// export const TableBody = styled.tbody`
-//   display: block;
-//   width: 100%;
-// `;
+  &.dropdownShown {
+    ${SelectDate} {
+      pointer-events: all;
+      opacity: 1;
+    }
+    & ${SelectButton} {
+      border-color: transparent;
+      color: #000;
+      /* background-color: transparent; */
+      &::after {
+        transform: rotate(180deg);
+        z-index: 2;
+      }
+    }
+  }
+`;
