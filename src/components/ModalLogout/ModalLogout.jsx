@@ -28,7 +28,7 @@ const ModalLogout = () => {
         </Default>
         <ButtonsList>
           <Button type="button" onClick={() => dispatch(logOut())}>
-            <NavLink to={'/login'}>{t('modalLogOutAcceptBtn')}</NavLink>
+            {t('modalLogOutAcceptBtn')}
           </Button>
           <Button type="button" onClick={closeModal}>
             {t('modalLogOutCancelBtn')}

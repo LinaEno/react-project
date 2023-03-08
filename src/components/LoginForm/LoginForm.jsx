@@ -3,16 +3,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { logIn, registration } from 'redux/auth/authOperation';
+import { logIn } from 'redux/auth/authOperation';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getUserName, selectToken } from 'redux/auth/authSelectors';
+import { selectToken } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
 
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 
 const schema = yup
   .object({
-    email: yup.string().email().required(),
+    email: yup.string().email().required('E-mail is required'),
     password: yup
       .string()
       .required('Password is required')

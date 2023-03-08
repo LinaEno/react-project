@@ -3,17 +3,18 @@ import styled from 'styled-components';
 export const CurrencyStyled = styled.div`
   margin-top: 32px;
   width: 280px;
-  height: 174px;
+  /* height: 174px; */
+  height: auto;
   position: relative;
   background: #4a56e2;
   border-radius: 30px;
   @media (min-width: 768px) {
     width: 336px;
-    height: 182px;
+    /* height: 182px; */
   }
   @media (min-width: 1280px) {
     width: 393px;
-    height: 331px;
+    /* height: 331px; */
   } ;
 `;
 
@@ -23,7 +24,8 @@ export const ListStyled = styled.ul`
   padding-left: 20px;
   margin-bottom: 12px;
   width: 280px;
-  height: 50px;
+  /* height: 50px; */
+  height: auto;
   @media (min-width: 768px) {
     width: 100%;
     padding-left: 41px;

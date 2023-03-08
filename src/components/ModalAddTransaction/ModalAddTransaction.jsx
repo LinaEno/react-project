@@ -12,7 +12,6 @@ import { selectModalTransactionData } from 'redux/global/selectors';
 import { closeModalAddTransaction } from 'redux/global/slice';
 
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
 
 // import 'moment/min/locales';
 // import 'moment/locale/en';
@@ -144,7 +143,6 @@ export default function ModalAddTransaction() {
                 value={new Date(value)}
                 viewMode="time"
                 initialValue={Date.now()}
-                // initialValue={new Date()}
                 dateFormat={true}
                 timeFormat={false}
                 isValidDate={disableFutureDt}

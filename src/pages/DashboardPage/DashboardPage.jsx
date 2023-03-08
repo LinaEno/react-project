@@ -1,3 +1,4 @@
+import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { Outlet } from 'react-router-dom';
 
 const DashboardPage = () => {
@@ -8,4 +9,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default WithAuthRedirect(DashboardPage, '/');
