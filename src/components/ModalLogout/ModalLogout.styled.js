@@ -1,7 +1,7 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding: 40px;
   border-radius: 20px;
   background-color: #fff;
 `;
@@ -9,8 +9,10 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   margin-top: 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 20px;
+  margin-bottom: 30px;
 `;
 
 export const Question = styled.p`
@@ -19,6 +21,7 @@ export const Question = styled.p`
   line-height: calc(45 / 30);
   font-weight: 400;
   color: #000;
+  text-align: center;
 `;
 
 export const ButtonsList = styled.div`
@@ -29,7 +32,7 @@ export const ButtonsList = styled.div`
 
 export const Button = styled.button`
   height: 50px;
-  width: 300px;
+  width: 280px;
   border-radius: 20px;
   border: 1px solid #4a56e2;
   color: #4a56e2;
@@ -43,4 +46,21 @@ export const Button = styled.button`
     color: #fff;
     background-color: #24cca7;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
 `;
+
+export const Navigate = styled(NavLink)`
+display: flex;
+height: 50px;
+justify-content: center;
+align-items: center;
+text-decoration: none;
+color: #4a56e2;
+
+&:hover {
+    color: #fff;
+  }
+`
