@@ -8,7 +8,6 @@ import {
   Question,
   ButtonsList,
   Button,
-  Navigate,
 } from './ModalLogout.styled';
 import { useTranslation } from 'react-i18next';
 import { Default } from '../Media/Media';

@@ -39,6 +39,7 @@ export default function ModalAddTransaction() {
     return category.type === type;
   });
   const onSubmit = ({ transactionDate, type, categoryId, comment, amount }) => {
+    console.log(transactionDate);
     dispatch(
       addTransaction({
         transactionDate,
@@ -52,6 +53,7 @@ export default function ModalAddTransaction() {
     reset();
   };
   const [startDate, setStartDate] = useState(new Date());
+
   return (
     <section>
       <h2 style={{ textAlign: 'center' }}>Add transaction</h2>

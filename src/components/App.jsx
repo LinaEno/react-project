@@ -12,6 +12,7 @@ import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import CurrencyPage from 'pages/Currency/Currency';
 import WeatherPage from 'components/WeatherApp/WeatherApp';
 import SummaryPage from 'pages/SummaryPage/SummaryPage';
+import HomePage from 'pages/HomePage/HomePage';
 
 export const App = () => {
   const error = useSelector(selectError);
@@ -36,7 +37,7 @@ export const App = () => {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<DashboardPage />}>
-          {/* <Route path="home" element={<HomePage />} /> */}
+          <Route index element={<HomePage />} />
           <Route path="/diagram" element={<SummaryPage />} />
           {/* <Route path="/" element={<CurrencyPage />} /> */}
         </Route>
