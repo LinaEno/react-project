@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import arrow from '../../images/Arrow.png';
 
 export const WrapperTable = styled.div`
-  width: 396px;
+  width: 395px;
 `;
 
 export const SelectsList = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 32px;
 `;
 
 export const SelectButton = styled.button`
@@ -15,19 +15,16 @@ export const SelectButton = styled.button`
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-  width: 182px;
+  width: 181px;
   height: 50px;
   border-radius: 30px;
   color: black;
   border: 1px solid #000000;
   cursor: pointer;
-  padding: 13px 16px;
-  text-align: center;
+  padding: 12px 20px 14px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-
-  margin-right: 32px;
 
   &::after {
     content: url(${arrow});
@@ -41,19 +38,15 @@ export const SelectDate = styled.ul`
   margin-bottom: 0;
   padding: 0;
   opacity: 0;
+  padding: 13px 20px;
   background-color: #e5e5e5;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   width: 182px;
   height: auto;
-
-  &:not-last-child {
-    margin-right: 32px;
-  }
 `;
 
 export const Drop = styled.li`
-  padding-left: 20px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -68,15 +61,11 @@ export const Drop = styled.li`
 `;
 
 export const Table = styled.table`
-  /* display: block; */
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 `;
 
-export const THead = styled.thead`
-  /* display: block; */
-  /* width: 100%; */
-`;
+export const THead = styled.thead``;
 
 export const TR = styled.tr`
   display: flex;
@@ -104,7 +93,11 @@ export const TableRow = styled.tr`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 20px;
+  /* font-family: Circle; */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  padding: 16px 20px 14px;
   width: 100%;
 
   &::after {
@@ -123,6 +116,10 @@ export const Sum = styled.p`
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 20px;
 `;
 
 export const Expenses = styled.span`
@@ -135,6 +132,7 @@ export const Income = styled.span`
 
 export const Color = styled.td`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   max-width: 180px;
 
@@ -160,9 +158,8 @@ export const DropdownMenu = styled.div`
       opacity: 1;
     }
     & ${SelectButton} {
-      border-color: transparent;
+      border-color: #000;
       color: #000;
-      /* background-color: transparent; */
       &::after {
         transform: rotate(180deg);
         z-index: 2;

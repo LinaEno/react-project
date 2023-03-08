@@ -13,6 +13,7 @@ import CurrencyPage from 'pages/Currency/Currency';
 import WeatherPage from 'components/WeatherApp/WeatherApp';
 import SummaryPage from 'pages/SummaryPage/SummaryPage';
 import HomePage from 'pages/HomePage/HomePage';
+import PageNotFound404 from 'pages/PageNotFound404/PageNotFound404';
 
 export const App = () => {
   const error = useSelector(selectError);
@@ -43,7 +44,7 @@ export const App = () => {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        {/* <Route path="*" element={<PageNotFound404 />} /> */}
+        <Route path="*" element={<PageNotFound404 />} />
       </Routes>
     </Suspense>
     //     )}
