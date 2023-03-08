@@ -2,19 +2,27 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchTransactions,
   addTransaction,
-  deleteTransaction,
   updateTransaction,
   fetchCategories,
   summaryTransactions,
 } from './operations';
-import { logIn, fetchCurrentUser } from 'redux/auth/authOperation';
 
 const initialState = {
   categories: [],
   transactions: [],
   page: 0,
   perPage: 8,
-  summary: [],
+  categoriesSummary: [],
+  expenseSummary: 0,
+  incomeSummary: 0,
+  periodTotal: 0,
+  filteredValue: {
+    transactionDate: '',
+    amount: '',
+    type: '',
+    comment: '',
+    categoryId: '',
+  },
 };
 
 const transactionsSlice = createSlice({
@@ -24,6 +32,9 @@ const transactionsSlice = createSlice({
   reducers: {
     setPage: (state, { payload }) => {
       state.page = payload;
+    },
+    filteredValue(state, { payload }) {
+      state.filteredValue = { ...state.filteredValue, ...payload };
     },
   },
 
@@ -35,12 +46,14 @@ const transactionsSlice = createSlice({
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.transactions = [payload, ...state.transactions];
       })
-      // .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
-      //   state.transactions = state.transactions.filter(
-      //     transaction => transaction.id !== payload
-      //   );
-      //   state.balance = payload.balanceAfter ?? 0;
-      // })
+
+      .addCase(summaryTransactions.fulfilled, (state, { payload }) => {
+        state.categoriesSummary = payload.categoriesSummary;
+        state.expenseSummary = payload.expenseSummary;
+        state.incomeSummary = payload.incomeSummary;
+        state.periodTotal = payload.periodTotal;
+      })
+
       .addCase(updateTransaction.fulfilled, (state, { payload }) => {
         state.transactions = state.transactions.map(transaction =>
           transaction.id !== payload.id ? transaction : payload
@@ -48,12 +61,10 @@ const transactionsSlice = createSlice({
       })
       .addCase(fetchCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
-      })
-      .addCase(summaryTransactions.fulfilled, (state, { payload }) => {
-        state.summary = payload.balance;
+
       }),
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
 
-export const { setPage } = transactionsSlice.actions;
+export const { setPage, filteredValue } = transactionsSlice.actions;

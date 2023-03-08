@@ -2,11 +2,7 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { DoughnutBox, ChartContainer, ChartLabel } from './Chart.styled';
 import { useSelector } from 'react-redux';
-import {
-  selectCategories,
-  selectTransactionsWithCategories,
-} from 'redux/transactions/selectors';
-import { selectUserBalance } from 'redux/auth/authSelectors';
+import { selectPeriodTotal, selectSummary } from 'redux/transactions/selectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -18,22 +14,18 @@ ChartJS.overrides.doughnut.plugins = {
 };
 
 export function Chart() {
-  const transactions = useSelector(selectTransactionsWithCategories);
+  const total = useSelector(selectPeriodTotal);
+  const summary = useSelector(selectSummary);
 
-  const expense = transactions.filter(t => t.type === 'EXPENSE');
+  const expenses = summary.filter(el => el.total < 0);
 
-  const dataExpense = expense.map(i => Math.abs(i.amount));
-
-  console.log(dataExpense);
-  const total = useSelector(selectUserBalance);
-  const categoriesLabesData = expense.map(elem => elem.category?.name);
-  console.log(categoriesLabesData);
+  console.log(expenses);
 
   const data = {
-    labels: categoriesLabesData,
+    labels: expenses.map(el => el.name),
     datasets: [
       {
-        data: dataExpense,
+        data: expenses.map(el => el.total.toString()),
         backgroundColor: [
           '#FED057',
           '#FFD8D0',
@@ -62,7 +54,7 @@ export function Chart() {
   return (
     <ChartContainer>
       <DoughnutBox data={data} />
-      <ChartLabel>${total}</ChartLabel>
+      <ChartLabel>&#8372;{Math.abs(total)}</ChartLabel>
     </ChartContainer>
   );
 }
