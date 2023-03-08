@@ -11,8 +11,9 @@ import { useFetchCurrency } from 'services/currencyApi';
 import Vector from '../../images/Currency/Vector.png';
 import Rectangle from '../../images/Currency/Rectangle.png';
 import { Loader } from 'components/Loader/Loader';
-
+import { useTranslation } from 'react-i18next';
 export const Currency = () => {
+     const { t } = useTranslation();
   const data = useFetchCurrency();
   let allCurrency;
   if (data.length > 0) {
@@ -30,9 +31,9 @@ export const Currency = () => {
         <CurrencyStyled>
           <ImgStyledRectangle src={Rectangle} alt="img" />
           <ListStyled>
-            <ListLI>Currency</ListLI>
-            <ListLI>Purchase</ListLI>
-            <ListLI>Sale</ListLI>
+            <ListLI>{t('currency')}</ListLI>
+            <ListLI>{t('currencyPurchase')}</ListLI>
+            <ListLI>{t('currencySale')}</ListLI>
           </ListStyled>
           <ImgStyledVector src={Vector} alt="img" />
           <TypeStyled>
