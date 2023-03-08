@@ -19,13 +19,11 @@ export function Chart() {
 
   const expenses = summary.filter(el => el.total < 0);
 
-  console.log(expenses);
-
   const data = {
     labels: expenses.map(el => el.name),
     datasets: [
       {
-        data: expenses.map(el => el.total.toString()),
+        data: expenses.map(el => Math.abs(el.total.toString())),
         backgroundColor: [
           '#FED057',
           '#FFD8D0',

@@ -19,6 +19,7 @@ const initialState = {
   isModalLogoutOpen: false,
   isLoading: false,
   error: null,
+  modalTransactionData: null
 };
 
 const extraActions = [
