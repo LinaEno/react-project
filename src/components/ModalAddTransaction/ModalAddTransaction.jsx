@@ -20,13 +20,11 @@ export default function ModalAddTransaction() {
   const { register, handleSubmit, watch, reset } = useForm({
     //    resolver: yupResolver(schema),
     defaultValues: {
-      type: modalTransactionData?.category.type,
+      type: modalTransactionData?.category.type ?? 'EXPENSE',
       amount: Math.abs(modalTransactionData?.amount),
       transactionDate: modalTransactionData?.transactionDate,
       comment: modalTransactionData?.comment,
       categoryId: modalTransactionData?.categoryId,
-
-      // type: 'EXPENSE',
     },
   });
   const dispatch = useDispatch();

@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { registration } from 'redux/auth/authOperation';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getUserName, selectToken } from 'redux/auth/authSelectors';
+import { selectToken } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
 
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
