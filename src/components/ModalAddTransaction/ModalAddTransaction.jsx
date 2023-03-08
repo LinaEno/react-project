@@ -1,6 +1,3 @@
-
-import { useForm } from 'react-hook-form';
-
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -8,7 +5,7 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTransaction } from 'redux/transactions/operations';
 import { selectCategories } from 'redux/transactions/selectors';
-import {updateTransaction} from 'redux/transactions/operations';
+import { updateTransaction } from 'redux/transactions/operations';
 
 import { selectModalTransactionData } from 'redux/global/selectors';
 
@@ -18,24 +15,24 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'moment/locale/uk';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 
 export default function ModalAddTransaction() {
   const { t } = useTranslation();
   const categories = useSelector(selectCategories);
   const modalTransactionData = useSelector(selectModalTransactionData);
 
-
   const isEdit = !!modalTransactionData;
 
   const { register, handleSubmit, watch, reset } = useForm({
     //    resolver: yupResolver(schema),
     defaultValues: {
-      type: modalTransactionData?.category?.type  ?? 'EXPENSE',
+      type: modalTransactionData?.category?.type ?? 'EXPENSE',
       amount: Math.abs(modalTransactionData?.amount),
       transactionDate: modalTransactionData?.transactionDate,
       comment: modalTransactionData?.comment,
-      categoryId: modalTransactionData?.categoryId
-
+      categoryId: modalTransactionData?.categoryId,
     },
   });
 
@@ -46,13 +43,14 @@ export default function ModalAddTransaction() {
   });
 
   const onSubmit = ({ transactionDate, type, categoryId, comment, amount }) => {
-
     if (isEdit) {
-      dispatch(updateTransaction({
-        id: modalTransactionData.id,
-        amount: type === 'INCOME' ? Number(amount) : -Number(amount),
-        comment,
-      }))
+      dispatch(
+        updateTransaction({
+          id: modalTransactionData.id,
+          amount: type === 'INCOME' ? Number(amount) : -Number(amount),
+          comment,
+        })
+      );
     } else {
       dispatch(
         addTransaction({
@@ -60,7 +58,7 @@ export default function ModalAddTransaction() {
           type,
           categoryId: type === 'INCOME' ? options[0].id : categoryId,
           comment,
-          amount: type === 'INCOME' ? Number(amount) : -Number(amount)
+          amount: type === 'INCOME' ? Number(amount) : -Number(amount),
         })
       );
     }
@@ -70,9 +68,14 @@ export default function ModalAddTransaction() {
 
   return (
     <section>
-    <h2 style={{ textAlign: 'center' }}>Add transaction</h2>
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              
+      <h2 style={{ textAlign: 'center' }}>
+        {isEdit ? 'Edit transaction' : 'Add transaction'}
+      </h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete="off"
+        style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
+      >
         <div>
           <label>
             {t('modalAddTransactionIncomesType')}
@@ -99,7 +102,6 @@ export default function ModalAddTransaction() {
         <select
           {...register('categoryId')}
           disabled={isEdit}
-
           style={{
             opacity: type === 'INCOME' ? 0 : 1,
             width: type === 'INCOME' ? 0 : '100px',
@@ -150,7 +152,9 @@ export default function ModalAddTransaction() {
           />
         </label>
 
-        <button type="submit"> {t('modalAddTransactionAcceptBtn')}</button>
+        <button type="submit">
+          <NavLink to={'/'}>{t('modalAddTransactionAcceptBtn')}</NavLink>
+        </button>
 
         <button
           type="button"
