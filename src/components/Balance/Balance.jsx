@@ -1,12 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { selectBalance } from 'redux/transactions/selectors';
+import { selectUserBalance } from 'redux/auth/authSelectors';
 import { TbCurrencyHryvnia } from 'react-icons/tb';
 
 const Balance = () => {
   const { t } = useTranslation();
-  const balance = useSelector(selectBalance);
+  const balance = useSelector(selectUserBalance);
   // const grn = &#8372;
   return (
     <div>

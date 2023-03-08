@@ -8,15 +8,26 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { addTransaction } from 'redux/transactions/operations';
 import { selectCategories } from 'redux/transactions/selectors';
+
+import { selectModalTransactionData } from 'redux/global/selectors';
+
 import { closeModalAddTransaction } from 'redux/global/slice';
 
 export default function ModalAddTransaction() {
   const { t } = useTranslation();
   const categories = useSelector(selectCategories);
+  const modalTransactionData = useSelector(selectModalTransactionData);
+  console.log(modalTransactionData);
   const { register, handleSubmit, watch, reset } = useForm({
     //    resolver: yupResolver(schema),
     defaultValues: {
-      type: 'EXPENSE',
+      type: modalTransactionData?.category.type,
+      amount: Math.abs(modalTransactionData?.amount),
+      transactionDate: modalTransactionData?.transactionDate,
+      comment: modalTransactionData?.comment,
+      categoryId: modalTransactionData?.categoryId,
+
+      // type: 'EXPENSE',
     },
   });
   const dispatch = useDispatch();
@@ -36,7 +47,6 @@ export default function ModalAddTransaction() {
     );
     reset();
   };
-  console.log(options);
   return (
     <section>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
