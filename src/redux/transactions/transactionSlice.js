@@ -46,12 +46,14 @@ const transactionsSlice = createSlice({
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.transactions = [payload, ...state.transactions];
       })
+
       .addCase(summaryTransactions.fulfilled, (state, { payload }) => {
         state.categoriesSummary = payload.categoriesSummary;
         state.expenseSummary = payload.expenseSummary;
         state.incomeSummary = payload.incomeSummary;
         state.periodTotal = payload.periodTotal;
       })
+
       .addCase(updateTransaction.fulfilled, (state, { payload }) => {
         state.transactions = state.transactions.map(transaction =>
           transaction.id !== payload.id ? transaction : payload
@@ -59,6 +61,7 @@ const transactionsSlice = createSlice({
       })
       .addCase(fetchCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
+
       }),
 });
 

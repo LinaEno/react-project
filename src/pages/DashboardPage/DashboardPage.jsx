@@ -24,9 +24,6 @@ import { StatisticTitle, Wrap } from 'pages/SummaryPage/SummaryPage.styled';
 import { Chart } from 'components/Chart/Chart';
 import { StatisticBox } from 'components/StatisticBox/StatisticBox';
 
-import { Pagination } from 'components/Pagination/Pagination';
-
-
 const DashboardPage = () => {
   const isModalAddTransactionOpen = useSelector(selectModalAddTransactionOpen);
   const isModalLogoutOpen = useSelector(selectLogoutModalOpen);
@@ -59,9 +56,6 @@ const DashboardPage = () => {
           <StatisticBox />
         </Wrap>
       </div>
-
-      <Pagination />
-
     </div>
   );
 };
