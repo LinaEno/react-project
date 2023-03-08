@@ -2,13 +2,7 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { DoughnutBox, ChartContainer, ChartLabel } from './Chart.styled';
 import { useSelector } from 'react-redux';
-import {
-  selectCategories,
-  selectPeriodTotal,
-  selectSummary,
-  selectTransactionsWithCategories,
-} from 'redux/transactions/selectors';
-import { selectUserBalance } from 'redux/auth/authSelectors';
+import { selectPeriodTotal, selectSummary } from 'redux/transactions/selectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -25,11 +19,13 @@ export function Chart() {
 
   const expenses = summary.filter(el => el.total < 0);
 
+  console.log(expenses);
+
   const data = {
     labels: expenses.map(el => el.name),
     datasets: [
       {
-        data: expenses.map(el => el.total.toString().replace('-', '')),
+        data: expenses.map(el => el.total.toString()),
         backgroundColor: [
           '#FED057',
           '#FFD8D0',
@@ -58,7 +54,7 @@ export function Chart() {
   return (
     <ChartContainer>
       <DoughnutBox data={data} />
-      <ChartLabel>${total}</ChartLabel>
+      <ChartLabel>&#8372;{Math.abs(total)}</ChartLabel>
     </ChartContainer>
   );
 }

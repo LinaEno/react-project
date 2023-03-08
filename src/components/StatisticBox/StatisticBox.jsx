@@ -109,8 +109,10 @@ export function StatisticBox() {
   return (
     <WrapperTable>
       <SelectsList>
-        <DropdownMenu>
-          <SelectButton>{months[month]}</SelectButton>
+        <DropdownMenu className={monthDropdownShown ? 'dropdownShown' : ''}>
+          <SelectButton onClick={toggleMonthDropdown}>
+            {months[month]}
+          </SelectButton>
 
           <SelectDate name="month">
             <Drop data-value="0" onClick={handleMonthChange}>
@@ -151,8 +153,8 @@ export function StatisticBox() {
             </Drop>
           </SelectDate>
         </DropdownMenu>
-        <DropdownMenu>
-          <SelectButton>{year}</SelectButton>
+        <DropdownMenu className={yearDropdownShown ? 'dropdownShown' : ''}>
+          <SelectButton onClick={toggleYearDropdown}>{year}</SelectButton>
           <SelectDate name="year">
             <Drop data-value="2019" onClick={handleYearChange}>
               2019
@@ -183,7 +185,7 @@ export function StatisticBox() {
           <TableBody>
             {expenses.map(el => (
               <TableRow key={el.name}>
-                <Color>{el.name}</Color>
+                <Color color={el.color}>{el.name}</Color>
                 <td>{Math.abs(el.total)}</td>
               </TableRow>
             ))}
