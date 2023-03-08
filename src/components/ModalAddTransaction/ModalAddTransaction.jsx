@@ -8,14 +8,28 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { addTransaction } from 'redux/transactions/operations';
 import { selectCategories } from 'redux/transactions/selectors';
+
+import {selectModalTransactionData} from 'redux/global/selectors';
+
 import { closeModalAddTransaction } from 'redux/global/slice';
+
 
 export default function ModalAddTransaction() {
   const categories = useSelector(selectCategories);
+  const modalTransactionData = useSelector(selectModalTransactionData);
+  console.log(modalTransactionData);
   const { register, handleSubmit, watch, reset } = useForm({
     //    resolver: yupResolver(schema),
     defaultValues: {
-      type: 'EXPENSE',
+
+      type: modalTransactionData?.category.type,
+      amount: Math.abs(modalTransactionData?.amount),
+      transactionDate: modalTransactionData?.transactionDate,
+      comment: modalTransactionData?.comment,
+      categoryId: modalTransactionData?.categoryId
+
+      //type: 'EXPENSE',
+
     },
   });
   const dispatch = useDispatch();
@@ -30,12 +44,11 @@ export default function ModalAddTransaction() {
         type,
         categoryId: type === 'INCOME' ? options[0].id : categoryId,
         comment,
-        amount: type === 'INCOME' ? Number(amount) : -Number(amount),
+        amount: type === 'INCOME' ? Number(amount) : -Number(amount)
       })
     );
     reset();
   };
-  console.log(options);
   return (
     <section>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -46,6 +59,7 @@ export default function ModalAddTransaction() {
             type="radio"
             name="type"
             value="INCOME"
+            
           />
         </label>
         <label>
@@ -54,12 +68,14 @@ export default function ModalAddTransaction() {
             type="radio"
             name="type"
             value="EXPENSE"
+            
           />
           Expense
         </label>
 
         <select
           {...register('categoryId')}
+
           style={{
             opacity: type === 'INCOME' ? 0 : 1,
             width: type === 'INCOME' ? 0 : '100px',
