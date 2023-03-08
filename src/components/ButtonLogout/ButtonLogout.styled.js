@@ -7,6 +7,7 @@ export const Button = styled.button`
   min-width: 24px;
   height: 24px;
   color: #bdbdbd;
+  font-family: inherit;
   font-weight: 400;
   font-size: 18px;
   line-height: calc(27 / 18);
@@ -17,7 +18,7 @@ export const Button = styled.button`
 
   @media screen and (min-width: 768px) {
     gap: 8px;
-    width: 57px;
+    min-width: 57px;
   }
 `;
 

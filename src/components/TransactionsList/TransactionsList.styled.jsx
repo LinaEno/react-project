@@ -57,6 +57,10 @@ export const Table = styled.table`
     }
   }
 
+  .amountTd {
+
+  }
+
   buttonsContainer {
     display: flex;
     flex-direction: row;
@@ -74,3 +78,7 @@ export const DeleteButton = styled.button`
   border: none;
 
 `
+
+export const Text = styled.td`
+color: ${(props) => props.type === 'INCOME' ? 'rgba(36, 204, 167, 1)' : 'rgba(255, 101, 150, 1)'};
+`;

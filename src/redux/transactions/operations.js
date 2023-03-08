@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { backend } from 'redux/auth/authOperation';
+import { backend, fetchCurrentUser } from 'redux/auth/authOperation';
 
 export const fetchTransactions = createAsyncThunk(
   'transactions/fetchTransactions',
@@ -18,6 +18,7 @@ export const addTransaction = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await backend.post('/transactions', data);
+      thunkAPI.dispatch(fetchCurrentUser())
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -29,9 +30,9 @@ export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
   async (transactionId, thunkAPI) => {
     try {
-      const response = await backend.delete(`/transactions/${transactionId}`);
-
-      return response.data.id;
+      await backend.delete(`/transactions/${transactionId}`);
+      thunkAPI.dispatch(fetchCurrentUser())
+      return transactionId;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -43,7 +44,7 @@ export const updateTransaction = createAsyncThunk(
   async (transactionId, thunkAPI) => {
     try {
       const response = await backend.patch(`/transactions/${transactionId}`);
-
+      thunkAPI.dispatch(fetchCurrentUser())
       return response.data.id;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
