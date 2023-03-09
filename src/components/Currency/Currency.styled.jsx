@@ -1,19 +1,46 @@
 import styled from 'styled-components';
 
+export const ContainerTotal = styled.div`
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 480px) {
+    max-width: 480px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 1244px;
+    padding: 0 18px;
+  }
+`;
+
 export const CurrencyStyled = styled.div`
   margin-top: 32px;
-  width: 280px;
+  width: 100vw;
   /* height: 174px; */
   height: auto;
   position: relative;
   background: #4a56e2;
   border-radius: 30px;
+  @media (min-width: 480px) {
+    width: 440px;
+    margin: 0 auto;
+    /* height: 182px; */
+  }
   @media (min-width: 768px) {
     width: 336px;
+    margin-right: 0;
     /* height: 182px; */
   }
   @media (min-width: 1280px) {
     width: 393px;
+    margin-left: 0;
     /* height: 331px; */
   } ;
 `;

@@ -24,10 +24,14 @@ export const App = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   dispatch(fetchCurrentUser());
+  //   if (!isLoggedIn) navigate('/login');
+  // }, [dispatch, isLoggedIn, navigate]);
+
   useEffect(() => {
     dispatch(fetchCurrentUser());
-    if (!isLoggedIn) navigate('/login');
-  }, [dispatch, isLoggedIn, navigate]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (error) {

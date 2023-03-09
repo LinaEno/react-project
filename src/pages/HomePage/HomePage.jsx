@@ -4,10 +4,10 @@ import WithAuthRedirect from 'hoc/WithAuthRedirect';
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <Layout />
       <TransactionsList />
-    </div>
+    </>
   );
 };
 

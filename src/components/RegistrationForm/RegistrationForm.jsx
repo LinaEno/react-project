@@ -41,10 +41,10 @@ const schema = yup
   .object({
     username: yup
       .string()
-      .required()
+      .required('Username is required')
       .min(2, 'Username length should be at least 2 characters')
       .max(12, 'Username cannot exceed more than 12 characters'),
-    email: yup.string().email().required(),
+    email: yup.string().email().required('E-mail is required'),
     password: yup
       .string()
       .required('Password is required')
@@ -88,7 +88,6 @@ const RegistrationForm = () => {
 
     reset();
   };
-
 
   return (
     <RegisterSection>
@@ -192,8 +191,8 @@ const RegistrationForm = () => {
                 placeholder="First name"
               />
             </Label>
-            {errors?.name && (
-              <Error style={{ top: '60%' }}>{errors.name.message}</Error>
+            {errors?.username && (
+              <Error style={{ top: '62%' }}>{errors.username.message}</Error>
             )}
             <ButtonsList>
               <ButtonActive type="submit">Register</ButtonActive>

@@ -74,71 +74,75 @@ const LoginForm = () => {
 
   return (
     <LoginSection>
-    <Default>
-    <Preview>
-      <Tablet><FrameLogin width={260} height={250} /></Tablet>
-      <Desktop><FrameLogin width={435} height={420} /></Desktop>
-    <Title>Finance App</Title>
-    </Preview>
-    </Default>
-    <Backdrop >
-    <Content>
-      <LogoBox>
-        <Mobile>
-          <Logo width={30} height={30} />
-        </Mobile>
-        <Default>
-          <Logo width={40} height={40} />
-        </Default>
-        <Link>Wallet</Link>
-      </LogoBox>
-      <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-        <Label>
-          <Icon src={emailIcon} alt="email" />
-          <Input type="email" {...register('email')} placeholder="E-mail" />
-        </Label>
-        {errors?.email && (
-          <Error style={{ top: '14%' }}>{errors.email.message}</Error>
-        )}
-        <Label>
-          <Icon src={passIcon} alt="email" />
-          <Input
-            type={toggle ? 'text' : 'password'}
-            {...register('password')}
-            placeholder="Password"
-          />
-          {!toggle ? (
-            <Eye
-              id="passlock"
-              onClick={() => {
-                setToggle(!toggle);
-              }}
-            >
-              <BsEyeSlashFill />
-            </Eye>
-          ) : (
-            <Eye
-              id="showpass"
-              onClick={() => {
-                setToggle(!toggle);
-              }}
-            >
-              <BsEyeFill />
-            </Eye>
-          )}
-        </Label>
-        {errors?.password && (
-          <Error style={{ top: '42%' }}>{errors.password.message}</Error>
-          )}
-          <ButtonsList>
-            <ButtonActive type="submit">Log in</ButtonActive>
-            <Button type="submit">
-              <StyledNavLink to={'/register'}>Register</StyledNavLink>
-            </Button>
-          </ButtonsList>
+      <Default>
+        <Preview>
+          <Tablet>
+            <FrameLogin width={260} height={250} />
+          </Tablet>
+          <Desktop>
+            <FrameLogin width={435} height={420} />
+          </Desktop>
+          <Title>Finance App</Title>
+        </Preview>
+      </Default>
+      <Backdrop>
+        <Content>
+          <LogoBox>
+            <Mobile>
+              <Logo width={30} height={30} />
+            </Mobile>
+            <Default>
+              <Logo width={40} height={40} />
+            </Default>
+            <Link>Wallet</Link>
+          </LogoBox>
+          <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+            <Label>
+              <Icon src={emailIcon} alt="email" />
+              <Input type="email" {...register('email')} placeholder="E-mail" />
+            </Label>
+            {errors?.email && (
+              <Error style={{ top: '14%' }}>{errors.email.message}</Error>
+            )}
+            <Label>
+              <Icon src={passIcon} alt="email" />
+              <Input
+                type={toggle ? 'text' : 'password'}
+                {...register('password')}
+                placeholder="Password"
+              />
+              {!toggle ? (
+                <Eye
+                  id="passlock"
+                  onClick={() => {
+                    setToggle(!toggle);
+                  }}
+                >
+                  <BsEyeSlashFill />
+                </Eye>
+              ) : (
+                <Eye
+                  id="showpass"
+                  onClick={() => {
+                    setToggle(!toggle);
+                  }}
+                >
+                  <BsEyeFill />
+                </Eye>
+              )}
+            </Label>
+            {errors?.password && (
+              <Error style={{ top: '42%' }}>{errors.password.message}</Error>
+            )}
+            <ButtonsList>
+              <ButtonActive type="submit">Log in</ButtonActive>
+              <Button type="submit">
+                <StyledNavLink to={'/register'}>Register</StyledNavLink>
+              </Button>
+            </ButtonsList>
           </FormBox>
-      </Content>
-      </Backdrop >
+        </Content>
+      </Backdrop>
     </LoginSection>
   );
 };
