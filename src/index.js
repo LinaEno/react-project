@@ -16,7 +16,7 @@ import { Loader } from 'components/Loader/Loader';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/react-project">
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
           <App />
