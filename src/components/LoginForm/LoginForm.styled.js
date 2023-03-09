@@ -31,6 +31,16 @@ export const Title = styled.h1`
   color: #000;
 `;
 
+export const Backdrop = styled.div`
+  @media screen and (min-width: 1280px)) {
+    min-height: 100vh;
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(25px);
+    padding: 136px 90px 116px 107px;
+    margin-right: auto;
+  }
+`;
+
 export const Content = styled.div`
   padding: 107px 20px;
 
@@ -53,6 +63,7 @@ export const Content = styled.div`
 `;
 
 export const FormBox = styled.form`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -141,17 +152,39 @@ export const Button = styled.button`
   border-radius: 20px;
   border: 1px solid #4a56e2;
   color: #4a56e2;
+  background-color: #fff;
   font-size: 18px;
   line-height: calc(27 / 18);
   font-weight: 400;
   text-transform: uppercase;
 
   &:hover {
-    border: 1px solid #24cca7;
+    border: 1px solid #4a56e2;
+    background-color: #4a56e2;
     color: #fff;
-    background-color: #24cca7;
   }
 
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
+`;
+
+export const ButtonActive = styled.button`
+  height: 50px;
+  width: 280px;
+  border-radius: 20px;
+  background-color: #24cca7;
+  border: 1px solid #24cca7;
+  color: #fff;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  font-weight: 400;
+  text-transform: uppercase;
+  &:hover {
+    border: 1px solid #4a56e2;
+    background-color: #4a56e2;
+    color: #fff;
+  }
   @media screen and (min-width: 768px) {
     width: 300px;
   }
@@ -168,4 +201,10 @@ export const StyledNavLink = styled(NavLink)`
   &:hover {
     color: #fff;
   }
+`;
+
+export const Error = styled.div`
+  text-transform: capitalize;
+  color: red;
+  position: absolute;
 `;
