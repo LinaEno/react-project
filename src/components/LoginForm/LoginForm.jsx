@@ -14,6 +14,7 @@ import {
   Preview,
   Title,
   LoginSection,
+  Backdrop,
   Content,
   FormBox,
   LogoBox,
@@ -25,6 +26,7 @@ import {
   ButtonsList,
   Button,
   StyledNavLink,
+  Error,
 } from './LoginForm.styled';
 import { ReactComponent as Logo } from '../../images/svg/logo.svg';
 import { ReactComponent as FrameLogin } from '../../images/svg/frameLogin.svg';
@@ -78,6 +80,7 @@ const LoginForm = () => {
       <Title>Finance App</Title>
       </Preview>
       </Default>
+      <Backdrop >
       <Content>
         <LogoBox>
           <Mobile>
@@ -94,7 +97,7 @@ const LoginForm = () => {
             <Input type="email" {...register('email')} placeholder="E-mail" />
           </Label>
           {errors?.email && (
-            <div style={{ color: 'red' }}>{errors.email.message}</div>
+            <Error style={{ top: '14%' }}>{errors.email.message}</Error>
           )}
           <Label>
             <Icon src={passIcon} alt="email" />
@@ -124,7 +127,7 @@ const LoginForm = () => {
             )}
           </Label>
           {errors?.password && (
-            <div style={{ color: 'red' }}>{errors.password.message}</div>
+            <Error style={{ top: '42%' }}>{errors.password.message}</Error>
           )}
           <ButtonsList>
             <Button type="submit">Log in</Button>
@@ -134,6 +137,7 @@ const LoginForm = () => {
           </ButtonsList>
         </FormBox>
       </Content>
+      </Backdrop >
     </LoginSection>
   );
 };
