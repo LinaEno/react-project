@@ -48,7 +48,7 @@ export default function ModalAddTransaction() {
   const categories = useSelector(selectCategories);
   const modalTransactionData = useSelector(selectModalTransactionData);
 
-  const isEdit = !!modalTransactionData;
+  
 
   const {
     register,
@@ -66,6 +66,8 @@ export default function ModalAddTransaction() {
     },
   });
 
+  const isEdit = !!modalTransactionData;
+  
   const { type } = watch();
 
   const options = categories.filter(category => {
