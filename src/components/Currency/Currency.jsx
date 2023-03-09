@@ -13,22 +13,34 @@ import Rectangle from '../../images/Currency/Rectangle.png';
 import { Loader } from 'components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
 import Weather from 'components/WeatherApp/WeatherApp';
+import { useEffect, useState } from 'react';
+
 export const Currency = () => {
   const { t } = useTranslation();
   const data = useFetchCurrency();
   let allCurrency;
-  if (data.length > 0) {
-    const usd = data[0];
-    const eur = data[1];
 
-    allCurrency = [usd, eur];
-  }
+  const [currency, setCurrency] = useState(
+    () => JSON.parse(localStorage.getItem('currency')) ?? []
+  );
 
+  useEffect(() => {
+    if (data.length === 0) return;
+    setCurrency(data);
+    localStorage.setItem('currency', JSON.stringify(currency));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, ['currency', currency, data]);
+
+  // if (data.length > 0) {
+  //   const usd = data[0];
+  //   const eur = data[1];
+
+  //   allCurrency = [usd, eur];
+  // }
+  console.log(currency);
   return (
     <>
-      {!data.length > 0 ? (
-        <Loader />
-      ) : (
+      {currency.length && (
         <CurrencyStyled>
           <ImgStyledRectangle src={Rectangle} alt="img" />
           <ListStyled>
@@ -38,7 +50,7 @@ export const Currency = () => {
           </ListStyled>
           <ImgStyledVector src={Vector} alt="img" />
           <TypeStyled>
-            {allCurrency.map(({ rateBuy, currencyCodeA, rateSell }) => {
+            {currency.map(({ rateBuy, currencyCodeA, rateSell }) => {
               return (
                 <li key={currencyCodeA}>
                   {currencyCodeA === 840 && <p>USD</p>}
