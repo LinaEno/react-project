@@ -31,7 +31,7 @@ export const Title = styled.h1`
 `;
 
 export const Backdrop = styled.div`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     min-height: 100vh;
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(25px);
