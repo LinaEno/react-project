@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { summaryTransactions } from 'redux/transactions/operations';
-
+import { useTranslation } from 'react-i18next';
 import {
   selectExpenseSum,
   selectIncomeSum,
@@ -59,6 +59,7 @@ const colors = [
 ];
 
 export function StatisticBox() {
+  const { t } = useTranslation();
   const summary = useSelector(selectSummary);
   const expense = useSelector(selectExpenseSum);
   const income = useSelector(selectIncomeSum);
@@ -116,40 +117,40 @@ export function StatisticBox() {
 
           <SelectDate name="month">
             <Drop data-value="0" onClick={handleMonthChange}>
-              January
+              {t('monthStatJanuary')}
             </Drop>
             <Drop data-value="1" onClick={handleMonthChange}>
-              February
+              {t('monthStatFebruary')}
             </Drop>
             <Drop data-value="2" onClick={handleMonthChange}>
-              March
+              {t('monthStatMarch')}
             </Drop>
             <Drop data-value="3" onClick={handleMonthChange}>
-              April
+              {t('monthStatApril')}
             </Drop>
             <Drop data-value="4" onClick={handleMonthChange}>
-              May
+              {t('monthStatMay')}
             </Drop>
             <Drop data-value="5" onClick={handleMonthChange}>
-              June
+              {t('monthStatJune')}
             </Drop>
             <Drop data-value="6" onClick={handleMonthChange}>
-              July
+              {t('monthStatJuly')}
             </Drop>
             <Drop data-value="7" onClick={handleMonthChange}>
-              August
+              {t('monthStatAugust')}
             </Drop>
             <Drop data-value="8" onClick={handleMonthChange}>
-              September
+              {t('monthStatSeptember')}
             </Drop>
             <Drop data-value="9" onClick={handleMonthChange}>
-              October
+              {t('monthStatOctober')}
             </Drop>
             <Drop data-value="10" onClick={handleMonthChange}>
-              November
+              {t('monthStatNovember')}
             </Drop>
             <Drop data-value="11" onClick={handleMonthChange}>
-              December
+              {t('monthStatDecember')}
             </Drop>
           </SelectDate>
         </DropdownMenu>
@@ -177,8 +178,8 @@ export function StatisticBox() {
       <Table>
         <THead>
           <TR>
-            <TH>Category</TH>
-            <TH>Sum</TH>
+            <TH>{t('transactionsTableCategory')}</TH>
+            <TH>{t('transactionsTableAmount')}</TH>
           </TR>
         </THead>
         {expenses.length > 0 && (
@@ -193,10 +194,10 @@ export function StatisticBox() {
         )}
       </Table>
       <Sum>
-        Expenses: <Expenses>{Math.abs(expense)}</Expenses>
+        {t('statisticsExpenses')}<Expenses>{Math.abs(expense)}</Expenses>
       </Sum>
       <Sum>
-        Income:<Income>{income}</Income>
+        {t('statisticsIncomes')}<Income>{income}</Income>
       </Sum>
     </WrapperTable>
   );

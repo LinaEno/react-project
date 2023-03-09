@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-
+import { useTranslation } from 'react-i18next';
 import {
   CityName,
   CitySearch,
@@ -13,6 +13,7 @@ import {
 } from './WeatherApp.styled';
 
 function Weather() {
+  const { t } = useTranslation();
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({
     data: {},
@@ -20,6 +21,7 @@ function Weather() {
   });
 
   const toDate = () => {
+
     const months = [
       'January',
       'February',
@@ -81,12 +83,12 @@ function Weather() {
 
   return (
     <WeatherWrapper>
-      <WeatherName>Weather</WeatherName>
+      <WeatherName>{t('weatherTitle')}</WeatherName>
       <div>
         <CitySearch
           autoFocus
           type="text"
-          placeholder="Search City.."
+          placeholder={t('weatherSearch')}
           name="query"
           value={query}
           onChange={event => setQuery(event.target.value)}
@@ -96,7 +98,7 @@ function Weather() {
 
       {weather.error && (
         <ErrorMessage>
-          <span> Sorry, City not found</span>
+          <span>{t('weatherError')}</span>
         </ErrorMessage>
       )}
 
