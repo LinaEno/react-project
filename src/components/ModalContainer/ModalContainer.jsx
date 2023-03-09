@@ -6,10 +6,12 @@ import {
   ModalBox,
   CloseButton,
   Icon,
+  ModalWrapper,
 } from './ModalContainer.styled';
 import { useDispatch } from 'react-redux';
 import { closeModal } from 'redux/global/slice';
 import { useMediaQuery } from 'react-responsive';
+import { Header } from 'components/Header/Header';
 
 const modalRoot = document.getElementById('modal-root');
 
@@ -22,11 +24,11 @@ export const ModalContainer = ({ children }) => {
       if (e.code === 'Escape') dispatch(closeModal());
     };
 
-    // document.body.style = 'overflow-y: hidden';
+    document.body.style = 'overflow-y: hidden';
     window.addEventListener('keydown', onEscapeClick);
 
     return () => {
-      // document.body.style = 'overflow-y: auto';
+      document.body.style = 'overflow-y: auto';
       window.removeEventListener('keydown', onEscapeClick);
     };
   }, [dispatch]);
@@ -38,7 +40,13 @@ export const ModalContainer = ({ children }) => {
   return (
     <>
       {isMobile
-        ? createPortal(<ModalMobile>{children}</ModalMobile>, modalRoot)
+        ? createPortal(
+            <ModalMobile>
+              <Header />
+              <ModalWrapper>{children}</ModalWrapper>
+            </ModalMobile>,
+            modalRoot
+          )
         : createPortal(
             <Overlay onClick={onOverlayClick}>
               <ModalBox>
