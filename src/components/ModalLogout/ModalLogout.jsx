@@ -8,7 +8,7 @@ import {
   Question,
   ButtonsList,
   Button,
-  StyledNavLink,
+  StyledNavLink
 } from './ModalLogout.styled';
 import { useTranslation } from 'react-i18next';
 import { Default } from '../Media/Media';
@@ -29,7 +29,11 @@ const ModalLogout = () => {
         </Default>
         <ButtonsList>
           <Button type="button" onClick={() => dispatch(logOut())}>
-            <StyledNavLink to={'/login'}>{t('modalLogOutAcceptBtn')}</StyledNavLink>
+
+           {/* <StyledNavLink to={'/login'}>{t('modalLogOutAcceptBtn')}</StyledNavLink>*/}
+
+            {t('modalLogOutAcceptBtn')}
+
           </Button>
           <Button type="button" onClick={closeModal}>
             {t('modalLogOutCancelBtn')}

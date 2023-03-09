@@ -19,6 +19,7 @@ const initialState = {
   isModalLogoutOpen: false,
   isLoading: false,
   error: null,
+  modalTransactionData: null,
 };
 
 const extraActions = [
@@ -66,6 +67,7 @@ const globalSlice = createSlice({
     },
     closeModalAddTransaction(state) {
       state.isModalAddTransactionOpen = false;
+      state.modalTransactionData = null;
     },
     closeModalLogout(state) {
       state.isModalLogoutOpen = false;

@@ -28,15 +28,15 @@ export const Table = styled.table`
   }
 
   td {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+    font-family: 'Circle', sans-serif;
+    font-weight: normal;
   }
 
   th {
     background-color: #eee;
     font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
+    font-family: 'Circle', sans-serif;
+    font-weight: bold;
   }
 
 .editButton{

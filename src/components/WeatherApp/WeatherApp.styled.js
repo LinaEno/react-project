@@ -1,73 +1,75 @@
 import styled from 'styled-components';
 
-export const WeatherName = styled.h1`
-  font-size: 2rem;
+export const WeatherName = styled.h3`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  color: white;
+  font-family: 'Circe';
+  margin-bottom: 10px;
 `;
 
 export const WeatherWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 450px;
-  background-color: rgba(226, 226, 226, 0.2);
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  background-color: transparent;
   text-align: center;
   padding: 20px;
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 768px) {
     padding: 15px;
   }
 `;
 
 export const CitySearch = styled.input`
-  width: 200px;
-  box-sizing: border-box;
+  width: 160px;
   border: 2px solid #ccc;
   outline: none;
   border-radius: 20px;
   font-size: 16px;
   margin-bottom: 10px;
   background-color: white;
-  background-position: 10px 10px;
-  padding: 12px 20px 12px 20px;
-  transition: width 0.4s ease-in-out;
-  &:focus {
-    width: 60%;
-  }
+  padding: 8px 12px;
 `;
 
 export const CityName = styled.div`
-  margin-top: 10px;
-  font-size: 1.25em;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: calc(27 / 18);
+  color: white;
+  font-family: 'Circe';
 `;
 
 export const DateWrapper = styled.div`
-  font-size: 1.25em;
-  font-weight: 600;
+  font-size: 14px;
+  line-height: calc(27 / 18);
+  color: white;
+  font-family: 'Circe';
 `;
 
 export const IconStyled = styled.div`
-  font-size: 4rem;
+  font-size: 14px;
   font-weight: 700;
-  color: #1e2432;
+  color: white;
+  font-family: 'Circe';
   text-align: center;
-  @media screen and (max-width: 750px) {
-    font-size: 3rem;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
   }
 `;
 
 export const DegStyled = styled.span`
-  font-size: 3rem;
-  @media screen and (max-width: 750px) {
-    font-size: 2.5rem;
+  font-size: 14px;
+  color: white;
+  font-family: 'Circe';
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
   }
 `;
 
-export const WindStyled = styled.div`
-  font-weight: 600;
-`;
-
-export const ErroreMessage = styled.span`
+export const ErrorMessage = styled.span`
   display: block;
   text-align: center;
-  color: rgb(20, 2, 2);
-  font-size: 30px;
+  color: red;
+  font-size: 16px;
 `;
