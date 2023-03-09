@@ -10,6 +10,31 @@ import { useEffect, useState } from 'react';
 
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 
+import {
+  Preview,
+  Title,
+  LoginSection,
+  Backdrop,
+  Content,
+  FormBox,
+  LogoBox,
+  Link,
+  Label,
+  Icon,
+  Eye,
+  Input,
+  ButtonsList,
+  ButtonActive,
+  Button,
+  StyledNavLink,
+  Error,
+} from './LoginForm.styled';
+import { ReactComponent as Logo } from '../../images/svg/logo.svg';
+import { ReactComponent as FrameLogin } from '../../images/svg/frameLogin.svg';
+import emailIcon from '../../images/svg/email.svg';
+import passIcon from '../../images/svg/password.svg';
+import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
+
 const schema = yup
   .object({
     email: yup.string().email().required('E-mail is required'),
@@ -48,50 +73,77 @@ const LoginForm = () => {
   };
 
   return (
-    <section>
-      <h2>Wallet</h2>
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-        <label>
-          <input type="email" {...register('email')} placeholder="E-mail" />
-        </label>
-        {errors?.email && (
-          <div style={{ color: 'red' }}>{errors.email.message}</div>
-        )}
-        <label>
-          <input
-            type={toggle ? 'text' : 'password'}
-            {...register('password')}
-            placeholder="Password"
-          />
-          {!toggle ? (
-            <i
-              id="passlock"
-              onClick={() => {
-                setToggle(!toggle);
-              }}
-            >
-              <BsEyeSlashFill />
-            </i>
-          ) : (
-            <i
-              id="showpass"
-              onClick={() => {
-                setToggle(!toggle);
-              }}
-            >
-              <BsEyeFill />
-            </i>
-          )}
-        </label>
-        {errors?.password && (
-          <div style={{ color: 'red' }}>{errors.password.message}</div>
-        )}
-        <button type="submit">Log in</button>
-        <button type="submit">
-          <NavLink to={'/register'}>Register</NavLink>
-        </button>
-      </form>
-    </section>
+    <LoginSection>
+      <Default>
+        <Preview>
+          <Tablet>
+            <FrameLogin width={260} height={250} />
+          </Tablet>
+          <Desktop>
+            <FrameLogin width={435} height={420} />
+          </Desktop>
+          <Title>Finance App</Title>
+        </Preview>
+      </Default>
+      <Backdrop>
+        <Content>
+          <LogoBox>
+            <Mobile>
+              <Logo width={30} height={30} />
+            </Mobile>
+            <Default>
+              <Logo width={40} height={40} />
+            </Default>
+            <Link>Wallet</Link>
+          </LogoBox>
+          <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+            <Label>
+              <Icon src={emailIcon} alt="email" />
+              <Input type="email" {...register('email')} placeholder="E-mail" />
+            </Label>
+            {errors?.email && (
+              <Error style={{ top: '14%' }}>{errors.email.message}</Error>
+            )}
+            <Label>
+              <Icon src={passIcon} alt="email" />
+              <Input
+                type={toggle ? 'text' : 'password'}
+                {...register('password')}
+                placeholder="Password"
+              />
+              {!toggle ? (
+                <Eye
+                  id="passlock"
+                  onClick={() => {
+                    setToggle(!toggle);
+                  }}
+                >
+                  <BsEyeSlashFill />
+                </Eye>
+              ) : (
+                <Eye
+                  id="showpass"
+                  onClick={() => {
+                    setToggle(!toggle);
+                  }}
+                >
+                  <BsEyeFill />
+                </Eye>
+              )}
+            </Label>
+            {errors?.password && (
+              <Error style={{ top: '42%' }}>{errors.password.message}</Error>
+            )}
+            <ButtonsList>
+              <ButtonActive type="submit">Log in</ButtonActive>
+              <Button type="submit">
+                <StyledNavLink to={'/register'}>Register</StyledNavLink>
+              </Button>
+            </ButtonsList>
+          </FormBox>
+        </Content>
+      </Backdrop>
+    </LoginSection>
   );
 };
 

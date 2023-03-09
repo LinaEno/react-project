@@ -11,8 +11,6 @@ import { selectModalTransactionData } from 'redux/global/selectors';
 
 import { closeModalAddTransaction } from 'redux/global/slice';
 
-// import { useTranslation } from 'react-i18next';
-
 // import 'moment/min/locales';
 // import 'moment/locale/en';
 import 'moment/locale/uk';
@@ -38,6 +36,7 @@ import {
 } from './ModalAddTransaction.styled';
 
 import dateSvg from 'images/svg/baseline-date.svg';
+
 
 export default function ModalAddTransaction() {
   const { t } = useTranslation();

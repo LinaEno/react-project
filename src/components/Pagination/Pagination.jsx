@@ -13,8 +13,6 @@ export const Pagination = ({ scrollAnchor }) => {
   const itemsPerPage = useSelector(selectPerPage);
   const dispatch = useDispatch();
 
-  console.dir(scrollAnchor);
-
   const pageCount = Math.ceil(transactions.length / itemsPerPage);
 
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });

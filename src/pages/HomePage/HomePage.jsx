@@ -4,11 +4,11 @@ import WithAuthRedirect from 'hoc/WithAuthRedirect';
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <Layout />
       <TransactionsList />
-    </div>
+    </>
   );
 };
 
-export default WithAuthRedirect(HomePage, '/');
+export default WithAuthRedirect(HomePage, '/login');

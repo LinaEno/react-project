@@ -17,4 +17,4 @@ function SummaryPage() {
   );
 }
 
-export default WithAuthRedirect(SummaryPage, '/diagram');
+export default WithAuthRedirect(SummaryPage, '/login');

@@ -14,4 +14,4 @@ const CurrencyPage = () => {
   );
 };
 
-export default WithAuthRedirect(CurrencyPage, '/currency');
+export default WithAuthRedirect(CurrencyPage, '/login');

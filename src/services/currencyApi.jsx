@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export async function fetchMonoApi() {
-  const response = await axios('https://api.monobank.ua/bank/currency');
-  return response.data;
+  const { data } = await axios('https://api.monobank.ua/bank/currency');
+  const currency = [data[0], data[1]];
+  return currency;
 }
 
 export const useFetchCurrency = () => {

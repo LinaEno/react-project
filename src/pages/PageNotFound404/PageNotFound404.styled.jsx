@@ -28,3 +28,10 @@ export const Button = styled.button`
     color: #24cca7;
   }
 `;
+
+export const Container404 = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  border-top: 1px solid #54635a;
+`;

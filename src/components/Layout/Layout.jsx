@@ -13,6 +13,7 @@ import {
   selectLogoutModalOpen,
   selectModalAddTransactionOpen,
 } from 'redux/global/selectors';
+import { ContainerTotal } from 'components/Currency/Currency.styled';
 
 const Layout = () => {
   const isModalAddTransactionOpen = useSelector(selectModalAddTransactionOpen);
@@ -20,28 +21,28 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      {isModalLogoutOpen && (
-        <ModalContainer>
-          <ModalLogout />
-        </ModalContainer>
-      )}
-      <Navigation />
-      <Balance />
-      <Tablet>
-        <Currency />
-      </Tablet>
-      <Desktop>
-        <Currency />
-      </Desktop>
+      <ContainerTotal>
+        {isModalLogoutOpen && (
+          <ModalContainer>
+            <ModalLogout />
+          </ModalContainer>
+        )}
+        <Navigation />
+        <Balance />
+        <Tablet>
+          <Currency />
+        </Tablet>
+        <Desktop>
+          <Currency />
+        </Desktop>
 
-      {/* <Weather /> */}
-      <ButtonAddTransactions />
-      {isModalAddTransactionOpen && (
-        <ModalContainer>
-          {/* <ModalAddTransaction /> */}
-          <ModalAddTransaction />
-        </ModalContainer>
-      )}
+        <ButtonAddTransactions />
+        {isModalAddTransactionOpen && (
+          <ModalContainer>
+            <ModalAddTransaction />
+          </ModalContainer>
+        )}
+      </ContainerTotal>
     </div>
   );
 };
