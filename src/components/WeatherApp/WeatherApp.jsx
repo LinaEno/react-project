@@ -90,15 +90,13 @@ function Weather() {
           value={query}
           onChange={event => setQuery(event.target.value)}
           onKeyPress={search}
-        ></CitySearch>
+        />
       </div>
 
       {weather.error && (
-        <>
-          <ErrorMessage>
-            <span style={{ fontSize: '26px' }}> Sorry, City not found</span>
-          </ErrorMessage>
-        </>
+        <ErrorMessage>
+          <span> Sorry, City not found</span>
+        </ErrorMessage>
       )}
 
       {weather && weather.data && weather.data.main && (

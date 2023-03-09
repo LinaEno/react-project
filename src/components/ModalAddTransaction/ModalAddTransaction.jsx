@@ -1,4 +1,3 @@
-
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -11,8 +10,6 @@ import { updateTransaction } from 'redux/transactions/operations';
 import { selectModalTransactionData } from 'redux/global/selectors';
 
 import { closeModalAddTransaction } from 'redux/global/slice';
-
-import { useTranslation } from 'react-i18next';
 
 // import 'moment/min/locales';
 // import 'moment/locale/en';
