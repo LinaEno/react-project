@@ -12,7 +12,7 @@ import { selectModalTransactionData } from 'redux/global/selectors';
 
 import { closeModalAddTransaction } from 'redux/global/slice';
 
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 // import 'moment/min/locales';
 // import 'moment/locale/en';
