@@ -3,7 +3,21 @@ import { ReactComponent as EditIcon } from 'images/Icon.svg';
 
 import { useTranslation } from 'react-i18next';
 
-import { Table, DeleteButton, Text } from './TransactionsList.styled';
+import {
+  Section,
+  Container,
+  Table,
+  TableHead,
+  TableBody,
+  DeleteButton,
+  EditButton,
+  List,
+  Item,
+  Wrapper,
+  Title,
+  Stat,
+  StatSum,
+} from './TransactionsList.styled';
 
 import {
   fetchTransactions,
@@ -21,6 +35,8 @@ import { openModalEditTransaction } from '../../redux/global/slice';
 import moment from 'moment';
 import 'moment/locale/uk';
 import { Pagination } from 'components/Pagination/Pagination';
+import { useMediaQuery } from 'react-responsive';
+import { useRef } from 'react';
 
 const columns = [
   {
@@ -58,6 +74,10 @@ export function TransactionsList() {
   const endOffset = page + itemsPerPage;
   const currentTransactions = transactions.slice(page, endOffset);
 
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
+
+  const elementToScroll = useRef(null);
+
   useEffect(() => {
     dispatch(fetchTransactions());
     dispatch(fetchCategories());
@@ -72,48 +92,101 @@ export function TransactionsList() {
   };
 
   return (
-    <>
-      <Table>
-        <thead>
-          <tr>
-            {columns.map(col => (
-              <th key={col.key}>{col.title}</th>
+    <Section ref={elementToScroll}>
+      <Container>
+        {!isTablet && (
+          <List>
+            {currentTransactions.map(transaction => (
+              <Item key={transaction.id} type={transaction.type}>
+                <Wrapper>
+                  <Title>Date</Title>
+                  <Stat>{moment(transaction.transactionDate).format('L')}</Stat>
+                </Wrapper>
+                <Wrapper>
+                  <Title>Type</Title>
+                  <Stat>{transaction.type === 'INCOME' ? '+' : '-'}</Stat>
+                </Wrapper>
+                <Wrapper>
+                  <Title>Category</Title>
+                  <Stat>{transaction?.category?.name}</Stat>
+                </Wrapper>
+                <Wrapper>
+                  <Title>Comment</Title>
+                  <Stat>{transaction.comment}</Stat>
+                </Wrapper>
+                <Wrapper>
+                  <Title>Sum</Title>
+                  <StatSum type={transaction.type}>
+                    {Math.abs(transaction.amount)}
+                  </StatSum>
+                </Wrapper>
+                <Wrapper>
+                  <DeleteButton
+                    onClick={() => handleDeleteTransaction(transaction.id)}
+                  >
+                    Delete
+                  </DeleteButton>
+                  <EditButton
+                    onClick={() =>
+                      dispatch(openModalEditTransaction(transaction))
+                    }
+                  >
+                    <EditIcon />
+                    Edit
+                  </EditButton>
+                </Wrapper>
+              </Item>
             ))}
-          </tr>
-        </thead>
+          </List>
+        )}
+        {isTablet && (
+          <Table>
+            <thead>
+              <tr>
+                {columns.map(col => (
+                  <TableHead key={col.key}>{col.title}</TableHead>
+                ))}
+              </tr>
+            </thead>
 
-        <tbody>
-          {currentTransactions.map(transaction => (
-            <tr key={transaction.id}>
-              <td>{moment(transaction.transactionDate).format('L')}</td>
-              <td>{transaction.type === 'INCOME' ? '+' : '-'}</td>
+            <tbody>
+              {currentTransactions.map(transaction => (
+                <tr key={transaction.id}>
+                  <TableBody>
+                    {moment(transaction.transactionDate).format('L')}
+                  </TableBody>
+                  <TableBody>
+                    {transaction.type === 'INCOME' ? '+' : '-'}
+                  </TableBody>
+                  <TableBody>{transaction?.category?.name}</TableBody>
+                  <TableBody>{transaction.comment}</TableBody>
+                  <TableBody type={transaction.type}>
+                    {Math.abs(transaction.amount)}
+                  </TableBody>
+                  <TableBody>
+                    <EditButton
+                      onClick={() =>
+                        dispatch(openModalEditTransaction(transaction))
+                      }
+                    >
+                      <EditIcon />
+                    </EditButton>
+                    <DeleteButton
+                      onClick={() => handleDeleteTransaction(transaction.id)}
+                    >
+                      Delete
+                    </DeleteButton>
+                  </TableBody>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
 
-              <td>{transaction?.category?.name}</td>
-
-              <td>{transaction.comment}</td>
-              <Text type={transaction.type}>
-                {Math.abs(transaction.amount)}
-              </Text>
-              <td className="buttonsContainer">
-                <button
-                  className="editButton"
-                  onClick={() =>
-                    dispatch(openModalEditTransaction(transaction))
-                  }
-                >
-                  <EditIcon />
-                </button>
-                <DeleteButton
-                  onClick={() => handleDeleteTransaction(transaction.id)}
-                >
-                  Delete
-                </DeleteButton>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-      {transactions.length > itemsPerPage && <Pagination />}
-    </>
+        {transactions.length > itemsPerPage && (
+          <Pagination scrollAnchor={elementToScroll} />
+        )}
+      </Container>
+    </Section>
   );
 }
