@@ -40,7 +40,7 @@ import { useRef } from 'react';
 
 const columns = [
   {
-    title: 'Date',
+    title:'Data',
     key: 'date',
   },
   {
@@ -99,23 +99,23 @@ export function TransactionsList() {
             {currentTransactions.map(transaction => (
               <Item key={transaction.id} type={transaction.type}>
                 <Wrapper>
-                  <Title>Date</Title>
+                  <Title>{t('transactionsTableDate')}</Title>
                   <Stat>{moment(transaction.transactionDate).format('L')}</Stat>
                 </Wrapper>
                 <Wrapper>
-                  <Title>Type</Title>
+                  <Title>{t('transactionsTableType')}</Title>
                   <Stat>{transaction.type === 'INCOME' ? '+' : '-'}</Stat>
                 </Wrapper>
                 <Wrapper>
-                  <Title>Category</Title>
+                  <Title>{t('transactionsTableCategory')}</Title>
                   <Stat>{transaction?.category?.name}</Stat>
                 </Wrapper>
                 <Wrapper>
-                  <Title>Comment</Title>
+                  <Title>{t('transactionsTableComment')}</Title>
                   <Stat>{transaction.comment}</Stat>
                 </Wrapper>
                 <Wrapper>
-                  <Title>Sum</Title>
+                  <Title>{t('transactionsTableAmount')}</Title>
                   <StatSum type={transaction.type}>
                     {Math.abs(transaction.amount)}
                   </StatSum>
@@ -124,7 +124,7 @@ export function TransactionsList() {
                   <DeleteButton
                     onClick={() => handleDeleteTransaction(transaction.id)}
                   >
-                    Delete
+                   {t('btnDelete')}
                   </DeleteButton>
                   <EditButton
                     onClick={() =>
@@ -132,7 +132,7 @@ export function TransactionsList() {
                     }
                   >
                     <EditIcon />
-                    Edit
+                   {t('btnDelete')}
                   </EditButton>
                 </Wrapper>
               </Item>
@@ -174,7 +174,7 @@ export function TransactionsList() {
                     <DeleteButton
                       onClick={() => handleDeleteTransaction(transaction.id)}
                     >
-                      Delete
+                     {t('btnDelete')}
                     </DeleteButton>
                   </TableBody>
                 </tr>

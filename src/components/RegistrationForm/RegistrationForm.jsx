@@ -69,7 +69,7 @@ const RegistrationForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useSelector(selectToken);
@@ -99,7 +99,7 @@ const RegistrationForm = () => {
           <Desktop>
             <FrameRegister width={435} height={420} />
           </Desktop>
-          <Title>Finance App</Title>
+          <Title>{t('appText')}</Title>
         </Preview>
       </Default>
       <Backdrop>

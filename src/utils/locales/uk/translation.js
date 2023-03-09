@@ -29,8 +29,8 @@ export const uk = {
   statisticsTitle: "Статистика",
   statisticsCategory: "Категорія",
   statisticsAmounts: "Сума",
-  statisticsOutcomes: "Результати",
-  statisticsIncomes: "Доходи",
+  statisticsExpenses: "Витрати:",
+  statisticsIncomes: "Доходи:",
 
   modalAddTransactionTitle: "Додайте транзакцію",
   modalAddTransactionIncomesType: "Дохід",
@@ -40,12 +40,32 @@ export const uk = {
   modalAddTransactionCancelBtn: "Скасувати",
   modalAddTransactionAcceptBtn: "Додати",
   transactionsTableDate: "Дата",
-  transactionsTableType: "Type",
-  transactionsTableCategory: "Category",
-  transactionsTableComment: "Comment",
+  transactionsTableType: "Тип",
+  transactionsTableCategory: "Категорія",
+  transactionsTableComment: "Коментар",
   transactionsTableAmount: "Сума",
   transactionsTableBalance: "Balance",
  
+  appText: "Фінансовий додаток",
+  btnDelete:"Видалити",
+  registerFormUser: "Username is required",
   
+   
+  monthStatJanuary: "Січень",
+  monthStatFebruary: "February",
+  monthStatMarch: "Березень",
+  monthStatApril: "April",
+  monthStatMay: "May",
+  monthStatJune: "June",
+  monthStatJuly: "July",
+  monthStatAugust: "August",
+  monthStatSeptember: "September",
+  monthStatOctober: "October",
+  monthStatNovember: "November",
+  monthStatDecember: " December",
+
+  weatherTitle: "Погода",
+  weatherSearch:"Обрати місто..",
+  weatherError: "Вибачте, місто не знайдено",
 };
 
