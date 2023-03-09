@@ -24,19 +24,20 @@ import {
   AddButtonForm,
   CloseButtonForm,
   ContainAmountDatetime,
+  ContainerDate,
+  DateInput,
   Forma,
-  FormInput,
+  Options,
   FormInputAmount,
   FormInputComment,
+  Icon,
   Section,
   Select,
   TitleH2,
   ToggleContainer,
 } from './ModalAddTransaction.styled';
 
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { addDays } from 'date-fns';
+import dateSvg from 'images/svg/baseline-date.svg';
 
 export default function ModalAddTransaction() {
   const { t } = useTranslation();
@@ -136,14 +137,17 @@ export default function ModalAddTransaction() {
           style={{
             opacity: type === 'INCOME' ? 0 : 1,
             width: type === 'INCOME' ? 0 : '100px',
-            height: type === 'INCOME' ? 0 : '20px',
+            height: type === 'INCOME' ? 0 : '32px',
           }}
         >
+          <Options className="one" value="" disabled selected hidden>
+            Select a category
+          </Options>
           {options.map(category => {
             return (
-              <option key={category.id} value={category.id}>
+              <Options key={category.id} value={category.id}>
                 {category.name}
-              </option>
+              </Options>
             );
           })}
         </Select>
@@ -155,33 +159,39 @@ export default function ModalAddTransaction() {
               placeholder="0.00"
             />
           </label>
-          <Controller
-            control={control}
-            name="transactionDate"
-            required
-            render={({ field }) => {
-              const { onChange, name, value } = field;
-              return (
-                <Datetime
-                  value={new Date(value)}
-                  viewMode="time"
-                  initialValue={Date.now()}
-                  dateFormat={true}
-                  timeFormat={false}
-                  isValidDate={disableFutureDt}
-                  closeOnSelect={true}
-                  onChange={moment => {
-                    onChange({
-                      target: {
-                        name,
-                        value: moment.toISOString(),
-                      },
-                    });
-                  }}
-                />
-              );
-            }}
-          />
+          <ContainerDate>
+            <Controller
+              control={control}
+              name="transactionDate"
+              required
+              render={({ field }) => {
+                const { onChange, name, value } = field;
+                return (
+                  <DateInput
+                    className=""
+                    value={new Date(value)}
+                    viewMode="time"
+                    initialValue={Date.now()}
+                    dateFormat={true}
+                    timeFormat={false}
+                    isValidDate={disableFutureDt}
+                    closeOnSelect={true}
+                    onChange={moment => {
+                      onChange({
+                        target: {
+                          name,
+                          value: moment.toISOString(),
+                        },
+                      });
+                    }}
+                  />
+                );
+              }}
+            />
+            <div style={{ height: '32px', borderBottom: '1px solid #e0e0e0' }}>
+              <Icon src={dateSvg} alt="" />
+            </div>
+          </ContainerDate>
         </ContainAmountDatetime>
         <label>
           <FormInputComment

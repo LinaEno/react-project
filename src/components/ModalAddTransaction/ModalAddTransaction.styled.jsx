@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Datetime from 'react-datetime';
 
 export const Section = styled.section`
   min-width: 280px;
@@ -47,7 +48,8 @@ export const ToggleContainer = styled.div`
 `;
 
 export const Select = styled.select`
-  /* font-family: 'Circe'; */
+  padding-left: 20px;
+  font-family: 'Circe';
   font-size: 18px;
   line-height: 1.5;
   width: 100%;
@@ -64,6 +66,32 @@ export const Select = styled.select`
   @media screen and (min-width: 768px) {
     min-width: 394px;
   }
+  &:required:invalid {
+    color: gray;
+  }
+`;
+export const Options = styled.option`
+  padding-left: 20px;
+  padding-bottom: 5px;
+  font-family: 'Circe';
+  font-size: 18px;
+  line-height: 1.5;
+  /* color: red; */
+  & .one {
+    /* color: #c3c3c4; */
+  }
+  /* select:required:invalid {
+    color: gray;
+  } */
+  /* &[value=''][disabled] {
+    display: none;
+  } */
+  /* option {
+    color: black;
+  } */
+  /* &::disabled {
+    color: #c3c3c4;
+  } */
 `;
 
 // select:required:invalid {
@@ -85,7 +113,8 @@ export const ContainAmountDatetime = styled.div`
 `;
 
 export const FormInputAmount = styled.input`
-  /* font-family: 'Circe'; */
+  font-family: 'Circe';
+  padding-left: 20px;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
@@ -102,25 +131,53 @@ export const FormInputAmount = styled.input`
   @media screen and (min-width: 768px) {
     width: 190px;
   }
-
-  /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
-  outline: transparent;
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:focus,
-  &:hover {
-    box-shadow: 2px 4px 2px 2px rgb(205, 156, 92);
-  } */
 `;
 
-export const FormInputComment = styled.input`
-  /* font-family: 'Circe'; */
+export const DateInput = styled(Datetime)`
+  & .form-control {
+    padding-left: 20px;
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    width: 100%;
+    width: 250px;
+    height: 32px;
+    /* margin-bottom: 40px; */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    @media screen and (min-width: 768px) {
+      width: 160px;
+    }
+  }
+`;
+export const Icon = styled.img`
+  width: 24px;
+  height: 24px;
+  /* padding-bottom: 10px; */
+  /* margin-bottom: 40px; */
+  /* border-bottom: 1px solid #e0e0e0; */
+`;
+
+export const ContainerDate = styled.div`
+  display: flex;
+  /* border-bottom: 1px solid #e0e0e0; */
+`;
+
+export const FormInputComment = styled.textarea`
+  font-family: 'Circe';
   font-size: 18px;
   line-height: 1.5;
   width: 100%;
   min-width: 280px;
   height: 84px;
+  /* padding-bottom: 60px; */
   margin-top: 30px;
-  /* padding: 10px; */
+  padding-left: 10px;
+  padding-top: 0px;
+  text-align: left;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -170,39 +227,3 @@ export const CloseButtonForm = styled.button`
     /* box-shadow: 2px 4px 6px 2px rgb(17, 133, 133); */
   }
 `;
-
-export const Div = styled.div`
-  background: red;
-`;
-
-{
-  /* <p>
-  <Controller
-    control={control}
-    name="transactionDate"
-    required
-    render={({ field }) => {
-      const { onChange, name, value } = field;
-      <DatePicker
-        // placeholderText={moment(startDate).format('L')}
-        dateFormat="dd.MM.yyyy"
-        maxDate={addDays(new Date(), 0)}
-        value={new Date(value)}
-        // selected={field.value}
-        selected={Date.now()}
-        onChange={moment => {
-          onChange({
-            target: {
-              name,
-              value: moment.toISOString(),
-            },
-          });
-        }}
-        // onChange={date => setStartDate(date)}
-        // onChange={date => field.onChange(setStartDate(date))}
-      />;
-    }}
-  />
-  ;
-</p>; */
-}
