@@ -8,6 +8,7 @@ export const NavList = styled.ul`
   gap: 30px;
   align-items: center;
   justify-content: center;
+  width: 280px;
   @media screen and (min-width: 768px) {
     flex-direction: column;
     justify-content: flex-start;
@@ -20,6 +21,7 @@ export const NavList = styled.ul`
 `;
 
 export const Nav = styled.nav`
+  width: 280px;
   @media screen and (min-width: 768px) {
     width: 200px;
   }

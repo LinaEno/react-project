@@ -22,38 +22,35 @@ export const ContainerTotal = styled.div`
 
 export const CurrencyStyled = styled.div`
   margin-top: 32px;
-  width: 100vw;
-  /* height: 174px; */
+  min-width: 280px;
   height: auto;
   position: relative;
+  margin: 0 auto;
   background: #4a56e2;
   border-radius: 30px;
   @media (min-width: 480px) {
     width: 440px;
     margin: 0 auto;
-    /* height: 182px; */
   }
   @media (min-width: 768px) {
     width: 336px;
     margin-right: 0;
     margin-top: 32px;
-    /* height: 182px; */
   }
   @media (min-width: 1280px) {
     width: 393px;
     margin-left: 0;
-    /* height: 331px; */
   } ;
 `;
 
 export const ListStyled = styled.ul`
   display: flex;
-  gap: 28px;
-  padding-left: 20px;
-  margin-bottom: 12px;
+  gap: 24px;
+  padding: 12px 20px;
   width: 280px;
-  /* height: 50px; */
   height: auto;
+  align-items: center;
+  justify-content: space-between;
   @media (min-width: 768px) {
     width: 100%;
     padding-left: 41px;
@@ -67,7 +64,6 @@ export const ListStyled = styled.ul`
 `;
 
 export const ListLI = styled.li`
-  margin-top: 11px;
   font-family: 'Circe';
   font-weight: 700;
   font-size: 18px;
@@ -103,6 +99,8 @@ export const TypeStyled = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 17px;
+  margin-top: 12px;
+  padding: 12px 20px;
   @media (min-width: 768px) {
   }
   @media (min-width: 1280px) {
@@ -112,8 +110,8 @@ export const TypeStyled = styled.ul`
   li {
     display: flex;
     justify-content: space-between;
-    gap: 70px;
-    width: 240px;
+    /* gap: 70px; */
+    width: 250px;
     height: 24px;
     font-family: 'Circe';
     font-style: normal;

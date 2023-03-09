@@ -1,4 +1,5 @@
 import { Currency } from 'components/Currency/Currency';
+import { ContainerTotal } from 'components/Currency/Currency.styled';
 import { Header } from 'components/Header/Header';
 import { Mobile } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
@@ -8,8 +9,10 @@ const CurrencyPage = () => {
   return (
     <Mobile>
       <Header />
-      <Navigation />
-      <Currency />
+      <ContainerTotal>
+        <Navigation />
+        <Currency />
+      </ContainerTotal>
     </Mobile>
   );
 };
