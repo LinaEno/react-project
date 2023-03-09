@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { selectRefreshed, selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { Loader } from './Loader/Loader';

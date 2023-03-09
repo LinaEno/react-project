@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FcQuestions } from 'react-icons/fc';
 import { logOut } from 'redux/auth/authOperation';
 import { closeModalLogout } from 'redux/global/slice';
@@ -11,13 +11,25 @@ import {
 } from './ModalLogout.styled';
 import { useTranslation } from 'react-i18next';
 import { Default } from '../Media/Media';
-import Animation from './Animation';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { selectToken } from 'redux/auth/authSelectors';
+import { useEffect } from 'react';
 
 const ModalLogout = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const closeModal = () => dispatch(closeModalLogout());
+  const token = useSelector(selectToken);
+  const navigate = useNavigate();
+
+  const modalLogout = () => {
+    dispatch(logOut());
+    closeModal();
+  };
+
+  useEffect(() => {
+    if (token === null) navigate('/login');
+  }, [token, navigate]);
 
   return (
     <Wrapper>
@@ -27,7 +39,7 @@ const ModalLogout = () => {
           <FcQuestions size="144px" />
         </Default>
         <ButtonsList>
-          <Button type="button" onClick={() => dispatch(logOut())}>
+          <Button type="button" onClick={modalLogout}>
             {t('modalLogOutAcceptBtn')}
           </Button>
           <Button type="button" onClick={closeModal}>
@@ -35,9 +47,6 @@ const ModalLogout = () => {
           </Button>
         </ButtonsList>
       </Content>
-      <Default>
-        <Animation />
-      </Default>
     </Wrapper>
   );
 };

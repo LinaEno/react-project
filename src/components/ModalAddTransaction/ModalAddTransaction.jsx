@@ -32,10 +32,6 @@ import {
   ToggleContainer,
 } from './ModalAddTransaction.styled';
 
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { addDays } from 'date-fns';
-
 export default function ModalAddTransaction() {
   const { t } = useTranslation();
   const categories = useSelector(selectCategories);

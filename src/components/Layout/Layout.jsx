@@ -34,11 +34,9 @@ const Layout = () => {
         <Currency />
       </Desktop>
 
-      {/* <Weather /> */}
       <ButtonAddTransactions />
       {isModalAddTransactionOpen && (
         <ModalContainer>
-          {/* <ModalAddTransaction /> */}
           <ModalAddTransaction />
         </ModalContainer>
       )}

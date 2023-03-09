@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { App } from 'components/App';
@@ -16,7 +16,7 @@ import { Loader } from 'components/Loader/Loader';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/react-project">
+    <BrowserRouter basename="/react-project/">
       <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
           <App />
