@@ -1,4 +1,3 @@
-
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -12,7 +11,7 @@ import { selectModalTransactionData } from 'redux/global/selectors';
 
 import { closeModalAddTransaction } from 'redux/global/slice';
 
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 // import 'moment/min/locales';
 // import 'moment/locale/en';
@@ -20,6 +19,24 @@ import 'moment/locale/uk';
 import moment from 'moment';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+
+import {
+  AddButtonForm,
+  CloseButtonForm,
+  ContainAmountDatetime,
+  Forma,
+  FormInput,
+  FormInputAmount,
+  FormInputComment,
+  Section,
+  Select,
+  TitleH2,
+  ToggleContainer,
+} from './ModalAddTransaction.styled';
+
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { addDays } from 'date-fns';
 
 export default function ModalAddTransaction() {
   const { t } = useTranslation();
@@ -81,16 +98,16 @@ export default function ModalAddTransaction() {
     return current.isBefore(today);
   };
   return (
-    <section>
-      <h2 style={{ textAlign: 'center' }}>
+    <Section>
+      <TitleH2 style={{ textAlign: 'center' }}>
         {isEdit ? 'Edit transaction' : 'Add transaction'}
-      </h2>
-      <form
+      </TitleH2>
+      <Forma
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
         style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
       >
-        <div>
+        <ToggleContainer>
           <label>
             {t('modalAddTransactionIncomesType')}
             <input
@@ -111,9 +128,9 @@ export default function ModalAddTransaction() {
             />
             {t('modalAddTransactionOutcomesType')}
           </label>
-        </div>
+        </ToggleContainer>
 
-        <select
+        <Select
           {...register('categoryId')}
           disabled={isEdit}
           style={{
@@ -129,54 +146,63 @@ export default function ModalAddTransaction() {
               </option>
             );
           })}
-        </select>
+        </Select>
+        <ContainAmountDatetime>
+          <label>
+            <FormInputAmount
+              type="number"
+              {...register('amount')}
+              placeholder="0.00"
+            />
+          </label>
+          <Controller
+            control={control}
+            name="transactionDate"
+            required
+            render={({ field }) => {
+              const { onChange, name, value } = field;
+              return (
+                <Datetime
+                  value={new Date(value)}
+                  viewMode="time"
+                  initialValue={Date.now()}
+                  dateFormat={true}
+                  timeFormat={false}
+                  isValidDate={disableFutureDt}
+                  closeOnSelect={true}
+                  onChange={moment => {
+                    onChange({
+                      target: {
+                        name,
+                        value: moment.toISOString(),
+                      },
+                    });
+                  }}
+                />
+              );
+            }}
+          />
+        </ContainAmountDatetime>
         <label>
-          <input type="number" {...register('amount')} placeholder="0.00" />
-        </label>
-        <Controller
-          control={control}
-          name="transactionDate"
-          required
-          render={({ field }) => {
-            const { onChange, name, value } = field;
-            return (
-              <Datetime
-                value={new Date(value)}
-                viewMode="time"
-                initialValue={Date.now()}
-                dateFormat={true}
-                timeFormat={false}
-                isValidDate={disableFutureDt}
-                closeOnSelect={true}
-                onChange={moment => {
-                  onChange({
-                    target: {
-                      name,
-                      value: moment.toISOString(),
-                    },
-                  });
-                }}
-              />
-            );
-          }}
-        />
-        <label>
-          <input
+          <FormInputComment
             type="text"
             {...register('comment')}
+            maxlength="40"
             placeholder={t('modalAddTransactionComment')}
           />
         </label>
 
-        <button type="submit">{t('modalAddTransactionAcceptBtn')}</button>
+        <AddButtonForm type="submit">
+          {t('modalAddTransactionAcceptBtn')}
+        </AddButtonForm>
 
-        <button
+        <CloseButtonForm
           type="button"
           onClick={() => dispatch(closeModalAddTransaction())}
         >
           {t('modalAddTransactionCancelBtn')}
-        </button>
-      </form>
-    </section>
+        </CloseButtonForm>
+      </Forma>
+    </Section>
   );
 }
