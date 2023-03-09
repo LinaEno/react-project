@@ -3,11 +3,11 @@ import Datetime from 'react-datetime';
 
 export const Section = styled.section`
   min-width: 280px;
-  height: 560px;
+  /* height: 560px; */
   @media screen and (min-width: 768px) {
     min-width: 0;
     width: 460px;
-    height: 520px;
+    min-height: 508px;
   }
 `;
 

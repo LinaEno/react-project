@@ -39,8 +39,8 @@ const EXPENSE_STR = 'EXPENSE';
 
 const BOOLEAN_TO_TRANSACTION_TYPE = {
   false: INCOME_STR,
-  true: EXPENSE_STR
-}
+  true: EXPENSE_STR,
+};
 
 export default function ModalAddTransaction() {
   const dispatch = useDispatch();
@@ -48,17 +48,13 @@ export default function ModalAddTransaction() {
   const categories = useSelector(selectCategories);
   const modalTransactionData = useSelector(selectModalTransactionData);
 
-  
+  const isEdit = !!modalTransactionData;
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    control,
-  } = useForm({
+  const { register, handleSubmit, watch, reset, control } = useForm({
     defaultValues: {
-      type: isEdit ? modalTransactionData?.category?.type === EXPENSE_STR : true,
+      type: isEdit
+        ? modalTransactionData?.category?.type === EXPENSE_STR
+        : true,
       amount: Math.abs(modalTransactionData?.amount),
       transactionDate: modalTransactionData?.transactionDate ?? new Date(),
       comment: modalTransactionData?.comment,
@@ -66,8 +62,6 @@ export default function ModalAddTransaction() {
     },
   });
 
-  const isEdit = !!modalTransactionData;
-  
   const { type } = watch();
 
   const options = categories.filter(category => {
@@ -75,7 +69,7 @@ export default function ModalAddTransaction() {
   });
 
   const onSubmit = ({ transactionDate, type, categoryId, comment, amount }) => {
-    const typeOftransaction = BOOLEAN_TO_TRANSACTION_TYPE[type]
+    const typeOftransaction = BOOLEAN_TO_TRANSACTION_TYPE[type];
 
     if (isEdit) {
       dispatch(
@@ -90,9 +84,11 @@ export default function ModalAddTransaction() {
         addTransaction({
           transactionDate,
           type: typeOftransaction,
-          categoryId: typeOftransaction === INCOME_STR ? options[0].id : categoryId,
+          categoryId:
+            typeOftransaction === INCOME_STR ? options[0].id : categoryId,
           comment,
-          amount: typeOftransaction === INCOME_STR ? Number(amount) : -Number(amount),
+          amount:
+            typeOftransaction === INCOME_STR ? Number(amount) : -Number(amount),
         })
       ).unwrap();
     }
@@ -115,21 +111,23 @@ export default function ModalAddTransaction() {
         style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
       >
         <ToggleContainer>
-        <Toggle name="type" control={control} disabled={isEdit} />
+          <Toggle name="type" control={control} disabled={isEdit} />
         </ToggleContainer>
 
-        {BOOLEAN_TO_TRANSACTION_TYPE[type] === EXPENSE_STR && <Select disabled={isEdit}>
-          <Options className="one" value="" disabled selected hidden>
-            Select a category
-          </Options>
-          {options.map(category => {
-            return (
-              <Options key={category.id} value={category.id}>
-                {category.name}
-              </Options>
-            );
-          })}
-        </Select>}
+        {BOOLEAN_TO_TRANSACTION_TYPE[type] === EXPENSE_STR && (
+          <Select disabled={isEdit}>
+            <Options className="one" value="" disabled selected hidden>
+              Select a category
+            </Options>
+            {options.map(category => {
+              return (
+                <Options key={category.id} value={category.id}>
+                  {category.name}
+                </Options>
+              );
+            })}
+          </Select>
+        )}
         <ContainAmountDatetime>
           <label>
             <FormInputAmount
@@ -156,8 +154,8 @@ export default function ModalAddTransaction() {
                     isValidDate={disableFutureDt}
                     closeOnSelect={true}
                     inputProps={{
-                      disabled: isEdit
-                    }}    
+                      disabled: isEdit,
+                    }}
                     onChange={moment => {
                       onChange({
                         target: {
