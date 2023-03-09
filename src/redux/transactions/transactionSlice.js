@@ -64,7 +64,6 @@ const transactionsSlice = createSlice({
       })
       .addCase(fetchCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
-
       }),
 });
 
