@@ -15,6 +15,13 @@ export const NavList = styled.ul`
     gap: 12px;
     margin-top: 40px;
     margin-bottom: 28px;
+    width: 200px;
+  }
+`;
+
+export const Nav = styled.nav`
+  @media screen and (min-width: 768px) {
+    width: 200px;
   }
 `;
 

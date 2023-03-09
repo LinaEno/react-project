@@ -36,6 +36,7 @@ export const CurrencyStyled = styled.div`
   @media (min-width: 768px) {
     width: 336px;
     margin-right: 0;
+    margin-top: 32px;
     /* height: 182px; */
   }
   @media (min-width: 1280px) {
@@ -68,7 +69,6 @@ export const ListStyled = styled.ul`
 export const ListLI = styled.li`
   margin-top: 11px;
   font-family: 'Circe';
-  font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: calc(27 / 18);
