@@ -8,7 +8,9 @@ import {
   Question,
   ButtonsList,
   Button,
+  Icon,
 } from './ModalLogout.styled';
+import catLogout from '../../images/catLogout.jpg';
 import { useTranslation } from 'react-i18next';
 import { Default } from '../Media/Media';
 import { useNavigate } from 'react-router-dom';
@@ -47,6 +49,7 @@ const ModalLogout = () => {
           </Button>
         </ButtonsList>
       </Content>
+      <Icon src={catLogout} alt="cat" width={300} />
     </Wrapper>
   );
 };

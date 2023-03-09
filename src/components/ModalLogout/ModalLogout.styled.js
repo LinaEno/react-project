@@ -12,7 +12,6 @@ export const Content = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  margin-bottom: 30px;
 `;
 
 export const Question = styled.p`
@@ -36,15 +35,16 @@ export const Button = styled.button`
   border-radius: 20px;
   border: 1px solid #4a56e2;
   color: #4a56e2;
+  background-color: #fff;
   font-size: 18px;
   line-height: calc(27 / 18);
   font-weight: 400;
   text-transform: uppercase;
 
   &:hover {
-    border: 1px solid #24cca7;
+    border: 1px solid #4a56e2;
     color: #fff;
-    background-color: #24cca7;
+    background-color: #4a56e2;
   }
 
   @media screen and (min-width: 768px) {
@@ -53,14 +53,20 @@ export const Button = styled.button`
 `;
 
 export const Navigate = styled(NavLink)`
-display: flex;
-height: 50px;
-justify-content: center;
-align-items: center;
-text-decoration: none;
-color: #4a56e2;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #4a56e2;
 
-&:hover {
+  &:hover {
     color: #fff;
   }
+`;
+
+export const Icon = styled.img`
+display: block;
+margin-left: auto;
+margin-right: auto;
 `
