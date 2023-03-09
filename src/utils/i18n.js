@@ -20,7 +20,7 @@ const resources = {
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
   fallbackLng: langs.EN,
-  debug: true,
+  debug: false,
   resources,
 });
 

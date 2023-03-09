@@ -37,6 +37,6 @@ export const Text = styled(NavLink)`
   &:hover,
   &:focus,
   &:active {
-    font-weight: 700px;
+    font-weight: 700;
   }
 `;

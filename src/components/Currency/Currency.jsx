@@ -29,7 +29,6 @@ export const Currency = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, ['currency', currency, data]);
 
-  console.log(currency);
   return (
     <>
       {currency.length && (

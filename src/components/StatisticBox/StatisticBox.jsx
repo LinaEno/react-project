@@ -65,7 +65,6 @@ export function StatisticBox() {
   const dispatch = useDispatch();
   const all = useSelector(selectTransactions);
   let expenses = summary.filter(el => el.total < 0);
-  console.log(expenses);
 
   if (expenses.length > 0) {
     expenses = expenses.map((el, i) => ({
