@@ -34,6 +34,13 @@ import {
 
 import dateSvg from 'images/svg/baseline-date.svg';
 
+const INCOME_STR = 'INCOME';
+const EXPENSE_STR = 'EXPENSE';
+
+const BOOLEAN_TO_TRANSACTION_TYPE = {
+  false: INCOME_STR,
+  true: EXPENSE_STR
+}
 
 export default function ModalAddTransaction() {
   const dispatch = useDispatch();
@@ -41,13 +48,7 @@ export default function ModalAddTransaction() {
   const categories = useSelector(selectCategories);
   const modalTransactionData = useSelector(selectModalTransactionData);
 
-  const INCOME_STR = 'INCOME';
-  const EXPENSE_STR = 'EXPENSE';
-
-  const BOOLEAN_TO_TRANSACTION_TYPE = {
-    false: INCOME_STR,
-    true: EXPENSE_STR
-  }
+  
 
   const {
     register,
@@ -55,10 +56,9 @@ export default function ModalAddTransaction() {
     watch,
     reset,
     control,
-    formState: { errors },
   } = useForm({
     defaultValues: {
-      type: modalTransactionData?.category?.type === EXPENSE_STR,
+      type: isEdit ? modalTransactionData?.category?.type === EXPENSE_STR : true,
       amount: Math.abs(modalTransactionData?.amount),
       transactionDate: modalTransactionData?.transactionDate ?? new Date(),
       comment: modalTransactionData?.comment,
@@ -66,8 +66,9 @@ export default function ModalAddTransaction() {
     },
   });
 
-  const { type } = watch();
   const isEdit = !!modalTransactionData;
+  
+  const { type } = watch();
 
   const options = categories.filter(category => {
     return category.type === BOOLEAN_TO_TRANSACTION_TYPE[type];
@@ -117,16 +118,7 @@ export default function ModalAddTransaction() {
         <Toggle name="type" control={control} disabled={isEdit} />
         </ToggleContainer>
 
-        <Select disabled={isEdit}>
-              {BOOLEAN_TO_TRANSACTION_TYPE[type] === EXPENSE_STR &&
-                <select {...register('categoryId')}>
-                  {options.map(category => (
-                      <option key={category.id} value={category.id}>
-                        {category.name}
-                      </option>
-                  ))}
-                </select>
-              }
+        {BOOLEAN_TO_TRANSACTION_TYPE[type] === EXPENSE_STR && <Select disabled={isEdit}>
           <Options className="one" value="" disabled selected hidden>
             Select a category
           </Options>
@@ -137,7 +129,7 @@ export default function ModalAddTransaction() {
               </Options>
             );
           })}
-        </Select>
+        </Select>}
         <ContainAmountDatetime>
           <label>
             <FormInputAmount
