@@ -47,19 +47,16 @@ export const ListStyled = styled.ul`
   display: flex;
   gap: 24px;
   padding: 12px 20px;
-  width: 280px;
+  width: 100%;
   height: auto;
   align-items: center;
   justify-content: space-between;
   @media (min-width: 768px) {
     width: 100%;
-    padding-left: 41px;
   }
   @media (min-width: 1280px) {
-    margin-left: 40px;
-    padding-left: 0px;
-    margin-bottom: 20px;
-    gap: 60px;
+    /* gap: 40px; */
+    padding: 17px 50px;
   } ;
 `;
 
@@ -111,7 +108,7 @@ export const TypeStyled = styled.ul`
     display: flex;
     justify-content: space-between;
     /* gap: 70px; */
-    width: 250px;
+    width: 100%;
     height: 24px;
     font-family: 'Circe';
     font-style: normal;
