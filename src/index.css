@@ -26,7 +26,7 @@ body {
   background-position: bottom left, top right;
   background-repeat: no-repeat;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 76px) {
     background-image: url('./images/ellipsePink.png'),
       url('./images/ellipsePurpur.png');
     background-position: bottom left, top right;
