@@ -15,16 +15,17 @@ export const en = {
     title: 'Wallet',
     btnExit: 'Exit',
   },
-  currency: "Currency",
-  currencyPurchase: "Purchase",
-  currencySale: "Sale",
+  currency: 'Currency',
+  currencyPurchase: 'Purchase',
+  currencySale: 'Sale',
 
-  modalLogOutQuestion: "Are you sure you want to exit the app?",
-  modalLogOutCancelBtn: "No",
-  modalLogOutAcceptBtn: "Yes",
+  modalLogOutQuestion: 'Are you sure you want to exit the app?',
+  modalLogOutCancelBtn: 'No',
+  modalLogOutAcceptBtn: 'Yes',
 
-  navHomeLink: "Home",
-  navStatisticsLink: "Statistics",
+  navHomeLink: 'Home',
+  navStatisticsLink: 'Statistics',
+
 
   statisticsTitle: "Statistics",
   statisticsCategory: "Category",
@@ -109,4 +110,5 @@ export const en = {
   
 }
 
-// console.log(Object.values(en.categories));
+
+

@@ -13,24 +13,25 @@ export const uk = {
   },
   header: {
     title: 'Wallet',
-    btnExit:'Вихід',
+    btnExit: 'Вихід',
   },
-   currency: "Валюта",
-  currencyPurchase: "Купівля",
-  currencySale: "Продаж",
+  currency: 'Валюта',
+  currencyPurchase: 'Купівля',
+  currencySale: 'Продаж',
 
-  modalLogOutQuestion: "Ви впевнені, що бажаєте вийти?",
-  modalLogOutCancelBtn: "Ні",
-  modalLogOutAcceptBtn: "Так",
+  modalLogOutQuestion: 'Ви впевнені, що бажаєте вийти?',
+  modalLogOutCancelBtn: 'Ні',
+  modalLogOutAcceptBtn: 'Так',
 
-  navHomeLink: "Головна",
-  navStatisticsLink: "Статистика",
+  navHomeLink: 'Головна',
+  navStatisticsLink: 'Статистика',
 
-  statisticsTitle: "Статистика",
-  statisticsCategory: "Категорія",
-  statisticsAmounts: "Сума",
-  statisticsExpenses: "Витрати:",
-  statisticsIncomes: "Доходи:",
+  statisticsTitle: 'Статистика',
+  statisticsCategory: 'Категорія',
+  statisticsAmounts: 'Сума',
+  statisticsExpenses: 'Витрати:',
+  statisticsIncomes: 'Доходи:',
+
 
   modalAddTransactionTitle: "Додайте транзакцію",
   modalAddTransactionIncomesType: "Дохід",
@@ -96,3 +97,8 @@ export const uk = {
   },
 };
 
+
+  weatherTitle: 'Погода',
+  weatherSearch: 'Обрати місто..',
+  weatherError: 'Вибачте, місто не знайдено',
+};

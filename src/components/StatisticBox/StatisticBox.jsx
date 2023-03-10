@@ -188,10 +188,23 @@ export function StatisticBox() {
               console.group(el.id)
               return (
               <TableRow key={el.name}>
+
                 <Color color={el.color}>{t(`categories.${el.name}`)}</Color>
                 
                 {/* <Color color={el.color}>{el.name}</Color> */}
-                <td>{Math.abs(el.total)}</td>
+                <td>{Math.abs(el.total)
+                .toFixed(2)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ' '}</td>
+
+                <Color color={el.color}>{el.name}</Color>
+                <td>
+                  {Math.abs(el.total)
+                    .toFixed(2)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                </td>
+
               </TableRow>
             )
             })}
@@ -199,10 +212,22 @@ export function StatisticBox() {
         )}
       </Table>
       <Sum>
-        {t('statisticsExpenses')}<Expenses>{Math.abs(expense)}</Expenses>
+        {t('statisticsExpenses')}
+        <Expenses>
+          {Math.abs(expense)
+            .toFixed(2)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+        </Expenses>
       </Sum>
       <Sum>
-        {t('statisticsIncomes')}<Income>{income}</Income>
+        {t('statisticsIncomes')}
+        <Income>
+          {income
+            .toFixed(2)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+        </Income>
       </Sum>
     </WrapperTable>
   );

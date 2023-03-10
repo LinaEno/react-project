@@ -15,7 +15,12 @@ const Balance = () => {
       <Text>
         {/* <TbCurrencyHryvnia /> */}
         <Sign>&#8372;</Sign>
-        <Number>{balance}</Number>
+        <Number>
+          {balance
+            .toFixed(2)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+        </Number>
       </Text>
     </Wrapper>
   );
