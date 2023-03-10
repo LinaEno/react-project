@@ -186,17 +186,19 @@ export function StatisticBox() {
             {expenses.map(el => (
               <TableRow key={el.name}>
                 <Color color={el.color}>{el.name}</Color>
-                <td>{Math.abs(el.total)}</td>
+                <td>{Math.abs(el.total).toFixed(2)}</td>
               </TableRow>
             ))}
           </TableBody>
         )}
       </Table>
       <Sum>
-        {t('statisticsExpenses')}<Expenses>{Math.abs(expense)}</Expenses>
+        {t('statisticsExpenses')}
+        <Expenses>{Math.abs(expense).toFixed(2)}</Expenses>
       </Sum>
       <Sum>
-        {t('statisticsIncomes')}<Income>{income}</Income>
+        {t('statisticsIncomes')}
+        <Income>{income.toFixed(2)}</Income>
       </Sum>
     </WrapperTable>
   );
