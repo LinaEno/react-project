@@ -12,6 +12,9 @@ export const Section = styled.section`
   }
 
   @media screen and (min-width: 1280px) {
+    position: absolute;
+    top: 80px;
+    right: 0;
     padding-top: 46px;
     padding-bottom: 60px;
   }
@@ -79,6 +82,7 @@ export const Wrapper = styled.div`
 
   &:not(:last-child) {
     border-bottom: 1px solid #dcdcdf;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
   }
 `;
 
@@ -111,6 +115,14 @@ export const StatSum = styled(Stat)`
 
 export const Table = styled.table`
   border-collapse: collapse;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 715px;
+  }
 `;
 
 export const TableHead = styled.th`
