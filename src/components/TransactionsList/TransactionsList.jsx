@@ -117,7 +117,10 @@ export function TransactionsList() {
                 <Wrapper>
                   <Title>{t('transactionsTableAmount')}</Title>
                   <StatSum type={transaction.type}>
-                    {Math.abs(transaction.amount).toFixed(2)}
+                    {Math.abs(transaction.amount)
+                      .toFixed(2)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                   </StatSum>
                 </Wrapper>
                 <Wrapper>
@@ -161,7 +164,10 @@ export function TransactionsList() {
                   <TableBody>{transaction?.category?.name}</TableBody>
                   <TableBody>{transaction.comment}</TableBody>
                   <TableBody type={transaction.type}>
-                    {Math.abs(transaction.amount).toFixed(2)}
+                    {Math.abs(transaction.amount)
+                      .toFixed(2)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                   </TableBody>
                   <TableBody>
                     <EditButton
