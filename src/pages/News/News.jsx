@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const backendNews = axios.create({ baseURL: 'https://newsapi.org/v2/' });
 const apiKey = 'dc07261234074052abfe19974114fe88';
@@ -22,7 +23,6 @@ const News = () => {
       try {
         setLoading(true);
         const { sources } = await newsApi();
-        console.log(sources);
         setNews(sources);
         setError('');
       } catch (error) {
@@ -33,6 +33,12 @@ const News = () => {
     };
     getNews();
   }, []);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
 
   return (
     <>
