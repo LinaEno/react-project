@@ -4,13 +4,17 @@ import { StatisticBox } from 'components/StatisticBox/StatisticBox';
 import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { StatisticTitle, Wrap } from './SummaryPage.styled';
 import { useTranslation } from 'react-i18next';
-import { Desktop } from 'components/Media/Media';
+import { Desktop, NoDesktop } from 'components/Media/Media';
 
 function SummaryPage() {
   const { t } = useTranslation();
   return (
     <div>
       <Layout />
+      <NoDesktop>
+        <Chart />
+        <StatisticBox />
+      </NoDesktop>
       <Desktop>
         <Wrap>
           <Chart />

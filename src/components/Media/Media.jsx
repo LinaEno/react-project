@@ -20,6 +20,11 @@ export const Default = ({ children }) => {
   return isNotMobile ? children : null;
 };
 
+export const NoDesktop = ({ children }) => {
+  const isNoDesktop = useMediaQuery({ maxWidth: 1279 });
+  return isNoDesktop ? children : null;
+};
+
 //   Example
 {
   /* <Default><FcQuestions size="144px" /></Default> */
