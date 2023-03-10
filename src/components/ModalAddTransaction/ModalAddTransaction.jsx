@@ -42,11 +42,9 @@ const BOOLEAN_TO_TRANSACTION_TYPE = {
   true: EXPENSE_STR,
 };
 const schema = yup.object({
-  amount: yup.number().min(1).max(16).required('Amount is required'),
   transactionDate: yup.date().default(() => new Date()),
   comment: yup
     .string()
-    .min(2, 'Сomment length should be at least 2 characters')
     .max(40, 'Сomment cannot exceed more than 40 characters'),
 });
 
