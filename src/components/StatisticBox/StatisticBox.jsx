@@ -155,7 +155,10 @@ export function StatisticBox() {
           </SelectDate>
         </DropdownMenu>
         <DropdownMenu className={yearDropdownShown ? 'dropdownShown' : ''}>
-          <SelectButton onClick={toggleYearDropdown}> {t('yearTitle')}</SelectButton>
+          <SelectButton onClick={toggleYearDropdown}>
+            {' '}
+            {t('yearTitle')}
+          </SelectButton>
           <SelectDate name="year">
             <Drop data-value="2019" onClick={handleYearChange}>
               2019
@@ -185,28 +188,19 @@ export function StatisticBox() {
         {expenses.length > 0 && (
           <TableBody>
             {expenses.map(el => {
-              console.group(el.id)
               return (
-              <TableRow key={el.name}>
+                <TableRow key={el.name}>
+                  <Color color={el.color}>{t(`categories.${el.name}`)}</Color>
 
-                <Color color={el.color}>{t(`categories.${el.name}`)}</Color>
-                
-                {/* <Color color={el.color}>{el.name}</Color> */}
-                <td>{Math.abs(el.total)
-                .toFixed(2)
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ' '}</td>
-
-                <Color color={el.color}>{el.name}</Color>
-                <td>
-                  {Math.abs(el.total)
-                    .toFixed(2)
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
-                </td>
-
-              </TableRow>
-            )
+                  {/* <Color color={el.color}>{el.name}</Color> */}
+                  <td>
+                    {Math.abs(el.total)
+                      .toFixed(2)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                  </td>
+                </TableRow>
+              );
             })}
           </TableBody>
         )}
