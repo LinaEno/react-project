@@ -33,7 +33,7 @@ export const App = () => {
   useEffect(() => {
     if (!isLoggedIn && !token) navigate('/login');
     dispatch(fetchCurrentUser());
-  }, [dispatch, isLoggedIn, navigate, token]);
+  }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
     if (error) {
