@@ -12,9 +12,6 @@ export const Section = styled.section`
   }
 
   @media screen and (min-width: 1280px) {
-    position: absolute;
-    top: 80px;
-    right: 0;
     padding-top: 46px;
     padding-bottom: 60px;
   }

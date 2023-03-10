@@ -17,6 +17,7 @@ const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 const CurrencyPage = lazy(() => import('pages/Currency/Currency'));
 const SummaryPage = lazy(() => import('pages/SummaryPage/SummaryPage'));
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const NewsPage = lazy(() => import('pages/News/NewsPage'));
 const PageNotFound404 = lazy(() =>
   import('pages/PageNotFound404/PageNotFound404')
 );
@@ -29,17 +30,10 @@ export const App = () => {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   dispatch(fetchCurrentUser());
-  //   if (!isLoggedIn) navigate('/login');
-  // }, [dispatch, isLoggedIn, navigate]);
-  console.log(token);
-
   useEffect(() => {
     if (!isLoggedIn && !token) navigate('/login');
-
     dispatch(fetchCurrentUser());
-  }, [dispatch]);
+  }, [dispatch, isLoggedIn, navigate, token]);
 
   useEffect(() => {
     if (error) {
@@ -57,6 +51,7 @@ export const App = () => {
               <Route index element={<HomePage />} />
               <Route path="/diagram" element={<SummaryPage />} />
               <Route path="/currency" element={<CurrencyPage />} />
+              <Route path="/news" element={<NewsPage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
@@ -67,5 +62,3 @@ export const App = () => {
     </>
   );
 };
-
-// dc07261234074052abfe19974114fe88;

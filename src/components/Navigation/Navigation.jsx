@@ -38,6 +38,19 @@ const Navigation = () => {
             <Text to={'/diagram'}>{t('navStatisticsLink')}</Text>
           </Default>
         </NavItem>
+        <NavItem>
+          <Mobile>
+            <NavLink to={'/news'}>
+              <Stats />
+            </NavLink>
+          </Mobile>
+          <Default>
+            <Icon>
+              <Stats width="18" height="18" />
+            </Icon>
+            <Text to={'/news'}>{t('navNewsLink')}</Text>
+          </Default>
+        </NavItem>
         <Mobile>
           <li>
             <NavLink to={'/currency'}>

@@ -5,11 +5,11 @@ import Layout from 'components/Layout/Layout';
 import { Box, Wrapper } from 'components/Layout/Layout.styled';
 import { Desktop, Tablet } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
-import { TransactionsList } from 'components/TransactionsList/TransactionsList';
 import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { Currency } from 'components/Currency/Currency';
+import News from './News';
 
-const HomePage = () => {
+const NewsPage = () => {
   return (
     <>
       <Layout />
@@ -26,10 +26,10 @@ const HomePage = () => {
             <Currency />
           </Desktop>
         </Wrapper>
-        <TransactionsList />
+        <News />
       </ContainerTotal>
     </>
   );
 };
 
-export default WithAuthRedirect(HomePage, '/login');
+export default WithAuthRedirect(NewsPage, '/login');

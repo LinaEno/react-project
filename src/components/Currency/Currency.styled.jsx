@@ -15,6 +15,7 @@ export const ContainerTotal = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
+    display: flex;
     max-width: 1280px;
     padding: 0 16px;
   }
