@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { langs } from 'utils/i18n';
+import { useMediaQuery } from 'react-responsive';
 import { Box, Separator, Button } from './LangSwitcher.styled';
 
 export const LangSwitcher = () => {
   const { i18n } = useTranslation();
-
   const changeLang = lng => () => i18n.changeLanguage(lng);
+
+  const isMobile = useMediaQuery({ query: '(min-width: 480px)' });
 
   const buttonsProps = {
     changeLang,
@@ -15,7 +17,7 @@ export const LangSwitcher = () => {
   return (
     <Box>
       <LangButton lang={langs.UK} {...buttonsProps} />
-      <Separator />
+      {isMobile && <Separator />}
       <LangButton lang={langs.EN} {...buttonsProps} />
     </Box>
   );

@@ -1,17 +1,28 @@
 import styled from '@emotion/styled';
 
-export const Button = styled.button`
-  text-transform: uppercase;
-  color: grey;
-`;
-
 export const Box = styled.div`
   display: flex;
-  align-items: center;
-  gap: 5px;
+  gap: 4px;
+
+  @media screen and (min-width: 480px) {
+    align-items: center;
+    gap: 8px;
+  }
 `;
 
-export const Separator = styled.div`
+export const Button = styled.button`
+  width: 20px;
+  height: 20px;
+  color: ${p => (p.isActive ? '#24cca7' : '#bdbdbd')};
+  font-weight: ${p => (p.isActive ? '700' : '400')};
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+`;
+
+export const Separator = styled.span`
+  display: block;
   width: 1px;
   height: 30px;
+  background-color: #bdbdbd;
 `;

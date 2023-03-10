@@ -7,7 +7,7 @@ export const ModalMobile = styled.div`
   left: 50%;
   width: 100%;
   height: 100vh;
-
+  overflow-y: scroll;
   background-color: #fff;
   z-index: 100;
   transform: translateX(-50%);

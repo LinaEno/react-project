@@ -4,7 +4,7 @@ import * as yup from 'yup';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { registration } from 'redux/auth/authOperation';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { selectToken } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
 
@@ -29,6 +29,7 @@ import {
   ButtonActive,
   StyledNavLink,
   Error,
+  Ribbon,
 } from './Registration.styled';
 import { ReactComponent as Logo } from '../../images/svg/logo.svg';
 import { ReactComponent as FrameRegister } from '../../images/svg/frameRegister.svg';
@@ -36,8 +37,14 @@ import emailIcon from '../../images/svg/email.svg';
 import passIcon from '../../images/svg/password.svg';
 import nameIcon from '../../images/svg/name.svg';
 import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
+import css from './Ribbon.module.css';
 
-const schema = yup
+
+
+const RegistrationForm = () => {
+  const { t } = useTranslation();
+
+   const schema = yup
   .object({
     username: yup
       .string()
@@ -58,8 +65,6 @@ const schema = yup
       .oneOf([yup.ref('password')], 'Passwords do not match'),
   })
   .required();
-
-const RegistrationForm = () => {
   const {
     register,
     handleSubmit,
@@ -69,7 +74,7 @@ const RegistrationForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useSelector(selectToken);
@@ -77,7 +82,7 @@ const RegistrationForm = () => {
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(false);
 
-  const { t } = useTranslation();
+   
 
   useEffect(() => {
     if (token !== null) navigate('/');
@@ -87,6 +92,42 @@ const RegistrationForm = () => {
     dispatch(registration({ username, email, password }));
 
     reset();
+  };
+
+// лінія перевірки пароля
+
+  const [ribbon, setRibbon] = useState('');
+  const [pass, setPass] = useState('pass');
+  const [cpass, setCpass] = useState('cpass');
+
+  useEffect(() => {
+    if (pass.length > 5) {
+      setRibbon('putPass');
+    } else if (pass.length <= 5) {
+      setRibbon('shortPass');
+    }
+    
+    if (cpass === pass) {
+      setRibbon('corectPass');
+    }
+  }, [pass, cpass]);
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'password':
+        setPass(value);
+        console.log(pass);
+        break;
+
+      case 'cpassword':
+        setCpass(value);
+        break;
+
+      default:
+        return;
+    }
   };
 
   return (
@@ -127,6 +168,7 @@ const RegistrationForm = () => {
                 {...register('password')}
                 placeholder="Password"
                 type={toggle1 ? 'text' : 'password'}
+                onChange={handleChange}
               />
               {!toggle1 ? (
                 <Eye
@@ -159,6 +201,7 @@ const RegistrationForm = () => {
                   validate: value => value === getValues('password'),
                 })}
                 placeholder="Confirm password"
+                onChange={handleChange}
               />
               {!toggle2 ? (
                 <Eye
@@ -179,9 +222,12 @@ const RegistrationForm = () => {
                   <BsEyeFill />
                 </Eye>
               )}
+              <Ribbon>
+                <div className={css[ribbon]} />
+              </Ribbon>
             </Label>
             {errors?.cpassword && (
-              <Error style={{ top: '44%' }}>{errors.cpassword.message}</Error>
+              <Error style={{ top: '46%' }}>{errors.cpassword.message}</Error>
             )}
             <Label>
               <Icon src={nameIcon} alt="name" />

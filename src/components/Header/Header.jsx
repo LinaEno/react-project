@@ -5,39 +5,44 @@ import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'react-i18next';
 import { randomAvatar } from '../../utils/randomAvatar';
 import { getUserName } from 'redux/auth/authSelectors';
-import { ReactComponent as Logo } from '../../img/Group.svg';
+import { ReactComponent as Logo } from '../../images/Group.svg';
 import {
-  HeaderComponent,
-  // HeaderContainer,
-  LogoTitle,
+  HeaderStyled,
   UserName,
   Delimiter,
-  LogoBox,
   Link,
   UserBox,
+
   Avatar,
+
+  Container,
+
 } from './Header.styled';
 
 export const Header = () => {
   const { t } = useTranslation();
   const userName = useSelector(getUserName);
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
+
   return (
-    <HeaderComponent>
-      <LogoBox>
-        <Logo />
-        <LogoTitle>
-          <Link to={'/'}>{t('header.title')}</Link>
-        </LogoTitle>
-      </LogoBox>
-      <UserBox>
-        <LangSwitcher />
-        <Avatar><img src={randomAvatar} alt="Avatar" />
+
+    <HeaderStyled>
+      <Container>
+        <Link to={'/'}>
+          <Logo />
+          {t('header.title')}
+        </Link>
+
+        <UserBox>
+          <LangSwitcher />
+          <Avatar><img src={randomAvatar} alt="Avatar" />
         </Avatar>
-        <UserName>{userName}</UserName>
-        {!isMobile && <Delimiter></Delimiter>}
-        <ButtonLogout />
-      </UserBox>
-    </HeaderComponent>
+          <UserName>{userName}</UserName>
+          {isTablet && <Delimiter></Delimiter>}
+          <ButtonLogout />
+        </UserBox>
+      </Container>
+    </HeaderStyled>
+
   );
 };

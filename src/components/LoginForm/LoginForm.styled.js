@@ -24,7 +24,8 @@ export const Preview = styled.div`
 `;
 
 export const Title = styled.h1`
-  /* font-family: 'Poppins'; */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   font-size: 30px;
   line-height: calc(45 / 30);
   color: #000;
@@ -41,6 +42,7 @@ export const Backdrop = styled.div`
 `;
 
 export const Content = styled.div`
+  background-color: #fff;
   padding: 107px 20px;
   @media screen and (min-width: 768px) {
     padding: 40px 0 60px 0;
