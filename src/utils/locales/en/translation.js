@@ -15,16 +15,17 @@ export const en = {
     title: 'Wallet',
     btnExit: 'Exit',
   },
-  currency: "Currency",
-  currencyPurchase: "Purchase",
-  currencySale: "Sale",
+  currency: 'Currency',
+  currencyPurchase: 'Purchase',
+  currencySale: 'Sale',
 
-  modalLogOutQuestion: "Are you sure you want to exit the app?",
-  modalLogOutCancelBtn: "No",
-  modalLogOutAcceptBtn: "Yes",
+  modalLogOutQuestion: 'Are you sure you want to exit the app?',
+  modalLogOutCancelBtn: 'No',
+  modalLogOutAcceptBtn: 'Yes',
 
-  navHomeLink: "Home",
-  navStatisticsLink: "Statistics",
+  navHomeLink: 'Home',
+  navStatisticsLink: 'Statistics',
+
 
   statisticsTitle: "Statistics",
   statisticsCategory: "Category",
@@ -63,6 +64,23 @@ export const en = {
   weatherTitle: "Weather",
   weatherSearch: "Search City..",
   weatherError: "Sorry, City not found",
+  monthTitle: "Month",
+  yearTitle:"Year",
+
+  categories:{
+    "Main expenses": "Main expenses",
+    "Products": "Products",
+    "Car": "Car",
+    "Self care": "Self care",
+    "Child care": "Child care",
+    "Household products": "Household products",
+    "Education": "Education",
+    "Leisure": "Leisure",
+    "Other expenses": "Other expenses",
+    "Entertainment": "Entertainment",
+    "Income":"Income",
+  },
+  
 
 
 
@@ -91,5 +109,6 @@ export const en = {
 
   
 }
+
 
 

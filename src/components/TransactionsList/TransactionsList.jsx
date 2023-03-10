@@ -40,7 +40,7 @@ import { useRef } from 'react';
 
 const columns = [
   {
-    title:'Data',
+    title: 'Data',
     key: 'date',
   },
   {
@@ -117,14 +117,17 @@ export function TransactionsList() {
                 <Wrapper>
                   <Title>{t('transactionsTableAmount')}</Title>
                   <StatSum type={transaction.type}>
-                    {Math.abs(transaction.amount)}
+                    {Math.abs(transaction.amount)
+                      .toFixed(2)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                   </StatSum>
                 </Wrapper>
                 <Wrapper>
                   <DeleteButton
                     onClick={() => handleDeleteTransaction(transaction.id)}
                   >
-                   {t('btnDelete')}
+                    {t('btnDelete')}
                   </DeleteButton>
                   <EditButton
                     onClick={() =>
@@ -132,7 +135,7 @@ export function TransactionsList() {
                     }
                   >
                     <EditIcon />
-                   {t('btnDelete')}
+                    {t('btnDelete')}
                   </EditButton>
                 </Wrapper>
               </Item>
@@ -161,7 +164,10 @@ export function TransactionsList() {
                   <TableBody>{transaction?.category?.name}</TableBody>
                   <TableBody>{transaction.comment}</TableBody>
                   <TableBody type={transaction.type}>
-                    {Math.abs(transaction.amount)}
+                    {Math.abs(transaction.amount)
+                      .toFixed(2)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                   </TableBody>
                   <TableBody>
                     <EditButton
@@ -174,7 +180,7 @@ export function TransactionsList() {
                     <DeleteButton
                       onClick={() => handleDeleteTransaction(transaction.id)}
                     >
-                     {t('btnDelete')}
+                      {t('btnDelete')}
                     </DeleteButton>
                   </TableBody>
                 </tr>

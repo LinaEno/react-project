@@ -52,7 +52,13 @@ export function Chart() {
   return (
     <ChartContainer>
       <DoughnutBox data={data} />
-      <ChartLabel>&#8372;{Math.abs(total)}</ChartLabel>
+      <ChartLabel>
+        &#8372;
+        {Math.abs(total)
+          .toFixed(2)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+      </ChartLabel>
     </ChartContainer>
   );
 }

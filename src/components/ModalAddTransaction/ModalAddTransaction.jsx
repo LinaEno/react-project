@@ -115,7 +115,7 @@ export default function ModalAddTransaction() {
         </ToggleContainer>
 
         {BOOLEAN_TO_TRANSACTION_TYPE[type] === EXPENSE_STR && (
-          <Select disabled={isEdit}>
+          <Select disabled={isEdit} {...register('categoryId')}>
             <Options className="one" value="" disabled selected hidden>
               Select a category
             </Options>

@@ -91,9 +91,10 @@ export const TableBody = styled.tbody`
 export const TableRow = styled.tr`
   position: relative;
   display: flex;
+
   justify-content: space-between;
   align-items: center;
-  /* font-family: Circle; */
+  font-family: Circle;
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
