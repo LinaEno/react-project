@@ -6,7 +6,6 @@ export const NavList = styled.ul`
   margin-bottom: 12px;
   display: flex;
   gap: 30px;
-  align-items: center;
   justify-content: center;
   width: 280px;
   @media screen and (min-width: 768px) {
@@ -52,5 +51,22 @@ export const Text = styled(NavLink)`
   }
   &.active {
     font-weight: 700;
+  }
+`;
+
+export const NewsIcon = styled.span`
+  display: block;
+  width: 38px;
+  height: 38px;
+  background-color: #4a56e2;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 7px;
+  @media screen and (min-width: 768px) {
+    width: 18px;
+    height: 18px;
+    padding-top: 1.5px;
+    border-radius: 3px;
+    margin-right: 20px;
   }
 `;
