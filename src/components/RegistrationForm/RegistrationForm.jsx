@@ -37,7 +37,12 @@ import passIcon from '../../images/svg/password.svg';
 import nameIcon from '../../images/svg/name.svg';
 import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
 
-const schema = yup
+
+
+const RegistrationForm = () => {
+  const { t } = useTranslation();
+
+   const schema = yup
   .object({
     username: yup
       .string()
@@ -58,8 +63,6 @@ const schema = yup
       .oneOf([yup.ref('password')], 'Passwords do not match'),
   })
   .required();
-
-const RegistrationForm = () => {
   const {
     register,
     handleSubmit,
@@ -69,7 +72,7 @@ const RegistrationForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useSelector(selectToken);
@@ -77,7 +80,7 @@ const RegistrationForm = () => {
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(false);
 
-  const { t } = useTranslation();
+   
 
   useEffect(() => {
     if (token !== null) navigate('/');
