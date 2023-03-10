@@ -24,7 +24,8 @@ export const Preview = styled.div`
 `;
 
 export const Title = styled.h1`
-  /* font-family: 'Poppins'; */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   font-size: 30px;
   line-height: calc(45 / 30);
   color: #000;
@@ -41,11 +42,12 @@ export const Backdrop = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 32px 20px;
+  background-color: #fff;
+  padding: 32px 20px 107px;
+
   @media screen and (min-width: 768px) {
     padding: 40px 0 60px 0;
     border-radius: 20px;
-    background-color: #fff;
     height: 616px;
     width: 533px;
     margin-left: auto;
@@ -195,4 +197,13 @@ export const Error = styled.div`
   text-transform: capitalize;
   color: red;
   position: absolute;
+  z-index: 1;
+`;
+
+export const Ribbon = styled.div`
+  position: relative;
+  border-bottom: 4px solid #e5f1ef;
+  width: 100%;
+  margin-top: 4px;
+  border-radius: 10px;
 `;
