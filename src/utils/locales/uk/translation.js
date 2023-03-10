@@ -25,6 +25,7 @@ export const uk = {
 
   navHomeLink: 'Головна',
   navStatisticsLink: 'Статистика',
+  navNewsLink: 'Новини',
 
   statisticsTitle: 'Статистика',
   statisticsCategory: 'Категорія',

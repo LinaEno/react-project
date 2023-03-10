@@ -2,28 +2,40 @@ import { Chart } from 'components/Chart/Chart';
 import Layout from 'components/Layout/Layout';
 import { StatisticBox } from 'components/StatisticBox/StatisticBox';
 import WithAuthRedirect from 'hoc/WithAuthRedirect';
+import { Desktop, Tablet } from 'components/Media/Media';
+import Navigation from 'components/Navigation/Navigation';
+import Balance from 'components/Balance/Balance';
+import { Currency } from 'components/Currency/Currency';
+import { ContainerTotal } from 'components/Currency/Currency.styled';
 import { StatisticTitle, Wrap } from './SummaryPage.styled';
+import { Box, Wrapper } from 'components/Layout/Layout.styled';
 import { useTranslation } from 'react-i18next';
-import { Desktop, NoDesktop } from 'components/Media/Media';
 
 function SummaryPage() {
   const { t } = useTranslation();
   return (
-    <div>
+    <>
       <Layout />
-      <NoDesktop>
-        <StatisticTitle>Statistics</StatisticTitle>
-        <Chart />
-        <StatisticBox />
-      </NoDesktop>
-      <Desktop>
+      <ContainerTotal>
+        <Wrapper>
+          <Box>
+            <Navigation />
+            <Balance />
+          </Box>
+          <Tablet>
+            <Currency />
+          </Tablet>
+          <Desktop>
+            <Currency />
+          </Desktop>
+        </Wrapper>
         <Wrap>
-          <StatisticTitle>Statistics</StatisticTitle>
+          {/* <StatisticTitle>{t('statisticsTitle')}</StatisticTitle> */}
           <Chart />
           <StatisticBox />
         </Wrap>
-      </Desktop>
-    </div>
+      </ContainerTotal>
+    </>
   );
 }
 
