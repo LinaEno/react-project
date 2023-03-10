@@ -12,6 +12,11 @@ export const StatisticTitle = styled.h2`
 `;
 
 export const Wrap = styled.div`
+  /* only desktop ↓↓↓ */
+  position: absolute;
+  top: 80px;
+  right: 0;
+  /* only desktop ↑↑↑ */
   display: flex;
   gap: 32px;
   width: 715px;
