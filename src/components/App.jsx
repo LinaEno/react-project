@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { selectRefreshed, selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { selectRefreshed, selectIsLoggedIn, selectToken } from 'redux/auth/authSelectors';
 import { Loader } from './Loader/Loader';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
@@ -22,14 +22,18 @@ export const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectRefreshed);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const token = useSelector(selectToken);
   const navigate = useNavigate();
 
   // useEffect(() => {
   //   dispatch(fetchCurrentUser());
   //   if (!isLoggedIn) navigate('/login');
   // }, [dispatch, isLoggedIn, navigate]);
+  console.log(token);
 
   useEffect(() => {
+    if (!isLoggedIn && !token) navigate('/login');
+
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
