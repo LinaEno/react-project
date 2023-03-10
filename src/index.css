@@ -1,24 +1,24 @@
 @import-normalize; /* bring in normalize.css styles */
 
 @font-face {
-  font-family: "Circe";
-  src: url("../src/fonts/Circe-Regular.woff2") format("opentype");
+  font-family: 'Circe';
+  src: url('../src/fonts/Circe-Regular.woff2') format('opentype');
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "Circe";
-  src: url("../src/fonts/Circe-Bold.woff2") format("opentype");
+  font-family: 'Circe';
+  src: url('../src/fonts/Circe-Bold.woff2') format('opentype');
   font-weight: bold;
 }
 
 body {
   margin: 0;
-  font-family: "Circe", sans-serif;
+  font-family: 'Circe', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  background-color: #e5e5e5;
+
+  background-color: #e7eaf2;
   min-height: 100vh;
 
   background-image: url('./images/ellipsePink.png'),

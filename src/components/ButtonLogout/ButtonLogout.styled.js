@@ -3,8 +3,8 @@ import { ReactComponent as CloseIcon } from '../../images/svg/exit.svg';
 
 export const Button = styled.button`
   display: flex;
-  align-items: center;
-  min-width: 24px;
+  align-items: stretch;
+  justify-content: flex-start;
   height: 24px;
   color: #bdbdbd;
   font-family: inherit;
