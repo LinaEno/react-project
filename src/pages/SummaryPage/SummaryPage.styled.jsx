@@ -8,7 +8,7 @@ export const StatisticTitle = styled.h2`
   line-height: 45px;
   margin-bottom: 20px;
   margin-top: 32px;
-  margin-left: 84px;
+  /* margin-left: 84px; */
 `;
 
 export const Wrap = styled.div`
