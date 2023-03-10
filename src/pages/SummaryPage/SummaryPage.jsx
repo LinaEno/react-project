@@ -2,7 +2,7 @@ import { Chart } from 'components/Chart/Chart';
 import Layout from 'components/Layout/Layout';
 import { StatisticBox } from 'components/StatisticBox/StatisticBox';
 import WithAuthRedirect from 'hoc/WithAuthRedirect';
-import { Desktop, Tablet } from 'components/Media/Media';
+import { Default, Desktop, Tablet } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
 import { Currency } from 'components/Currency/Currency';
@@ -20,7 +20,7 @@ function SummaryPage() {
         <Wrapper>
           <Box>
             <Navigation />
-            <Balance />
+            <Default><Balance /></Default>
           </Box>
           <Tablet>
             <Currency />
@@ -29,11 +29,13 @@ function SummaryPage() {
             <Currency />
           </Desktop>
         </Wrapper>
-        <Wrap>
-          {/* <StatisticTitle>{t('statisticsTitle')}</StatisticTitle> */}
-          <Chart />
-          <StatisticBox />
-        </Wrap>
+        <div>
+          <StatisticTitle>{t('statisticsTitle')}</StatisticTitle>
+          <Wrap>
+            <Chart />
+            <StatisticBox />
+          </Wrap>
+        </div>
       </ContainerTotal>
     </>
   );
