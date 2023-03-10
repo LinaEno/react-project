@@ -111,7 +111,8 @@ export function StatisticBox() {
       <SelectsList>
         <DropdownMenu className={monthDropdownShown ? 'dropdownShown' : ''}>
           <SelectButton onClick={toggleMonthDropdown}>
-            {months[month]}
+            {/* {months[month]} */}
+            {t('monthTitle')}
           </SelectButton>
 
           <SelectDate name="month">
@@ -154,7 +155,7 @@ export function StatisticBox() {
           </SelectDate>
         </DropdownMenu>
         <DropdownMenu className={yearDropdownShown ? 'dropdownShown' : ''}>
-          <SelectButton onClick={toggleYearDropdown}>{year}</SelectButton>
+          <SelectButton onClick={toggleYearDropdown}> {t('yearTitle')}</SelectButton>
           <SelectDate name="year">
             <Drop data-value="2019" onClick={handleYearChange}>
               2019
@@ -183,12 +184,17 @@ export function StatisticBox() {
         </THead>
         {expenses.length > 0 && (
           <TableBody>
-            {expenses.map(el => (
+            {expenses.map(el => {
+              console.group(el.id)
+              return (
               <TableRow key={el.name}>
-                <Color color={el.color}>{el.name}</Color>
+                <Color color={el.color}>{t(`categories.${el.name}`)}</Color>
+                
+                {/* <Color color={el.color}>{el.name}</Color> */}
                 <td>{Math.abs(el.total)}</td>
               </TableRow>
-            ))}
+            )
+            })}
           </TableBody>
         )}
       </Table>

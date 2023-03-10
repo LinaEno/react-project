@@ -63,6 +63,23 @@ export const en = {
   weatherTitle: "Weather",
   weatherSearch: "Search City..",
   weatherError: "Sorry, City not found",
+  monthTitle: "Month",
+  yearTitle:"Year",
+
+  categories:{
+    "Main expenses": "Main expenses",
+    "Products": "Products",
+    "Car": "Car",
+    "Self care": "Self care",
+    "Child care": "Child care",
+    "Household products": "Household products",
+    "Education": "Education",
+    "Leisure": "Leisure",
+    "Other expenses": "Other expenses",
+    "Entertainment": "Entertainment",
+    "Income":"Income",
+  },
+  
 
 
 
@@ -92,4 +109,4 @@ export const en = {
   
 }
 
-
+// console.log(Object.values(en.categories));
