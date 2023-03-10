@@ -12,11 +12,13 @@ function SummaryPage() {
     <div>
       <Layout />
       <NoDesktop>
+        <StatisticTitle>Statistics</StatisticTitle>
         <Chart />
         <StatisticBox />
       </NoDesktop>
       <Desktop>
         <Wrap>
+          <StatisticTitle>Statistics</StatisticTitle>
           <Chart />
           <StatisticBox />
         </Wrap>
