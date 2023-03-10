@@ -94,7 +94,7 @@ export const TableRow = styled.tr`
 
   justify-content: space-between;
   align-items: center;
-  font-family: Circle;
+  font-family: 'Circe', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;

@@ -41,7 +41,7 @@ export const Icon = styled.span`
 `;
 
 export const Text = styled(NavLink)`
-  font-family: Poppins;
+  font-family: 'Circe', sans-serif;
   font-size: 18px;
   line-height: calc(27 / 18);
   color: #000;
