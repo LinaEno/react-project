@@ -28,18 +28,6 @@ const Layout = () => {
             <ModalLogout />
           </ModalContainer>
         )}
-        <Wrapper>
-          <Box>
-            <Navigation />
-            <Balance />
-          </Box>
-          <Tablet>
-            <Currency />
-          </Tablet>
-          <Desktop>
-            <Currency />
-          </Desktop>
-        </Wrapper>
         <ButtonAddTransactions />
         {isModalAddTransactionOpen && (
           <ModalContainer>

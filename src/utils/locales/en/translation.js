@@ -25,6 +25,7 @@ export const en = {
 
   navHomeLink: 'Home',
   navStatisticsLink: 'Statistics',
+  navNewsLink: 'News',
 
   statisticsTitle: 'Statistics',
   statisticsCategory: 'Category',

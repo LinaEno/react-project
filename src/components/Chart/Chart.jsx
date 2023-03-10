@@ -54,7 +54,6 @@ export function Chart() {
 
   return (
     <ChartContainer>
-      {/* <StatisticTitle>{t('statisticsTitle')}</StatisticTitle> */}
       <DoughnutBox data={data} />
       <ChartLabel>
         &#8372;
