@@ -32,12 +32,19 @@ export const Container = styled.div`
 
 export const Link = styled(NavLink)`
   display: flex;
-  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   color: #000000;
   font-family: 'Poppins';
   font-weight: 700;
-  font-size: 30px;
+  font-size: 24px;
   line-height: calc(45 / 30);
+
+  @media screen and (min-width: 480px) {
+    gap: 20px;
+    font-size: 30px;
+  }
 
   @media screen and (min-width: 768px) {
     gap: 20px;
@@ -68,14 +75,18 @@ export const Delimiter = styled.span`
 `;
 
 export const Avatar = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 5px;
-  gap: 12px;
-  & img {
-    width: 45px;
-    height: 45px;
-    background: url(.png);
-    border-radius: 3px;
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    gap: 12px;
+    & img {
+      width: 45px;
+      height: 45px;
+      background: url(.png);
+      border-radius: 3px;
+    }
   }
 `;

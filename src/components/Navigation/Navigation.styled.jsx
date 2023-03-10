@@ -22,8 +22,10 @@ export const NavList = styled.ul`
 
 export const Nav = styled.nav`
   width: 280px;
+  margin: 0 auto;
   @media screen and (min-width: 768px) {
     width: 200px;
+    margin: 0px;
   }
 `;
 
@@ -36,6 +38,7 @@ export const NavItem = styled.li`
 `;
 export const Icon = styled.span`
   margin-right: 20px;
+  margin-top: 4px;
 `;
 
 export const Text = styled(NavLink)`
@@ -44,8 +47,10 @@ export const Text = styled(NavLink)`
   line-height: calc(27 / 18);
   color: #000;
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
+    font-weight: 700;
+  }
+  &.active {
     font-weight: 700;
   }
 `;
