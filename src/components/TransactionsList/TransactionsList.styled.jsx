@@ -94,6 +94,7 @@ export const Stat = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: calc(24 / 16);
+  word-break: break-word;
 
   &:nth-of-type(5) {
     color: ${props => (props.type === 'INCOME' ? '#24cca7' : '#ff6596')};
