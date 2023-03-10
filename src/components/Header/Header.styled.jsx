@@ -56,3 +56,16 @@ export const Delimiter = styled.span`
   background-color: #bdbdbd;
   border: 1px solid #bdbdbd;
 `;
+
+export const Avatar = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  gap: 12px;
+  & img {
+    width: 45px;
+    height: 45px;
+    background: url(.png);
+    border-radius: 3px;
+  }
+`;
