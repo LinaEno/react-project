@@ -8,11 +8,13 @@ import Navigation from 'components/Navigation/Navigation';
 import { TransactionsList } from 'components/TransactionsList/TransactionsList';
 import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { Currency } from 'components/Currency/Currency';
+import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
 
 const HomePage = () => {
   return (
     <>
       <Layout />
+      <ButtonAddTransactions />
       <main>
         <ContainerTotal>
           <Wrapper>
