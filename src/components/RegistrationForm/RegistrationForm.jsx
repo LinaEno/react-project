@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
+import LangSwitcher from 'components/LangSwitcher/LangSwitcher';
 import { useDispatch, useSelector } from 'react-redux';
 import { registration } from 'redux/auth/authOperation';
 import { useNavigate } from 'react-router-dom';
@@ -45,10 +45,10 @@ const RegistrationForm = () => {
   const { t } = useTranslation();
 
    const schema = yup
-  .object({
-    username: yup
-      .string()
-      .required('Username is required')
+     .object({
+       username: yup
+         .string()
+         .required('Username is required')
       .min(2, 'Username length should be at least 2 characters')
       .max(12, 'Username cannot exceed more than 12 characters'),
     email: yup.string().email().required('E-mail is required'),
@@ -131,6 +131,7 @@ const RegistrationForm = () => {
   };
 
   return (
+    
     <RegisterSection>
       <Default>
         <Preview>
@@ -146,6 +147,7 @@ const RegistrationForm = () => {
       <Backdrop>
         <Content>
           <LogoBox>
+            
             <Mobile>
               <Logo width={30} height={30} />
             </Mobile>
@@ -153,11 +155,13 @@ const RegistrationForm = () => {
               <Logo width={40} height={40} />
             </Default>
             <Link>{t('register.title')}</Link>
+            <LangSwitcher />
           </LogoBox>
+        
           <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <Label>
               <Icon src={emailIcon} alt="email" />
-              <Input type="email" {...register('email')} placeholder="E-mail" />
+              <Input type="email" {...register('email')} placeholder={t('register.email')}/>
             </Label>
             {errors?.email && (
               <Error style={{ top: '9%' }}>{errors.email.message}</Error>
@@ -166,7 +170,7 @@ const RegistrationForm = () => {
               <Icon src={passIcon} alt="pass" />
               <Input
                 {...register('password')}
-                placeholder="Password"
+                placeholder={t('register.password')}
                 type={toggle1 ? 'text' : 'password'}
                 onChange={handleChange}
               />
@@ -200,7 +204,7 @@ const RegistrationForm = () => {
                 {...register('cpassword', {
                   validate: value => value === getValues('password'),
                 })}
-                placeholder="Confirm password"
+                placeholder={t('register.cpassword')}
                 onChange={handleChange}
               />
               {!toggle2 ? (
@@ -234,16 +238,16 @@ const RegistrationForm = () => {
               <Input
                 type="text"
                 {...register('username')}
-                placeholder="First name"
+                placeholder={t('register.name')}
               />
             </Label>
             {errors?.username && (
               <Error style={{ top: '62%' }}>{errors.username.message}</Error>
             )}
             <ButtonsList>
-              <ButtonActive type="submit">Register</ButtonActive>
+              <ButtonActive type="submit">{t('register.btnReg')}</ButtonActive>
               <Button type="submit">
-                <StyledNavLink to={'/login'}>Log in</StyledNavLink>
+                <StyledNavLink to={'/login'}>{t('register.btnLogIn')}</StyledNavLink>
               </Button>
             </ButtonsList>
           </FormBox>

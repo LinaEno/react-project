@@ -111,8 +111,9 @@ export function StatisticBox() {
       <SelectsList>
         <DropdownMenu className={monthDropdownShown ? 'dropdownShown' : ''}>
           <SelectButton onClick={toggleMonthDropdown}>
-            {/* {months[month]} */}
-            {t('monthTitle')}
+              {' '}
+            {months[month]}
+            {/* {t('monthTitle')} */}
           </SelectButton>
 
           <SelectDate name="month">
@@ -157,7 +158,9 @@ export function StatisticBox() {
         <DropdownMenu className={yearDropdownShown ? 'dropdownShown' : ''}>
           <SelectButton onClick={toggleYearDropdown}>
             {' '}
-            {t('yearTitle')}
+            {year[year]}
+           
+            {/* {t('yearTitle')} */}
           </SelectButton>
           <SelectDate name="year">
             <Drop data-value="2019" onClick={handleYearChange}>
