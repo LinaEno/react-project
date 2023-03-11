@@ -6,7 +6,6 @@ import { Box, Wrapper } from 'components/Layout/Layout.styled';
 import { Desktop, Tablet } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
 import { TransactionsList } from 'components/TransactionsList/TransactionsList';
-import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { Currency } from 'components/Currency/Currency';
 import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
 

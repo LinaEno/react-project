@@ -3,7 +3,6 @@ import { ContainerTotal } from 'components/Currency/Currency.styled';
 import { Box, Wrapper } from 'components/Layout/Layout.styled';
 import { Default } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
-import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { Currency } from 'components/Currency/Currency';
 import News from './News';
 import { Header } from 'components/Header/Header';

@@ -1,7 +1,7 @@
 import { Chart } from 'components/Chart/Chart';
 import Layout from 'components/Layout/Layout';
 import { StatisticBox } from 'components/StatisticBox/StatisticBox';
-import WithAuthRedirect from 'hoc/WithAuthRedirect';
+
 import { Default, Desktop, Tablet } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
