@@ -12,21 +12,18 @@ import {
 } from './News.styled';
 
 const backendNews = axios.create({
-  // baseURL: 'https://api.worldnewsapi.com/search-news',
-  baseURL: 'https://newsapi.org/v2/',
+  baseURL: 'https://api.worldnewsapi.com/search-news',
 });
-const apiKey = '4330ebfabc654a6992c2aa792f3173a3';
+const apiKey = '1ea1dfcd65a843c58fc95d0f9ae2dab9';
 
 const newsApi = async () => {
-  const news = await backendNews.get(
-    `top-headlines/sources?q=business&apiKey=${apiKey}&language=en`
-  );
+  const news = await backendNews.get(`?api-key=${apiKey}&text=finance`);
   console.log(news.data);
   return news.data;
 };
 
 const News = () => {
-  const [news, setNews] = useState([]);
+  const [newsAPi, setNewsApi] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -34,8 +31,8 @@ const News = () => {
     const getNews = async () => {
       try {
         setLoading(true);
-        const { sources } = await newsApi();
-        setNews(sources);
+        const { news } = await newsApi();
+        setNewsApi(news);
         setError('');
       } catch (error) {
         setError('Oops. Something went wrong 😭');
@@ -58,11 +55,11 @@ const News = () => {
         <div>
           <NewsTitle>News</NewsTitle>
           <Wrapper>
-            {news.map(({ id, description, url, name }) => {
+            {newsAPi.map(({ id, title, url, author }) => {
               return (
                 <ListItem key={id}>
                   <Newsman>
-                    <Title>{name}</Title>
+                    <Title>{author}</Title>
                     <Link
                       href={url}
                       target="_blank"
@@ -71,7 +68,7 @@ const News = () => {
                       Follow
                     </Link>
                   </Newsman>
-                  <Content>{description}</Content>
+                  <Content>{title}</Content>
                 </ListItem>
               );
             })}
