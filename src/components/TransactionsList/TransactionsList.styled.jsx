@@ -18,31 +18,33 @@ export const Section = styled.section`
 `;
 
 export const Container = styled.div`
+
   width: 100%;
-  padding: 0 20px;
+  /* padding: 0 20px; */
   margin: 0 auto;
 
-  @media screen and (min-width: 480px) {
+
+  /* @media screen and (min-width: 480px) {
     max-width: 480px;
-  }
+  } */
 
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 768px;
+    /* max-width: 768px; */
     height: 560px;
-    padding: 0 32px;
+    /* padding: 0 32px; */
   }
 
   @media screen and (min-width: 1280px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 800px;
+    /* max-width: 800px; */
     height: 600px;
     padding-left: 69px;
-    padding-right: 16px;
+    /* padding-right: 16px; */
   }
 `;
 

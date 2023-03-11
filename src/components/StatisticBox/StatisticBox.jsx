@@ -8,7 +8,6 @@ import {
   selectIncomeSum,
   selectSummary,
   selectTransactions,
-  selectTransactionsWithCategories,
 } from 'redux/transactions/selectors';
 
 import {
@@ -111,9 +110,8 @@ export function StatisticBox() {
       <SelectsList>
         <DropdownMenu className={monthDropdownShown ? 'dropdownShown' : ''}>
           <SelectButton onClick={toggleMonthDropdown}>
-              {' '}
             {months[month]}
-            {/* {t('monthTitle')} */}
+
           </SelectButton>
 
           <SelectDate name="month">
@@ -157,10 +155,9 @@ export function StatisticBox() {
         </DropdownMenu>
         <DropdownMenu className={yearDropdownShown ? 'dropdownShown' : ''}>
           <SelectButton onClick={toggleYearDropdown}>
-            {' '}
             {year[year]}
-           
-            {/* {t('yearTitle')} */}
+          
+
           </SelectButton>
           <SelectDate name="year">
             <Drop data-value="2019" onClick={handleYearChange}>

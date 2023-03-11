@@ -1,5 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import {
+  NewsTitle,
+  Wrapper,
+  ListItem,
+  Newsman,
+  Title,
+  Link,
+  Content,
+} from './News.styled';
 
 const backendNews = axios.create({ baseURL: 'https://newsapi.org/v2/' });
 const apiKey = 'dc07261234074052abfe19974114fe88';
@@ -22,7 +32,6 @@ const News = () => {
       try {
         setLoading(true);
         const { sources } = await newsApi();
-        console.log(sources);
         setNews(sources);
         setError('');
       } catch (error) {
@@ -34,22 +43,36 @@ const News = () => {
     getNews();
   }, []);
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
+
   return (
     <>
       {!loading && (
         <div>
-          <h2>News</h2>
-          <ul>
+          <NewsTitle>News</NewsTitle>
+          <Wrapper>
             {news.map(({ id, description, url, name }) => {
               return (
-                <li key={id}>
-                  <p>{name}</p>
-                  <p>{description}</p>
-                  <a href={url}>Go to news</a>
-                </li>
+                <ListItem key={id}>
+                  <Newsman>
+                    <Title>{name}</Title>
+                    <Link
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                    >
+                      Follow
+                    </Link>
+                  </Newsman>
+                  <Content>{description}</Content>
+                </ListItem>
               );
             })}
-          </ul>
+          </Wrapper>
         </div>
       )}
     </>

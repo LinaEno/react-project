@@ -5,7 +5,6 @@ import {
   TypeStyled,
   ImgStyledVector,
   ImgStyledRectangle,
-  ContainerHead,
 } from './Currency.styled';
 
 import { useFetchCurrency } from 'services/currencyApi';

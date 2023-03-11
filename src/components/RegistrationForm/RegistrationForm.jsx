@@ -63,8 +63,7 @@ const RegistrationForm = () => {
       .min(6, 'Password length should be at least 6 characters')
       .max(12, 'Password cannot exceed more than 12 characters')
       .oneOf([yup.ref('password')], 'Passwords do not match'),
-  })
-  .required();
+  }).required();
   const {
     register,
     handleSubmit,

@@ -3,8 +3,6 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { DoughnutBox, ChartContainer, ChartLabel } from './Chart.styled';
 import { useSelector } from 'react-redux';
 import { selectPeriodTotal, selectSummary } from 'redux/transactions/selectors';
-import { StatisticTitle } from 'pages/SummaryPage/SummaryPage.styled';
-import { useTranslation } from 'react-i18next';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -18,7 +16,6 @@ ChartJS.overrides.doughnut.plugins = {
 export function Chart() {
   const total = useSelector(selectPeriodTotal);
   const summary = useSelector(selectSummary);
-  const { t } = useTranslation();
 
   const expenses = summary.filter(el => el.total < 0);
 

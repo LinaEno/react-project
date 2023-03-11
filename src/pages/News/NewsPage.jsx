@@ -1,33 +1,44 @@
 import Balance from 'components/Balance/Balance';
 import { ContainerTotal } from 'components/Currency/Currency.styled';
-
-import Layout from 'components/Layout/Layout';
 import { Box, Wrapper } from 'components/Layout/Layout.styled';
-import { Desktop, Tablet } from 'components/Media/Media';
+import { Default } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
 import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { Currency } from 'components/Currency/Currency';
 import News from './News';
+import { Header } from 'components/Header/Header';
+import { useSelector } from 'react-redux';
+import { selectLogoutModalOpen } from 'redux/global/selectors';
+import ModalLogout from 'components/ModalLogout/ModalLogout';
+import { ModalContainer } from 'components/ModalContainer/ModalContainer';
 
 const NewsPage = () => {
+  const isModalLogoutOpen = useSelector(selectLogoutModalOpen);
   return (
     <>
-      <Layout />
-      <ContainerTotal>
-        <Wrapper>
-          <Box>
-            <Navigation />
-            <Balance />
-          </Box>
-          <Tablet>
-            <Currency />
-          </Tablet>
-          <Desktop>
-            <Currency />
-          </Desktop>
-        </Wrapper>
-        <News />
-      </ContainerTotal>
+      {/* <Layout /> */}
+      <Header />
+      <main>
+        <ContainerTotal>
+          {isModalLogoutOpen && (
+            <ModalContainer>
+              <ModalLogout />
+            </ModalContainer>
+          )}
+          <Wrapper>
+            <Box>
+              <Navigation />
+              <Default>
+                <Balance />
+              </Default>
+            </Box>
+            <Default>
+              <Currency />
+            </Default>
+          </Wrapper>
+          <News />
+        </ContainerTotal>
+      </main>
     </>
   );
 };

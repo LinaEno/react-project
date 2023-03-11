@@ -2,12 +2,30 @@ import styled from 'styled-components';
 import arrow from '../../images/Arrow.png';
 
 export const WrapperTable = styled.div`
-  width: 395px;
+  width: 280px;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+  }
 `;
 
 export const SelectsList = styled.div`
   display: flex;
-  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 768px) {
+    flex-wrap: nowrap;
+    gap: 32px;
+    margin-top: -25px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 0;
+  }
 `;
 
 export const SelectButton = styled.button`
@@ -15,7 +33,7 @@ export const SelectButton = styled.button`
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-  width: 181px;
+  width: 280px;
   height: 50px;
   border-radius: 30px;
   color: black;
@@ -31,6 +49,13 @@ export const SelectButton = styled.button`
     width: 18px;
     transition: transform 300ms;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 181px;
+  }
 `;
 
 export const SelectDate = styled.ul`
@@ -38,15 +63,23 @@ export const SelectDate = styled.ul`
   margin-bottom: 0;
   padding: 0;
   opacity: 0;
-  padding: 13px 20px;
+  padding: 8px 0;
   background-color: #e5e5e5;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  width: 182px;
+  width: 280px;
   height: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 181px;
+  }
 `;
 
 export const Drop = styled.li`
+padding: 4px 20px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -94,7 +127,7 @@ export const TableRow = styled.tr`
 
   justify-content: space-between;
   align-items: center;
-  font-family: Circle;
+  font-family: 'Circe', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;

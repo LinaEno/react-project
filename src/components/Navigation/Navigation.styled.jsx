@@ -2,11 +2,9 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NavList = styled.ul`
-  margin-top: 12px;
   margin-bottom: 12px;
   display: flex;
   gap: 30px;
-  align-items: center;
   justify-content: center;
   width: 280px;
   @media screen and (min-width: 768px) {
@@ -21,6 +19,7 @@ export const NavList = styled.ul`
 `;
 
 export const Nav = styled.nav`
+  padding-top: 12px;
   width: 280px;
   margin: 0 auto;
   @media screen and (min-width: 768px) {
@@ -42,7 +41,7 @@ export const Icon = styled.span`
 `;
 
 export const Text = styled(NavLink)`
-  font-family: Poppins;
+  font-family: 'Circe', sans-serif;
   font-size: 18px;
   line-height: calc(27 / 18);
   color: #000;
@@ -52,5 +51,22 @@ export const Text = styled(NavLink)`
   }
   &.active {
     font-weight: 700;
+  }
+`;
+
+export const NewsIcon = styled.span`
+  display: block;
+  width: 38px;
+  height: 38px;
+  background-color: #4a56e2;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 7px;
+  @media screen and (min-width: 768px) {
+    width: 18px;
+    height: 18px;
+    padding-top: 1.5px;
+    border-radius: 3px;
+    margin-right: 20px;
   }
 `;

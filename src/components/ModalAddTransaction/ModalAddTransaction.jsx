@@ -8,9 +8,8 @@ import Toggle from './Toggle';
 import { selectModalTransactionData } from 'redux/global/selectors';
 
 import { closeModalAddTransaction } from 'redux/global/slice';
-
-// import 'moment/min/locales';
-// import 'moment/locale/en';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import 'moment/locale/uk';
 import moment from 'moment';
 import 'react-datetime/css/react-datetime.css';
@@ -30,9 +29,11 @@ import {
   Select,
   TitleH2,
   ToggleContainer,
+  ContIcon,
 } from './ModalAddTransaction.styled';
 
 import dateSvg from 'images/svg/baseline-date.svg';
+import { Error } from 'components/RegistrationForm/Registration.styled';
 
 const INCOME_STR = 'INCOME';
 const EXPENSE_STR = 'EXPENSE';
@@ -41,6 +42,12 @@ const BOOLEAN_TO_TRANSACTION_TYPE = {
   false: INCOME_STR,
   true: EXPENSE_STR,
 };
+const schema = yup.object({
+  transactionDate: yup.date().default(() => new Date()),
+  comment: yup
+    .string()
+    .max(40, 'Сomment cannot exceed more than 40 characters'),
+});
 
 export default function ModalAddTransaction() {
   const dispatch = useDispatch();
@@ -50,7 +57,15 @@ export default function ModalAddTransaction() {
 
   const isEdit = !!modalTransactionData;
 
-  const { register, handleSubmit, watch, reset, control } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
     defaultValues: {
       type: isEdit
         ? modalTransactionData?.category?.type === EXPENSE_STR
@@ -136,6 +151,7 @@ export default function ModalAddTransaction() {
               placeholder="0.00"
             />
           </label>
+          {errors?.amount && <Error style={{}}>{errors.amount.message}</Error>}
           <ContainerDate>
             <Controller
               control={control}
@@ -168,9 +184,9 @@ export default function ModalAddTransaction() {
                 );
               }}
             />
-            <div style={{ height: '32px', borderBottom: '1px solid #e0e0e0' }}>
+            <ContIcon>
               <Icon src={dateSvg} alt="" />
-            </div>
+            </ContIcon>
           </ContainerDate>
         </ContainAmountDatetime>
         <label>
@@ -181,7 +197,7 @@ export default function ModalAddTransaction() {
             placeholder={t('modalAddTransactionComment')}
           />
         </label>
-
+        {errors?.comment && <Error style={{}}>{errors.comment.message}</Error>}
         <AddButtonForm type="submit">
           {t('modalAddTransactionAcceptBtn')}
         </AddButtonForm>
