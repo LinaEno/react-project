@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NavList = styled.ul`
-  margin-top: 12px;
   margin-bottom: 12px;
   display: flex;
   gap: 30px;
@@ -20,6 +19,7 @@ export const NavList = styled.ul`
 `;
 
 export const Nav = styled.nav`
+  padding-top: 12px;
   width: 280px;
   margin: 0 auto;
   @media screen and (min-width: 768px) {

@@ -16,7 +16,6 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      <ContainerTotal>
         {isModalLogoutOpen && (
           <ModalContainer>
             <ModalLogout />
@@ -28,7 +27,6 @@ const Layout = () => {
             <ModalAddTransaction />
           </ModalContainer>
         )}
-      </ContainerTotal>
     </div>
   );
 };

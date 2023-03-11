@@ -13,21 +13,23 @@ const HomePage = () => {
   return (
     <>
       <Layout />
-      <ContainerTotal>
-        <Wrapper>
-          <Box>
-            <Navigation />
-            <Balance />
-          </Box>
-          <Tablet>
-            <Currency />
-          </Tablet>
-          <Desktop>
-            <Currency />
-          </Desktop>
-        </Wrapper>
-        <TransactionsList />
-      </ContainerTotal>
+      <main>
+        <ContainerTotal>
+          <Wrapper>
+            <Box>
+              <Navigation />
+              <Balance />
+            </Box>
+            <Tablet>
+              <Currency />
+            </Tablet>
+            <Desktop>
+              <Currency />
+            </Desktop>
+          </Wrapper>
+          <TransactionsList />
+        </ContainerTotal>
+      </main>
     </>
   );
 };

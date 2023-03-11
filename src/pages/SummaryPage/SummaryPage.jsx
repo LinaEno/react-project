@@ -16,27 +16,31 @@ function SummaryPage() {
   return (
     <>
       <Layout />
-      <ContainerTotal>
-        <Wrapper>
-          <Box>
-            <Navigation />
-            <Default><Balance /></Default>
-          </Box>
-          <Tablet>
-            <Currency />
-          </Tablet>
-          <Desktop>
-            <Currency />
-          </Desktop>
-        </Wrapper>
-        <div>
-          <StatisticTitle>{t('statisticsTitle')}</StatisticTitle>
-          <Wrap>
-            <Chart />
-            <StatisticBox />
-          </Wrap>
-        </div>
-      </ContainerTotal>
+      <main>
+        <ContainerTotal>
+          <Wrapper>
+            <Box>
+              <Navigation />
+              <Default>
+                <Balance />
+              </Default>
+            </Box>
+            <Tablet>
+              <Currency />
+            </Tablet>
+            <Desktop>
+              <Currency />
+            </Desktop>
+          </Wrapper>
+          <div>
+            <StatisticTitle>{t('statisticsTitle')}</StatisticTitle>
+            <Wrap>
+              <Chart />
+              <StatisticBox />
+            </Wrap>
+          </div>
+        </ContainerTotal>
+      </main>
     </>
   );
 }

@@ -18,25 +18,27 @@ const NewsPage = () => {
     <>
       {/* <Layout /> */}
       <Header />
-      <ContainerTotal>
-        {isModalLogoutOpen && (
-          <ModalContainer>
-            <ModalLogout />
-          </ModalContainer>
-        )}
-        <Wrapper>
-          <Box>
-            <Navigation />
+      <main>
+        <ContainerTotal>
+          {isModalLogoutOpen && (
+            <ModalContainer>
+              <ModalLogout />
+            </ModalContainer>
+          )}
+          <Wrapper>
+            <Box>
+              <Navigation />
+              <Default>
+                <Balance />
+              </Default>
+            </Box>
             <Default>
-              <Balance />
+              <Currency />
             </Default>
-          </Box>
-          <Default>
-            <Currency />
-          </Default>
-        </Wrapper>
-        <News />
-      </ContainerTotal>
+          </Wrapper>
+          <News />
+        </ContainerTotal>
+      </main>
     </>
   );
 };
