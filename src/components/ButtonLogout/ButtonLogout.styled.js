@@ -3,7 +3,7 @@ import { ReactComponent as CloseIcon } from '../../images/svg/exit.svg';
 
 export const Button = styled.button`
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: flex-start;
   height: 24px;
   color: #bdbdbd;
