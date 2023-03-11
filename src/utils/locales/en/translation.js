@@ -67,7 +67,7 @@ export const en = {
     Products: 'Products',
     Car: 'Car',
     'Self care': 'Self care',
-    'Chil care': 'Child care',
+    'Child care': 'Child care',
     'Household products': 'Household products',
     Education: 'Education',
     Leisure: 'Leisure',
