@@ -12,14 +12,15 @@ export const Preview = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 60px;
   gap: 40px;
-  margin: 0 auto 50px auto;
+  margin: 60px auto 50px auto;
   padding-right: 50px;
   @media screen and (min-width: 1280px) {
     flex-direction: column;
     gap: 28px;
     padding: 0 0 0 76px;
+    margin: 150px auto 50px auto;
+    justify-content: flex-start;
   }
 `;
 
