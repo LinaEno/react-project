@@ -81,7 +81,7 @@ export const en = {
     transactionsTableType: 'Type',
     transactionsTableCategory: 'Category',
     transactionsTableComment: 'Comment',
-    transactionsTableAmount: 'Amount',
+    transactionsTableAmount: 'Sum',
   },
 
   modalEditTransactionTitle: 'Edit transaction',

@@ -96,22 +96,22 @@ export const uk = {
     '063f1132-ba5d-42b4-951d-44011ca46262': 'Дохід',
   },
 
- titleTable: {
-    title: 'Date',
-    transactionsTableType: 'Type',
+  titleTable: {
+    title: 'Дата',
+    transactionsTableType: 'Тип',
     transactionsTableCategory: 'Категорія',
-    transactionsTableComment: 'Comment',
+    transactionsTableComment: 'Коментар',
     transactionsTableAmount: 'Сума',
   },
 
-  columns:{
-  title: 'Дата',
-  transactionsTableType: 'Тип',
-  transactionsTableCategory: 'Категорія',
-  transactionsTableComment: 'Коментар',
-  transactionsTableAmount: 'Сума',
+  columns: {
+    title: 'Дата',
+    transactionsTableType: 'Тип',
+    transactionsTableCategory: 'Категорія',
+    transactionsTableComment: 'Коментар',
+    transactionsTableAmount: 'Сума',
   },
 
   // modalAddTransactionTitle: "Додайте транзакцію",
-  modalAddTransactionSelectPlaceholder: "Виберіть категорію",
+  modalAddTransactionSelectPlaceholder: 'Виберіть категорію',
 };
