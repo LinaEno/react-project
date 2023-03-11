@@ -7,6 +7,7 @@ export const en = {
     name: 'First name',
     btnReg: 'Register',
     btnLogIn: 'Log in',
+    
   },
   balance: {
     balance: 'Your balance',
@@ -41,11 +42,7 @@ export const en = {
   modalAddTransactionCancelBtn: 'Cancel',
   modalAddTransactionAcceptBtn: 'Add',
 
-  transactionsTableDate: 'Date',
-  transactionsTableType: 'Type',
-  transactionsTableCategory: 'Category',
-  transactionsTableComment: 'Comment',
-  transactionsTableAmount: 'Amount',
+
   transactionsTableBalance: 'Balance',
   appText: 'Finance App',
   btnDelete: 'Delete',
@@ -72,7 +69,7 @@ export const en = {
     Products: 'Products',
     Car: 'Car',
     'Self care': 'Self care',
-    'Child care': 'Child care',
+    'Chil care': 'Child care',
     'Household products': 'Household products',
     Education: 'Education',
     Leisure: 'Leisure',
@@ -80,6 +77,30 @@ export const en = {
     Entertainment: 'Entertainment',
     Income: 'Income',
   },
+
+   titleTable:{
+  title: 'Date',
+  transactionsTableType: 'Type',
+  transactionsTableCategory: 'Category',
+  transactionsTableComment: 'Comment',
+  transactionsTableAmount: 'Amount',
+  },
+
+  modalAddTransactionTitle: "Add a transaction",
+  modalEditTransactionTitle: 'Edit transaction',
+  modalAddTransactionSelectPlaceholder: "Select a category",
+  "modalAddTransactionErrorMsg": "The process of adding a transaction can take a little more time because of you add an old transaction.",
+  "modalAddTransactionIncomesType": "Incomes",
+  "modalAddTransactionOutcomesType": "Outcomes",
+  "modalAddTransactionNewCategory": "Name of the new category",
+  "modalAddTransactionComment": "Comment",
+  "modalAddTransactionCancelBtn": "Cancel",
+  "modalAddTransactionAcceptBtn": "Add",
+  "modalAddTransactionSelectPlaceholder": "Select a category",
+  "modalAddTransactionValType": "Select the transaction type 'Incomes' or 'Outcomes'. This is a required field ",
+  "modalAddTransactionValAmount": "Enter the amount. This is a required field",
+  "modalAddTransactionValCommentMax": "The maximum allowable comment length is 15 characters",
+  "modalAddTransactionValNewCategoryMax": "The maximum allowable category length is 15 characters",
 
   registerFormUser: 'Username is required',
   registerFormEmail: 'E-mail',

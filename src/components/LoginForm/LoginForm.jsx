@@ -7,7 +7,7 @@ import { logIn } from 'redux/auth/authOperation';
 import { useNavigate } from 'react-router-dom';
 import { selectToken } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
-
+import LangSwitcher from 'components/LangSwitcher/LangSwitcher';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 
 import {
@@ -34,7 +34,7 @@ import { ReactComponent as FrameLogin } from '../../images/svg/frameLogin.svg';
 import emailIcon from '../../images/svg/email.svg';
 import passIcon from '../../images/svg/password.svg';
 import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
-
+import { useTranslation } from 'react-i18next';
 const schema = yup
   .object({
     email: yup.string().email().required('E-mail is required'),
@@ -47,6 +47,7 @@ const schema = yup
   .required();
 
 const LoginForm = () => {
+   const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -82,8 +83,9 @@ const LoginForm = () => {
           <Desktop>
             <FrameLogin width={435} height={420} />
           </Desktop>
-          <Title>Finance App</Title>
+          <Title>{t('appText')}</Title>
         </Preview>
+        
       </Default>
       <Backdrop>
         <Content>
@@ -94,12 +96,13 @@ const LoginForm = () => {
             <Default>
               <Logo width={40} height={40} />
             </Default>
-            <Link>Wallet</Link>
+            <Link>{t('register.title')}</Link>
+            <LangSwitcher />
           </LogoBox>
           <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <Label>
               <Icon src={emailIcon} alt="email" />
-              <Input type="email" {...register('email')} placeholder="E-mail" />
+              <Input type="email" {...register('email')} placeholder={t('register.email')} />
             </Label>
             {errors?.email && (
               <Error style={{ top: '14%' }}>{errors.email.message}</Error>
@@ -109,7 +112,7 @@ const LoginForm = () => {
               <Input
                 type={toggle ? 'text' : 'password'}
                 {...register('password')}
-                placeholder="Password"
+                placeholder={t('register.password')}
               />
               {!toggle ? (
                 <Eye
@@ -135,9 +138,9 @@ const LoginForm = () => {
               <Error style={{ top: '42%' }}>{errors.password.message}</Error>
             )}
             <ButtonsList>
-              <ButtonActive type="submit">Log in</ButtonActive>
+              <ButtonActive type="submit">{t('register.btnLogIn')}</ButtonActive>
               <Button type="submit">
-                <StyledNavLink to={'/register'}>Register</StyledNavLink>
+                <StyledNavLink to={'/register'}>{t('register.btnReg')}</StyledNavLink>
               </Button>
             </ButtonsList>
           </FormBox>
