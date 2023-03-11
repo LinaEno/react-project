@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Loader } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -17,7 +18,9 @@ const backendNews = axios.create({
 const apiKey = '1ea1dfcd65a843c58fc95d0f9ae2dab9';
 
 const newsApi = async () => {
-  const news = await backendNews.get(`?api-key=${apiKey}&text=finance`);
+  const news = await backendNews.get(
+    `?api-key=${apiKey}&text=finance&number=100`
+  );
   console.log(news.data);
   return news.data;
 };
@@ -51,6 +54,7 @@ const News = () => {
 
   return (
     <>
+      {loading && <Loader />}
       {!loading && (
         <div>
           <NewsTitle>News</NewsTitle>
