@@ -31,10 +31,13 @@ export const App = () => {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   if (!isLoggedIn && !token) navigate('/login');
+  //   dispatch(fetchCurrentUser());
+  // }, [dispatch, isLoggedIn]);
   useEffect(() => {
-    if (!isLoggedIn && !token) navigate('/login');
     dispatch(fetchCurrentUser());
-  }, [dispatch, isLoggedIn]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (error) {
