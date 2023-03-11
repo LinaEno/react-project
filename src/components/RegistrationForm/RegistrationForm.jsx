@@ -29,14 +29,18 @@ import {
   StyledNavLink,
   Error,
   Ribbon,
+  IconSvg,
 } from './Registration.styled';
 import { ReactComponent as Logo } from '../../images/svg/logo.svg';
-import { ReactComponent as FrameRegister } from '../../images/svg/frameRegister.svg';
+// import { ReactComponent as FrameRegister } from '../../images/svg/frameRegister.svg';
 import emailIcon from '../../images/svg/email.svg';
 import passIcon from '../../images/svg/password.svg';
 import nameIcon from '../../images/svg/name.svg';
 import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
 import css from './Ribbon.module.css';
+
+import svgIcon from '../../images/svg/frameLogin.svg';
+
 
 const RegistrationForm = () => {
   const { t } = useTranslation();
@@ -77,11 +81,13 @@ const RegistrationForm = () => {
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(false);
 
+
   const onSubmit = ({ username, email, password }) => {
     dispatch(registration({ username, email, password }));
 
     reset();
   };
+
 
   const [ribbon, setRibbon] = useState('');
   const [pass, setPass] = useState('pass');
@@ -122,10 +128,12 @@ const RegistrationForm = () => {
       <Default>
         <Preview>
           <Tablet>
-            <FrameRegister width={260} height={250} />
+            <IconSvg src={svgIcon} alt="img" />
+            {/* <FrameRegister width={260} height={250} /> */}
           </Tablet>
           <Desktop>
-            <FrameRegister width={435} height={420} />
+            <IconSvg src={svgIcon} alt="email" />
+            {/* <FrameRegister width={435} height={420} /> */}
           </Desktop>
           <Title>{t('appText')}</Title>
         </Preview>

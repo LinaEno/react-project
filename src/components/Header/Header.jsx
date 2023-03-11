@@ -13,11 +13,9 @@ import {
   Delimiter,
   Link,
   UserBox,
-
   Avatar,
-
   Container,
-
+  Title,
 } from './Header.styled';
 
 export const Header = () => {
@@ -26,24 +24,25 @@ export const Header = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
-
     <HeaderStyled>
       <Container>
         <Link to={'/'}>
           <Logo />
-          {t('header.title')}
+          {/* {t('header.title')} */}
+
+          <Title> Wallet</Title>
         </Link>
 
         <UserBox>
           <LangSwitcher />
-          <Avatar><img src={randomAvatar} alt="Avatar" />
-        </Avatar>
+          <Avatar>
+            <img src={randomAvatar} alt="Avatar" />
+          </Avatar>
           <UserName>{userName}</UserName>
           {isTablet && <Delimiter></Delimiter>}
           <ButtonLogout />
         </UserBox>
       </Container>
     </HeaderStyled>
-
   );
 };

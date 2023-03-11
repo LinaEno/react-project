@@ -26,13 +26,18 @@ import {
   Button,
   StyledNavLink,
   Error,
+  IconSvg,
 } from './LoginForm.styled';
 import { ReactComponent as Logo } from '../../images/svg/logo.svg';
-import { ReactComponent as FrameLogin } from '../../images/svg/frameLogin.svg';
+// import { ReactComponent as FrameLogin } from '../../images/svg/frameLogin.svg';
 import emailIcon from '../../images/svg/email.svg';
 import passIcon from '../../images/svg/password.svg';
 import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
+
+import svgIcon from '../../images/svg/frameLogin.svg';
+
 import { useTranslation } from 'react-i18next';
+
 const schema = yup
   .object({
     email: yup.string().email().required('E-mail is required'),
@@ -70,10 +75,12 @@ const LoginForm = () => {
       <Default>
         <Preview>
           <Tablet>
-            <FrameLogin width={260} height={250} />
+            <IconSvg src={svgIcon} alt="img" />
+            {/* <FrameLogin width={260} height={250} /> */}
           </Tablet>
           <Desktop>
-            <FrameLogin width={435} height={420} />
+            {/* <FrameLogin width={435} height={420} /> */}
+            <IconSvg src={svgIcon} alt="email" />
           </Desktop>
           <Title>{t('appText')}</Title>
         </Preview>
