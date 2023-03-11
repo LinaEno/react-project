@@ -1,11 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
-import { useDispatch, useSelector } from 'react-redux';
+import LangSwitcher from 'components/LangSwitcher/LangSwitcher';
+import { useDispatch } from 'react-redux';
 import { registration } from 'redux/auth/authOperation';
-import { useNavigate } from 'react-router-dom';
-import { selectToken } from 'redux/auth/authSelectors';
+
 import { useEffect, useState } from 'react';
 
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
@@ -39,7 +38,9 @@ import passIcon from '../../images/svg/password.svg';
 import nameIcon from '../../images/svg/name.svg';
 import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
 import css from './Ribbon.module.css';
+
 import svgIcon from '../../images/svg/frameLogin.svg';
+
 
 const RegistrationForm = () => {
   const { t } = useTranslation();
@@ -76,15 +77,10 @@ const RegistrationForm = () => {
   });
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const token = useSelector(selectToken);
 
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(false);
 
-  useEffect(() => {
-    if (token !== null) navigate('/');
-  }, [token, navigate]);
 
   const onSubmit = ({ username, email, password }) => {
     dispatch(registration({ username, email, password }));
@@ -92,7 +88,6 @@ const RegistrationForm = () => {
     reset();
   };
 
-  // лінія перевірки пароля
 
   const [ribbon, setRibbon] = useState('');
   const [pass, setPass] = useState('pass');
@@ -153,11 +148,17 @@ const RegistrationForm = () => {
               <Logo width={40} height={40} />
             </Default>
             <Link>{t('register.title')}</Link>
+            <LangSwitcher />
           </LogoBox>
+
           <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <Label>
               <Icon src={emailIcon} alt="email" />
-              <Input type="email" {...register('email')} placeholder="E-mail" />
+              <Input
+                type="email"
+                {...register('email')}
+                placeholder={t('register.email')}
+              />
             </Label>
             {errors?.email && (
               <Error style={{ top: '9%' }}>{errors.email.message}</Error>
@@ -166,7 +167,7 @@ const RegistrationForm = () => {
               <Icon src={passIcon} alt="pass" />
               <Input
                 {...register('password')}
-                placeholder="Password"
+                placeholder={t('register.password')}
                 type={toggle1 ? 'text' : 'password'}
                 onChange={handleChange}
               />
@@ -200,7 +201,7 @@ const RegistrationForm = () => {
                 {...register('cpassword', {
                   validate: value => value === getValues('password'),
                 })}
-                placeholder="Confirm password"
+                placeholder={t('register.cpassword')}
                 onChange={handleChange}
               />
               {!toggle2 ? (
@@ -234,16 +235,18 @@ const RegistrationForm = () => {
               <Input
                 type="text"
                 {...register('username')}
-                placeholder="First name"
+                placeholder={t('register.name')}
               />
             </Label>
             {errors?.username && (
               <Error style={{ top: '62%' }}>{errors.username.message}</Error>
             )}
             <ButtonsList>
-              <ButtonActive type="submit">Register</ButtonActive>
+              <ButtonActive type="submit">{t('register.btnReg')}</ButtonActive>
               <Button type="submit">
-                <StyledNavLink to={'/login'}>Log in</StyledNavLink>
+                <StyledNavLink to={'/login'}>
+                  {t('register.btnLogIn')}
+                </StyledNavLink>
               </Button>
             </ButtonsList>
           </FormBox>

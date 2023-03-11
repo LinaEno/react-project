@@ -77,10 +77,7 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await backend.get('/users/current');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(
-        error.message,
-        toast.error('Oops. Something went wrong 😭')
-      );
+      return thunkAPI.rejectWithValue(error.message, toast.error(null));
     }
   }
 );

@@ -1,7 +1,7 @@
 import { Chart } from 'components/Chart/Chart';
 import Layout from 'components/Layout/Layout';
 import { StatisticBox } from 'components/StatisticBox/StatisticBox';
-import WithAuthRedirect from 'hoc/WithAuthRedirect';
+
 import { Default, Desktop, Tablet } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
@@ -16,29 +16,33 @@ function SummaryPage() {
   return (
     <>
       <Layout />
-      <ContainerTotal>
-        <Wrapper>
-          <Box>
-            <Navigation />
-            <Default><Balance /></Default>
-          </Box>
-          <Tablet>
-            <Currency />
-          </Tablet>
-          <Desktop>
-            <Currency />
-          </Desktop>
-        </Wrapper>
-        <div>
-          <StatisticTitle>{t('statisticsTitle')}</StatisticTitle>
-          <Wrap>
-            <Chart />
-            <StatisticBox />
-          </Wrap>
-        </div>
-      </ContainerTotal>
+      <main>
+        <ContainerTotal>
+          <Wrapper>
+            <Box>
+              <Navigation />
+              <Default>
+                <Balance />
+              </Default>
+            </Box>
+            <Tablet>
+              <Currency />
+            </Tablet>
+            <Desktop>
+              <Currency />
+            </Desktop>
+          </Wrapper>
+          <div>
+            <StatisticTitle>{t('statisticsTitle')}</StatisticTitle>
+            <Wrap>
+              <Chart />
+              <StatisticBox />
+            </Wrap>
+          </div>
+        </ContainerTotal>
+      </main>
     </>
   );
 }
 
-export default WithAuthRedirect(SummaryPage, '/login');
+export default SummaryPage;

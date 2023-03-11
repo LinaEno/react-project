@@ -6,30 +6,33 @@ import { Box, Wrapper } from 'components/Layout/Layout.styled';
 import { Desktop, Tablet } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
 import { TransactionsList } from 'components/TransactionsList/TransactionsList';
-import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { Currency } from 'components/Currency/Currency';
+import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
 
 const HomePage = () => {
   return (
     <>
       <Layout />
-      <ContainerTotal>
-        <Wrapper>
-          <Box>
-            <Navigation />
-            <Balance />
-          </Box>
-          <Tablet>
-            <Currency />
-          </Tablet>
-          <Desktop>
-            <Currency />
-          </Desktop>
-        </Wrapper>
-        <TransactionsList />
-      </ContainerTotal>
+      <ButtonAddTransactions />
+      <main>
+        <ContainerTotal>
+          <Wrapper>
+            <Box>
+              <Navigation />
+              <Balance />
+            </Box>
+            <Tablet>
+              <Currency />
+            </Tablet>
+            <Desktop>
+              <Currency />
+            </Desktop>
+          </Wrapper>
+          <TransactionsList />
+        </ContainerTotal>
+      </main>
     </>
   );
 };
 
-export default WithAuthRedirect(HomePage, '/login');
+export default HomePage;

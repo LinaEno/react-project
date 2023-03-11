@@ -1,18 +1,15 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import {
-  selectRefreshed,
-  selectIsLoggedIn,
-  selectToken,
-} from 'redux/auth/authSelectors';
+import { selectRefreshed } from 'redux/auth/authSelectors';
 import { Loader } from './Loader/Loader';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import { selectError } from 'redux/transactions/selectors';
 import { fetchCurrentUser } from 'redux/auth/authOperation';
+import { AuthRoute, NotAuthRoute } from 'routes';
 
 const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 const CurrencyPage = lazy(() => import('pages/Currency/Currency'));
@@ -27,14 +24,10 @@ export const App = () => {
   const error = useSelector(selectError);
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectRefreshed);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const token = useSelector(selectToken);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoggedIn && !token) navigate('/login');
     dispatch(fetchCurrentUser());
-  }, [dispatch, isLoggedIn]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -48,14 +41,63 @@ export const App = () => {
       ) : (
         <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/" element={<DashboardPage />}>
-              <Route index element={<HomePage />} />
-              <Route path="/diagram" element={<SummaryPage />} />
-              <Route path="/currency" element={<CurrencyPage />} />
-              <Route path="/news" element={<NewsPage />} />
+            <Route
+              path="/"
+              element={
+                <AuthRoute redirectPath="/login">
+                  <DashboardPage />
+                </AuthRoute>
+              }
+            >
+              <Route
+                index
+                element={
+                  <AuthRoute redirectPath="/login">
+                    <HomePage />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/diagram"
+                element={
+                  <AuthRoute redirectPath="/login">
+                    <SummaryPage />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/currency"
+                element={
+                  <AuthRoute redirectPath="/login">
+                    <CurrencyPage />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/news"
+                element={
+                  <AuthRoute redirectPath="/login">
+                    <NewsPage />
+                  </AuthRoute>
+                }
+              />
             </Route>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+            <Route
+              path="/login"
+              element={
+                <NotAuthRoute redirectPath="/">
+                  <LoginPage />
+                </NotAuthRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <NotAuthRoute redirectPath="/">
+                  <RegisterPage />
+                </NotAuthRoute>
+              }
+            />
             <Route path="*" element={<PageNotFound404 />} />
           </Routes>
           <ToastContainer

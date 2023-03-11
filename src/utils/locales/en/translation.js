@@ -41,11 +41,6 @@ export const en = {
   modalAddTransactionCancelBtn: 'Cancel',
   modalAddTransactionAcceptBtn: 'Add',
 
-  transactionsTableDate: 'Date',
-  transactionsTableType: 'Type',
-  transactionsTableCategory: 'Category',
-  transactionsTableComment: 'Comment',
-  transactionsTableAmount: 'Amount',
   transactionsTableBalance: 'Balance',
   appText: 'Finance App',
   btnDelete: 'Delete',
@@ -72,7 +67,7 @@ export const en = {
     Products: 'Products',
     Car: 'Car',
     'Self care': 'Self care',
-    'Child care': 'Child care',
+    'Chil care': 'Child care',
     'Household products': 'Household products',
     Education: 'Education',
     Leisure: 'Leisure',
@@ -81,13 +76,25 @@ export const en = {
     Income: 'Income',
   },
 
-  registerFormUser: 'Username is required',
-  registerFormEmail: 'E-mail',
-  registerFormPassword: 'Password',
-  registerFormConfirmPassword: 'Confirm your password',
-  registerFormName: 'Your name',
-  registerFormLoginBtn: 'Log in',
-  registerFormSignupBtn: 'Sign up',
+  titleTable: {
+    title: 'Date',
+    transactionsTableType: 'Type',
+    transactionsTableCategory: 'Category',
+    transactionsTableComment: 'Comment',
+    transactionsTableAmount: 'Sum',
+  },
+
+  modalEditTransactionTitle: 'Edit transaction',
+  modalAddTransactionSelectPlaceholder: 'Select a category',
+  modalAddTransactionErrorMsg:
+    'The process of adding a transaction can take a little more time because of you add an old transaction.',
+  modalAddTransactionValType:
+    "Select the transaction type 'Incomes' or 'Outcomes'. This is a required field ",
+  modalAddTransactionValAmount: 'Enter the amount. This is a required field',
+  modalAddTransactionValCommentMax:
+    'The maximum allowable comment length is 15 characters',
+  modalAddTransactionValNewCategoryMax:
+    'The maximum allowable category length is 15 characters',
   registerFormEmailErrorValidation:
     'Invalid email. Email must match this pattern: email@mail.com',
   registerFormIsRequired: 'This is a required field',

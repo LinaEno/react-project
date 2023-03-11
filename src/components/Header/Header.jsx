@@ -5,6 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'react-i18next';
 import { randomAvatar } from '../../utils/randomAvatar';
 import { getUserName } from 'redux/auth/authSelectors';
+
 import { ReactComponent as Logo } from '../../images/Group.svg';
 import {
   HeaderStyled,

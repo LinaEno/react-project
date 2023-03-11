@@ -2,9 +2,14 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const RegisterSection = styled.section`
+  @media screen and (min-width: 768px) {
+    padding-bottom: 40px;
+  }
+
   @media screen and (min-width: 1280px) {
     display: flex;
     gap: 38px;
+    padding-bottom: 0px;
   }
 `;
 
@@ -114,6 +119,7 @@ export const Backdrop = styled.div`
 export const Content = styled.div`
   background-color: #fff;
   padding: 32px 20px 107px;
+  height: 100vh;
 
   @media screen and (min-width: 768px) {
     padding: 40px 0 60px 0;

@@ -38,33 +38,6 @@ import { Pagination } from 'components/Pagination/Pagination';
 import { useMediaQuery } from 'react-responsive';
 import { useRef } from 'react';
 
-const columns = [
-  {
-    title: 'Data',
-    key: 'date',
-  },
-  {
-    title: 'Type',
-    key: 'type',
-  },
-  {
-    title: 'Category',
-    key: 'category',
-  },
-  {
-    title: 'Comment',
-    key: 'comment',
-  },
-  {
-    title: 'Sum',
-    key: 'sum',
-  },
-  {
-    title: '',
-    key: 'actions',
-  },
-];
-
 export function TransactionsList() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -99,23 +72,23 @@ export function TransactionsList() {
             {currentTransactions.map(transaction => (
               <Item key={transaction.id} type={transaction.type}>
                 <Wrapper>
-                  <Title>{t('transactionsTableDate')}</Title>
+                  <Title>{t('titleTable.title')}</Title>
                   <Stat>{moment(transaction.transactionDate).format('L')}</Stat>
                 </Wrapper>
                 <Wrapper>
-                  <Title>{t('transactionsTableType')}</Title>
+                  <Title>{t('titleTable.transactionsTableType')}</Title>
                   <Stat>{transaction.type === 'INCOME' ? '+' : '-'}</Stat>
                 </Wrapper>
                 <Wrapper>
-                  <Title>{t('transactionsTableCategory')}</Title>
+                  <Title>{t('titleTable.transactionsTableCategory')}</Title>
                   <Stat>{transaction?.category?.name}</Stat>
                 </Wrapper>
                 <Wrapper>
-                  <Title>{t('transactionsTableComment')}</Title>
+                  <Title>{t('titleTable.transactionsTableComment')}</Title>
                   <Stat>{transaction.comment}</Stat>
                 </Wrapper>
                 <Wrapper>
-                  <Title>{t('transactionsTableAmount')}</Title>
+                  <Title>{t('titleTable.transactionsTableAmount')}</Title>
                   <StatSum type={transaction.type}>
                     {Math.abs(transaction.amount)
                       .toFixed(2)
@@ -146,9 +119,16 @@ export function TransactionsList() {
           <Table>
             <thead>
               <tr>
-                {columns.map(col => (
-                  <TableHead key={col.key}>{col.title}</TableHead>
-                ))}
+                <TableHead>{t('titleTable.title')}</TableHead>
+                <TableHead>{t('titleTable.transactionsTableType')}</TableHead>
+                <TableHead>
+                  {t('titleTable.transactionsTableCategory')}
+                </TableHead>
+                <TableHead>
+                  {t('titleTable.transactionsTableComment')}
+                </TableHead>
+                <TableHead>{t('titleTable.transactionsTableAmount')}</TableHead>
+                <TableHead></TableHead>
               </tr>
             </thead>
 

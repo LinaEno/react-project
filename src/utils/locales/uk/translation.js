@@ -4,7 +4,7 @@ export const uk = {
     email: 'Електронна пошта',
     password: 'Пароль',
     cpassword: 'Підтвердити пароль',
-    name: "Ім'я",
+    name: "Ваше ім'я",
     btnReg: 'Зареєструватися',
     btnLogIn: 'Авторизуватися',
   },
@@ -34,6 +34,7 @@ export const uk = {
   statisticsIncomes: 'Доходи:',
 
   modalAddTransactionTitle: 'Додайте транзакцію',
+  modalEditTransactionTitle: 'Редагувати транзакцію',
   modalAddTransactionIncomesType: 'Дохід',
   modalAddTransactionOutcomesType: 'Витрати',
   modalAddTransactionNewCategory: 'Name of the new category',
@@ -49,7 +50,7 @@ export const uk = {
 
   appText: 'Фінансовий додаток',
   btnDelete: 'Видалити',
-  registerFormUser: 'Username is required',
+  registerFormUser: "Потрібно ввести ім'я користувача",
 
   monthStatJanuary: 'Січень',
   monthStatFebruary: 'Лютий',
@@ -94,4 +95,23 @@ export const uk = {
     '3acd0ecd-5295-4d54-8e7c-d3908f4d0402': 'Розваги',
     '063f1132-ba5d-42b4-951d-44011ca46262': 'Дохід',
   },
+
+  titleTable: {
+    title: 'Дата',
+    transactionsTableType: 'Тип',
+    transactionsTableCategory: 'Категорія',
+    transactionsTableComment: 'Коментар',
+    transactionsTableAmount: 'Сума',
+  },
+
+  columns: {
+    title: 'Дата',
+    transactionsTableType: 'Тип',
+    transactionsTableCategory: 'Категорія',
+    transactionsTableComment: 'Коментар',
+    transactionsTableAmount: 'Сума',
+  },
+
+  // modalAddTransactionTitle: "Додайте транзакцію",
+  modalAddTransactionSelectPlaceholder: 'Виберіть категорію',
 };

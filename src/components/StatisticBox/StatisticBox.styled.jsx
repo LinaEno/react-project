@@ -79,7 +79,7 @@ export const SelectDate = styled.ul`
 `;
 
 export const Drop = styled.li`
-padding: 4px 20px;
+  padding: 4px 20px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -185,6 +185,27 @@ export const DropdownMenu = styled.div`
   position: relative;
   margin-bottom: 20px;
   z-index: 100;
+
+  &.dropdownShown {
+    ${SelectDate} {
+      pointer-events: all;
+      opacity: 1;
+    }
+    & ${SelectButton} {
+      border-color: #000;
+      color: #000;
+      &::after {
+        transform: rotate(180deg);
+        z-index: 2;
+      }
+    }
+  }
+`;
+
+export const DropdownMenuMonth = styled.div`
+  position: relative;
+  margin-bottom: 20px;
+  z-index: 120;
 
   &.dropdownShown {
     ${SelectDate} {

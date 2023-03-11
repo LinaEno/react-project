@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
+import { useMediaQuery } from 'react-responsive';
+import { Loader } from 'components/Loader/Loader';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import {
   NewsTitle,
@@ -9,21 +12,25 @@ import {
   Title,
   Link,
   Content,
+  Section,
 } from './News.styled';
+import css from '../../components/Pagination/Pagination.module.css';
 
-const backendNews = axios.create({ baseURL: 'https://newsapi.org/v2/' });
-const apiKey = 'dc07261234074052abfe19974114fe88';
+const backendNews = axios.create({
+  baseURL: 'https://api.worldnewsapi.com/search-news',
+});
+const apiKey = '1ea1dfcd65a843c58fc95d0f9ae2dab9';
 
 const newsApi = async () => {
   const news = await backendNews.get(
-    `top-headlines/sources?q=business&apiKey=${apiKey}&language=en`
+    `?api-key=${apiKey}&text=finance&number=100`
   );
   console.log(news.data);
   return news.data;
 };
 
 const News = () => {
-  const [news, setNews] = useState([]);
+  const [newsAPi, setNewsApi] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -31,8 +38,8 @@ const News = () => {
     const getNews = async () => {
       try {
         setLoading(true);
-        const { sources } = await newsApi();
-        setNews(sources);
+        const { news } = await newsApi();
+        setNewsApi(news);
         setError('');
       } catch (error) {
         setError('Oops. Something went wrong 😭');
@@ -49,17 +56,39 @@ const News = () => {
     }
   }, [error]);
 
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 5;
+  const endOffset = itemOffset + itemsPerPage;
+  const currentNews = newsAPi.slice(itemOffset, endOffset);
+
+  const pageCount = Math.ceil(newsAPi.length / itemsPerPage);
+
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
+
+  const elementToScroll = useRef(null);
+
+  const handlePageClick = event => {
+    const newOffset = (event.selected * itemsPerPage) % newsAPi.length;
+    setItemOffset(newOffset);
+    // elementToScroll.current.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <>
+      {loading && <Loader />}
       {!loading && (
-        <div>
-          <NewsTitle>News</NewsTitle>
+        <Section>
           <Wrapper>
-            {news.map(({ id, description, url, name }) => {
+            <NewsTitle ref={elementToScroll}>News</NewsTitle>
+            {currentNews.map(({ id, title, url, author }) => {
               return (
                 <ListItem key={id}>
                   <Newsman>
-                    <Title>{name}</Title>
+                    <Title>{author}</Title>
                     <Link
                       href={url}
                       target="_blank"
@@ -68,12 +97,48 @@ const News = () => {
                       Follow
                     </Link>
                   </Newsman>
-                  <Content>{description}</Content>
+                  <Content>{title}</Content>
                 </ListItem>
               );
             })}
           </Wrapper>
-        </div>
+          {isTablet ? (
+            <ReactPaginate
+              pageCount={pageCount}
+              pageRangeDisplayed={2}
+              marginPagesDisplayed={1}
+              nextLabel=">"
+              previousLabel="<"
+              breakLabel="..."
+              onPageChange={handlePageClick}
+              renderOnZeroPageCount={null}
+              containerClassName={css.pagination}
+              pageLinkClassName={css.pageLink}
+              nextLinkClassName={css.pageLink}
+              previousLinkClassName={css.pageLink}
+              breakLinkClassName={css.pageLink}
+              activeClassName={css.active}
+              disabledClassName={css.disabled}
+            />
+          ) : (
+            <ReactPaginate
+              pageCount={pageCount}
+              pageRangeDisplayed={0}
+              marginPagesDisplayed={1}
+              nextLabel=">"
+              previousLabel="<"
+              breakLabel={null}
+              onPageChange={handlePageClick}
+              renderOnZeroPageCount={null}
+              containerClassName={css.pagination}
+              pageLinkClassName={css.pageLink}
+              nextLinkClassName={css.pageLink}
+              previousLinkClassName={css.pageLink}
+              activeClassName={css.active}
+              disabledClassName={css.disabled}
+            />
+          )}
+        </Section>
       )}
     </>
   );
