@@ -90,3 +90,85 @@ export const Avatar = styled.div`
     }
   }
 `;
+
+export const Title = styled.span`
+  font-size: 40px;
+  line-height: 50px;
+  /* font-family: Verdana, sans-serif; */
+  font-family: 'Poppins';
+  font-weight: 900;
+  position: relative;
+  background: white;
+  overflow: hidden;
+  /* text-transform: uppercase; */
+  text-align: center;
+
+  &:before {
+    content: '';
+    position: absolute;
+    filter: blur(10px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 1em,
+        #bfe2ff 1em,
+        #337ab7 50%
+      ),
+      repeating-linear-gradient(
+        45deg,
+        #337ab7,
+        #337ab7 1em,
+        #fff 1em,
+        #bfe2ff 50%
+      );
+    background-size: 3em 3em, 2em 2em;
+    animation-name: ani;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  @keyframes ani {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }
+  @media (max-width: 690px) {
+    .pouring {
+      font-size: 20px;
+    }
+  }
+`;
+
+// export const Title = styled.span`
+//   font-family: 'Poppins';
+//   text-align: center;
+//   /* font-size: 40px; */
+//   font-size: 30px;
+//   line-height: 1.5;
+//   color: #000000;
+//   /* letter-spacing: 1px; */
+//   font-weight: 700;
+//   /* text-transform: uppercase; */
+//   animation: blur 1.5s ease-out infinite;
+//   text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
+
+//   @keyframes blur {
+//     from {
+//       text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 15px #fff,
+//         0px 0px 15px #fff, 0px 0px 15px #fff, 0px 0px 15px #fff,
+//         0px 0px 15px #fff, 0px 0px 15px #fff, 0px 0px 25px #fff,
+//         0px 0px 25px #fff, 0px 0px 25px #9fc2ec, 0px 0px 30px #9fc2ec,
+//         0px 10px 20px #9fc2ec, 0px 10px 20px #9fc2ec, 0px 10px 20px #9fc2ec,
+//         0px 10px 20px #9fc2ec, 0px -10px 20px #9fc2ec, 0px -10px 20px #9fc2ec;
+//     }
+//   }
+// `;

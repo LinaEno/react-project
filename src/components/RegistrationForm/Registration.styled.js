@@ -24,12 +24,81 @@ export const Preview = styled.div`
   }
 `;
 
+export const IconSvg = styled.img`
+  @media screen and (min-width: 768px) {
+    width: 260;
+    height: 250;
+    transform-origin: 0 0;
+    animation: leaves 3s ease-in-out infinite alternate;
+    @keyframes leaves {
+      0% {
+        transform: scale(1);
+        -webkit-transform: scale(0.9);
+      }
+      100% {
+        transform: scale(2);
+        -webkit-transform: scale(1);
+      }
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    width: 435px;
+    height: 420px;
+  }
+`;
+
 export const Title = styled.h1`
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 30px;
   line-height: calc(45 / 30);
   color: #000;
+
+  /*font-weight: 900;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+  /* text-transform: uppercase; */
+  /* text-align: center;
+
+  &:before {
+    content: '';
+    position: absolute;
+    filter: blur(10px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 1em,
+        #bfe2ff 1em,
+        #337ab7 50%
+      ),
+      repeating-linear-gradient(
+        45deg,
+        #337ab7,
+        #337ab7 1em,
+        #fff 1em,
+        #bfe2ff 50%
+      );
+    background-size: 3em 3em, 2em 2em;
+    animation-name: ani;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  @keyframes ani {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    } 
+  } */
 `;
 
 export const Backdrop = styled.div`
