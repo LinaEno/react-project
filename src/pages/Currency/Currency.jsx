@@ -9,10 +9,12 @@ const CurrencyPage = () => {
   return (
     <Mobile>
       <Header />
-      <ContainerTotal>
-        <Navigation />
-        <Currency />
-      </ContainerTotal>
+      <main>
+        <ContainerTotal>
+          <Navigation />
+          <Currency />
+        </ContainerTotal>
+      </main>
     </Mobile>
   );
 };
