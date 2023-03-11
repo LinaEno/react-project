@@ -4,7 +4,7 @@ import * as yup from 'yup';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/authOperation';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { selectToken } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
 
