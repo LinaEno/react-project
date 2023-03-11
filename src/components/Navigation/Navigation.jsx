@@ -50,7 +50,7 @@ const Navigation = () => {
           <Mobile>
             <NavLink to={'/news'}>
               <NewsIcon>
-                <BiNews size={24} fill="#fff" />
+                <BiNews size={24} fill="#ffffffd5" />
               </NewsIcon>
             </NavLink>
           </Mobile>

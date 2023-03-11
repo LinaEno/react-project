@@ -25,6 +25,7 @@ export const Nav = styled.nav`
   @media screen and (min-width: 768px) {
     width: 200px;
     margin: 0px;
+    padding-top: 0;
   }
 `;
 
@@ -58,7 +59,7 @@ export const NewsIcon = styled.span`
   display: block;
   width: 38px;
   height: 38px;
-  background-color: #4a56e2;
+  background-color: #6E78E8;
   border-radius: 5px;
   text-align: center;
   padding-top: 7px;
