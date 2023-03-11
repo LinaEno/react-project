@@ -26,7 +26,10 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
+
+
   }, [dispatch]);
+
 
   useEffect(() => {
     if (error) {

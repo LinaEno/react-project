@@ -38,7 +38,35 @@ import { Pagination } from 'components/Pagination/Pagination';
 import { useMediaQuery } from 'react-responsive';
 import { useRef } from 'react';
 
-const columns = [
+// const columns = [
+//   {
+//     title: 'Data',
+//     key: 'date',
+//   },
+//   {
+//     title: 'Type',
+//     key: 'type',
+//   },
+//   {
+//     title: 'Category',
+//     key: 'category',
+//   },
+//   {
+//     title: 'Comment',
+//     key: 'comment',
+//   },
+//   {
+//     title: 'Sum',
+//     key: 'sum',
+//   },
+//   {
+//     title: '',
+//     key: 'actions',
+//   },
+// ];
+
+export function TransactionsList() {
+  const columns = [
   {
     title: 'Data',
     key: 'date',
@@ -64,8 +92,6 @@ const columns = [
     key: 'actions',
   },
 ];
-
-export function TransactionsList() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactionsWithCategories);
