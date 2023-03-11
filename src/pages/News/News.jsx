@@ -11,8 +11,11 @@ import {
   Content,
 } from './News.styled';
 
-const backendNews = axios.create({ baseURL: 'https://newsapi.org/v2/' });
-const apiKey = 'dc07261234074052abfe19974114fe88';
+const backendNews = axios.create({
+  // baseURL: 'https://api.worldnewsapi.com/search-news',
+  baseURL: 'https://newsapi.org/v2/',
+});
+const apiKey = '4330ebfabc654a6992c2aa792f3173a3';
 
 const newsApi = async () => {
   const news = await backendNews.get(
