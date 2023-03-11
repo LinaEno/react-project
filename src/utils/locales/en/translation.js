@@ -7,7 +7,6 @@ export const en = {
     name: 'First name',
     btnReg: 'Register',
     btnLogIn: 'Log in',
-    
   },
   balance: {
     balance: 'Your balance',
@@ -41,7 +40,6 @@ export const en = {
   modalAddTransactionComment: 'Comment',
   modalAddTransactionCancelBtn: 'Cancel',
   modalAddTransactionAcceptBtn: 'Add',
-
 
   transactionsTableBalance: 'Balance',
   appText: 'Finance App',
@@ -78,29 +76,33 @@ export const en = {
     Income: 'Income',
   },
 
-   titleTable:{
-  title: 'Date',
-  transactionsTableType: 'Type',
-  transactionsTableCategory: 'Category',
-  transactionsTableComment: 'Comment',
-  transactionsTableAmount: 'Amount',
+  titleTable: {
+    title: 'Date',
+    transactionsTableType: 'Type',
+    transactionsTableCategory: 'Category',
+    transactionsTableComment: 'Comment',
+    transactionsTableAmount: 'Amount',
   },
 
-  modalAddTransactionTitle: "Add a transaction",
+  modalAddTransactionTitle: 'Add a transaction',
   modalEditTransactionTitle: 'Edit transaction',
-  modalAddTransactionSelectPlaceholder: "Select a category",
-  "modalAddTransactionErrorMsg": "The process of adding a transaction can take a little more time because of you add an old transaction.",
-  "modalAddTransactionIncomesType": "Incomes",
-  "modalAddTransactionOutcomesType": "Outcomes",
-  "modalAddTransactionNewCategory": "Name of the new category",
-  "modalAddTransactionComment": "Comment",
-  "modalAddTransactionCancelBtn": "Cancel",
-  "modalAddTransactionAcceptBtn": "Add",
-  "modalAddTransactionSelectPlaceholder": "Select a category",
-  "modalAddTransactionValType": "Select the transaction type 'Incomes' or 'Outcomes'. This is a required field ",
-  "modalAddTransactionValAmount": "Enter the amount. This is a required field",
-  "modalAddTransactionValCommentMax": "The maximum allowable comment length is 15 characters",
-  "modalAddTransactionValNewCategoryMax": "The maximum allowable category length is 15 characters",
+  modalAddTransactionSelectPlaceholder: 'Select a category',
+  modalAddTransactionErrorMsg:
+    'The process of adding a transaction can take a little more time because of you add an old transaction.',
+  modalAddTransactionIncomesType: 'Incomes',
+  modalAddTransactionOutcomesType: 'Outcomes',
+  modalAddTransactionNewCategory: 'Name of the new category',
+  modalAddTransactionComment: 'Comment',
+  modalAddTransactionCancelBtn: 'Cancel',
+  modalAddTransactionAcceptBtn: 'Add',
+  modalAddTransactionSelectPlaceholder: 'Select a category',
+  modalAddTransactionValType:
+    "Select the transaction type 'Incomes' or 'Outcomes'. This is a required field ",
+  modalAddTransactionValAmount: 'Enter the amount. This is a required field',
+  modalAddTransactionValCommentMax:
+    'The maximum allowable comment length is 15 characters',
+  modalAddTransactionValNewCategoryMax:
+    'The maximum allowable category length is 15 characters',
 
   registerFormUser: 'Username is required',
   registerFormEmail: 'E-mail',

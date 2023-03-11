@@ -45,6 +45,7 @@ export const Backdrop = styled.div`
 export const Content = styled.div`
   background-color: #fff;
   padding: 32px 20px 107px;
+  height: 100vh;
 
   @media screen and (min-width: 768px) {
     padding: 40px 0 60px 0;

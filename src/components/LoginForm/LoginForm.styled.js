@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const LoginSection = styled.section`
-@media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     display: flex;
     gap: 38px;
   }
@@ -45,6 +45,7 @@ export const Backdrop = styled.div`
 export const Content = styled.div`
   background-color: #fff;
   padding: 107px 20px;
+  height: 100vh;
   @media screen and (min-width: 768px) {
     padding: 40px 0 60px 0;
     border-radius: 20px;

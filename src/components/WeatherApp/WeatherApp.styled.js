@@ -30,6 +30,8 @@ export const CitySearch = styled.input`
   margin-bottom: 10px;
   background-color: white;
   padding: 8px 12px;
+  position: relative;
+  z-index: 100;
 `;
 
 export const CityName = styled.div`
