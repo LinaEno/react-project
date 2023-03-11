@@ -2,17 +2,18 @@ import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { getUserName } from 'redux/auth/authSelectors';
+import { selectToken } from 'redux/auth/authSelectors';
 import { fetchTransactions } from 'redux/transactions/operations';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
-  const user = useSelector(getUserName);
+  // const user = useSelector(getUserName);
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    if (user === null) return;
+    if (!token) return;
     dispatch(fetchTransactions());
-  }, [dispatch, user]);
+  }, [dispatch, token]);
 
   return (
     <div>
