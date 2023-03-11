@@ -1,7 +1,5 @@
 import Balance from 'components/Balance/Balance';
 import { ContainerTotal } from 'components/Currency/Currency.styled';
-
-import Layout from 'components/Layout/Layout';
 import { Box, Wrapper } from 'components/Layout/Layout.styled';
 import { Default } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
@@ -21,7 +19,7 @@ const NewsPage = () => {
       {/* <Layout /> */}
       <Header />
       <ContainerTotal>
-      {isModalLogoutOpen && (
+        {isModalLogoutOpen && (
           <ModalContainer>
             <ModalLogout />
           </ModalContainer>
