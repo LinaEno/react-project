@@ -96,6 +96,14 @@ export const uk = {
     '063f1132-ba5d-42b4-951d-44011ca46262': 'Дохід',
   },
 
+ titleTable: {
+    title: 'Date',
+    transactionsTableType: 'Type',
+    transactionsTableCategory: 'Категорія',
+    transactionsTableComment: 'Comment',
+    transactionsTableAmount: 'Сума',
+  },
+
   columns:{
   title: 'Дата',
   transactionsTableType: 'Тип',
@@ -104,6 +112,6 @@ export const uk = {
   transactionsTableAmount: 'Сума',
   },
 
-  modalAddTransactionTitle: "Додайте транзакцію",
+  // modalAddTransactionTitle: "Додайте транзакцію",
   modalAddTransactionSelectPlaceholder: "Виберіть категорію",
 };

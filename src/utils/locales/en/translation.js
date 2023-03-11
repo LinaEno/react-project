@@ -84,18 +84,10 @@ export const en = {
     transactionsTableAmount: 'Amount',
   },
 
-  modalAddTransactionTitle: 'Add a transaction',
   modalEditTransactionTitle: 'Edit transaction',
   modalAddTransactionSelectPlaceholder: 'Select a category',
   modalAddTransactionErrorMsg:
     'The process of adding a transaction can take a little more time because of you add an old transaction.',
-  modalAddTransactionIncomesType: 'Incomes',
-  modalAddTransactionOutcomesType: 'Outcomes',
-  modalAddTransactionNewCategory: 'Name of the new category',
-  modalAddTransactionComment: 'Comment',
-  modalAddTransactionCancelBtn: 'Cancel',
-  modalAddTransactionAcceptBtn: 'Add',
-  modalAddTransactionSelectPlaceholder: 'Select a category',
   modalAddTransactionValType:
     "Select the transaction type 'Incomes' or 'Outcomes'. This is a required field ",
   modalAddTransactionValAmount: 'Enter the amount. This is a required field',
@@ -103,14 +95,6 @@ export const en = {
     'The maximum allowable comment length is 15 characters',
   modalAddTransactionValNewCategoryMax:
     'The maximum allowable category length is 15 characters',
-
-  registerFormUser: 'Username is required',
-  registerFormEmail: 'E-mail',
-  registerFormPassword: 'Password',
-  registerFormConfirmPassword: 'Confirm your password',
-  registerFormName: 'Your name',
-  registerFormLoginBtn: 'Log in',
-  registerFormSignupBtn: 'Sign up',
   registerFormEmailErrorValidation:
     'Invalid email. Email must match this pattern: email@mail.com',
   registerFormIsRequired: 'This is a required field',
