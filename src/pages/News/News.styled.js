@@ -1,5 +1,24 @@
 import styled from 'styled-components';
 
+export const Section = styled.section`
+  padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 660px;
+    padding-top: 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-top: 32px;
+    width: 800px;
+    height: 660px;
+    padding-left: 69px;
+  }
+`;
+
 export const ListItem = styled.li`
   padding: 15px;
   border-bottom: 1px solid rgb(220, 220, 223);
@@ -10,13 +29,14 @@ export const ListItem = styled.li`
 `;
 
 export const Wrapper = styled.ul`
+  @media screen and (max-width: 767.98px) {
+    margin-bottom: 40px;
+  }
+
   @media screen and (min-width: 1280px) {
-    max-width: 800px;
-    height: 600px;
-    padding-left: 69px;
-    padding-right: 16px;
   }
 `;
+
 export const NewsTitle = styled.h2`
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -26,13 +46,10 @@ export const NewsTitle = styled.h2`
 
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
-    margin-top: 20px;
     margin-left: 10px;
   }
 
   @media screen and (min-width: 1280px) {
-    /* margin-bottom: 20px; */
-    margin-top: 32px;
     margin-left: 80px;
   }
 `;

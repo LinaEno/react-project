@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    max-width: 395px;
+    width: 395px;
   }
 `;
 

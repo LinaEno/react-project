@@ -20,11 +20,11 @@ export const Pagination = ({ scrollAnchor }) => {
   const handlePageClick = e => {
     const newPage = (e.selected * itemsPerPage) % transactions.length;
     dispatch(setPage(newPage));
-    scrollAnchor.current.scrollIntoView({ behavior: 'smooth' });
-    // window.scrollTo({
-    //   top: 0,
-    //   behavior: 'smooth',
-    // });
+    // scrollAnchor.current.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
