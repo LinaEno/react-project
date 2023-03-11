@@ -27,6 +27,7 @@ import {
   Expenses,
   Income,
   Color,
+  DropdownMenuMonth,
 } from './StatisticBox.styled';
 
 const months = [
@@ -108,7 +109,9 @@ export function StatisticBox() {
   return (
     <WrapperTable>
       <SelectsList>
-        <DropdownMenu className={monthDropdownShown ? 'dropdownShown' : ''}>
+        <DropdownMenuMonth
+          className={monthDropdownShown ? 'dropdownShown' : ''}
+        >
           <SelectButton onClick={toggleMonthDropdown}>
             {months[month]}
           </SelectButton>
@@ -151,9 +154,9 @@ export function StatisticBox() {
               {t('monthStatDecember')}
             </Drop>
           </SelectDate>
-        </DropdownMenu>
+        </DropdownMenuMonth>
         <DropdownMenu className={yearDropdownShown ? 'dropdownShown' : ''}>
-          <SelectButton onClick={toggleYearDropdown}>{year[year]}</SelectButton>
+          <SelectButton onClick={toggleYearDropdown}>{year}</SelectButton>
           <SelectDate name="year">
             <Drop data-value="2019" onClick={handleYearChange}>
               2019

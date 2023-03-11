@@ -2,10 +2,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import LangSwitcher from 'components/LangSwitcher/LangSwitcher';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { registration } from 'redux/auth/authOperation';
-import { useNavigate } from 'react-router-dom';
-import { selectToken } from 'redux/auth/authSelectors';
+
 import { useEffect, useState } from 'react';
 
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
@@ -39,31 +38,30 @@ import nameIcon from '../../images/svg/name.svg';
 import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
 import css from './Ribbon.module.css';
 
-
-
 const RegistrationForm = () => {
   const { t } = useTranslation();
 
-   const schema = yup
-     .object({
-       username: yup
-         .string()
-         .required('Username is required')
-      .min(2, 'Username length should be at least 2 characters')
-      .max(12, 'Username cannot exceed more than 12 characters'),
-    email: yup.string().email().required('E-mail is required'),
-    password: yup
-      .string()
-      .required('Password is required')
-      .min(6, 'Password length should be at least 6 characters')
-      .max(12, 'Password cannot exceed more than 12 characters'),
-    cpassword: yup
-      .string()
-      .required('Confirm Password is required')
-      .min(6, 'Password length should be at least 6 characters')
-      .max(12, 'Password cannot exceed more than 12 characters')
-      .oneOf([yup.ref('password')], 'Passwords do not match'),
-  }).required();
+  const schema = yup
+    .object({
+      username: yup
+        .string()
+        .required('Username is required')
+        .min(2, 'Username length should be at least 2 characters')
+        .max(12, 'Username cannot exceed more than 12 characters'),
+      email: yup.string().email().required('E-mail is required'),
+      password: yup
+        .string()
+        .required('Password is required')
+        .min(6, 'Password length should be at least 6 characters')
+        .max(12, 'Password cannot exceed more than 12 characters'),
+      cpassword: yup
+        .string()
+        .required('Confirm Password is required')
+        .min(6, 'Password length should be at least 6 characters')
+        .max(12, 'Password cannot exceed more than 12 characters')
+        .oneOf([yup.ref('password')], 'Passwords do not match'),
+    })
+    .required();
   const {
     register,
     handleSubmit,
@@ -75,25 +73,15 @@ const RegistrationForm = () => {
   });
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const token = useSelector(selectToken);
 
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(false);
-
-   
-
-  useEffect(() => {
-    if (token !== null) navigate('/');
-  }, [token, navigate]);
 
   const onSubmit = ({ username, email, password }) => {
     dispatch(registration({ username, email, password }));
 
     reset();
   };
-
-// лінія перевірки пароля
 
   const [ribbon, setRibbon] = useState('');
   const [pass, setPass] = useState('pass');
@@ -105,7 +93,7 @@ const RegistrationForm = () => {
     } else if (pass.length <= 5) {
       setRibbon('shortPass');
     }
-    
+
     if (cpass === pass) {
       setRibbon('corectPass');
     }
@@ -130,7 +118,6 @@ const RegistrationForm = () => {
   };
 
   return (
-    
     <RegisterSection>
       <Default>
         <Preview>
@@ -146,7 +133,6 @@ const RegistrationForm = () => {
       <Backdrop>
         <Content>
           <LogoBox>
-            
             <Mobile>
               <Logo width={30} height={30} />
             </Mobile>
@@ -156,11 +142,15 @@ const RegistrationForm = () => {
             <Link>{t('register.title')}</Link>
             <LangSwitcher />
           </LogoBox>
-        
+
           <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <Label>
               <Icon src={emailIcon} alt="email" />
-              <Input type="email" {...register('email')} placeholder={t('register.email')}/>
+              <Input
+                type="email"
+                {...register('email')}
+                placeholder={t('register.email')}
+              />
             </Label>
             {errors?.email && (
               <Error style={{ top: '9%' }}>{errors.email.message}</Error>
@@ -246,7 +236,9 @@ const RegistrationForm = () => {
             <ButtonsList>
               <ButtonActive type="submit">{t('register.btnReg')}</ButtonActive>
               <Button type="submit">
-                <StyledNavLink to={'/login'}>{t('register.btnLogIn')}</StyledNavLink>
+                <StyledNavLink to={'/login'}>
+                  {t('register.btnLogIn')}
+                </StyledNavLink>
               </Button>
             </ButtonsList>
           </FormBox>

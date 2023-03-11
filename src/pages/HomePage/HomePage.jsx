@@ -36,4 +36,4 @@ const HomePage = () => {
   );
 };
 
-export default WithAuthRedirect(HomePage, '/login');
+export default HomePage;

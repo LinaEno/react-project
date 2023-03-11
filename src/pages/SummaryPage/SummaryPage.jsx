@@ -45,4 +45,4 @@ function SummaryPage() {
   );
 }
 
-export default WithAuthRedirect(SummaryPage, '/login');
+export default SummaryPage;

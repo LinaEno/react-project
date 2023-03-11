@@ -5,7 +5,6 @@ import { Mobile } from 'components/Media/Media';
 import { ModalContainer } from 'components/ModalContainer/ModalContainer';
 import ModalLogout from 'components/ModalLogout/ModalLogout';
 import Navigation from 'components/Navigation/Navigation';
-import WithAuthRedirect from 'hoc/WithAuthRedirect';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
@@ -41,4 +40,4 @@ const CurrencyPage = () => {
   );
 };
 
-export default WithAuthRedirect(CurrencyPage, '/login');
+export default CurrencyPage;

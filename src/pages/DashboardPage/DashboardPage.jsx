@@ -22,4 +22,4 @@ const DashboardPage = () => {
   );
 };
 
-export default WithAuthRedirect(DashboardPage, '/login');
+export default DashboardPage;

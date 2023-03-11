@@ -9,6 +9,7 @@ import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import { selectError } from 'redux/transactions/selectors';
 import { fetchCurrentUser } from 'redux/auth/authOperation';
+import { AuthRoute, NotAuthRoute } from 'routes';
 
 const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 const CurrencyPage = lazy(() => import('pages/Currency/Currency'));
@@ -26,10 +27,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
-
-
   }, [dispatch]);
-
 
   useEffect(() => {
     if (error) {
@@ -43,14 +41,63 @@ export const App = () => {
       ) : (
         <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/" element={<DashboardPage />}>
-              <Route index element={<HomePage />} />
-              <Route path="/diagram" element={<SummaryPage />} />
-              <Route path="/currency" element={<CurrencyPage />} />
-              <Route path="/news" element={<NewsPage />} />
+            <Route
+              path="/"
+              element={
+                <AuthRoute redirectPath="/login">
+                  <DashboardPage />
+                </AuthRoute>
+              }
+            >
+              <Route
+                index
+                element={
+                  <AuthRoute redirectPath="/login">
+                    <HomePage />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/diagram"
+                element={
+                  <AuthRoute redirectPath="/login">
+                    <SummaryPage />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/currency"
+                element={
+                  <AuthRoute redirectPath="/login">
+                    <CurrencyPage />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/news"
+                element={
+                  <AuthRoute redirectPath="/login">
+                    <NewsPage />
+                  </AuthRoute>
+                }
+              />
             </Route>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+            <Route
+              path="/login"
+              element={
+                <NotAuthRoute redirectPath="/">
+                  <LoginPage />
+                </NotAuthRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <NotAuthRoute redirectPath="/">
+                  <RegisterPage />
+                </NotAuthRoute>
+              }
+            />
             <Route path="*" element={<PageNotFound404 />} />
           </Routes>
           <ToastContainer

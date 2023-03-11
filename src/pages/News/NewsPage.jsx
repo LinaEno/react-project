@@ -16,7 +16,6 @@ const NewsPage = () => {
   const isModalLogoutOpen = useSelector(selectLogoutModalOpen);
   return (
     <>
-      {/* <Layout /> */}
       <Header />
       <main>
         <ContainerTotal>
@@ -43,4 +42,4 @@ const NewsPage = () => {
   );
 };
 
-export default WithAuthRedirect(NewsPage, '/login');
+export default NewsPage;

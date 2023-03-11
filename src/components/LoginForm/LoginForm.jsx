@@ -2,11 +2,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperation';
-import { useNavigate } from 'react-router-dom';
-import { selectToken } from 'redux/auth/authSelectors';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import LangSwitcher from 'components/LangSwitcher/LangSwitcher';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 
@@ -47,7 +45,7 @@ const schema = yup
   .required();
 
 const LoginForm = () => {
-   const { t } = useTranslation();
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -58,14 +56,8 @@ const LoginForm = () => {
   });
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const token = useSelector(selectToken);
 
   const [toggle, setToggle] = useState(false);
-
-  useEffect(() => {
-    if (token !== null) navigate('/');
-  }, [token, navigate]);
 
   const onSubmit = ({ email, password }) => {
     dispatch(logIn({ email, password }));
@@ -85,7 +77,6 @@ const LoginForm = () => {
           </Desktop>
           <Title>{t('appText')}</Title>
         </Preview>
-        
       </Default>
       <Backdrop>
         <Content>
@@ -102,7 +93,11 @@ const LoginForm = () => {
           <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <Label>
               <Icon src={emailIcon} alt="email" />
-              <Input type="email" {...register('email')} placeholder={t('register.email')} />
+              <Input
+                type="email"
+                {...register('email')}
+                placeholder={t('register.email')}
+              />
             </Label>
             {errors?.email && (
               <Error style={{ top: '14%' }}>{errors.email.message}</Error>
@@ -138,9 +133,13 @@ const LoginForm = () => {
               <Error style={{ top: '42%' }}>{errors.password.message}</Error>
             )}
             <ButtonsList>
-              <ButtonActive type="submit">{t('register.btnLogIn')}</ButtonActive>
+              <ButtonActive type="submit">
+                {t('register.btnLogIn')}
+              </ButtonActive>
               <Button type="submit">
-                <StyledNavLink to={'/register'}>{t('register.btnReg')}</StyledNavLink>
+                <StyledNavLink to={'/register'}>
+                  {t('register.btnReg')}
+                </StyledNavLink>
               </Button>
             </ButtonsList>
           </FormBox>
