@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 export const backend = axios.create({ baseURL: 'https://wallet.goit.ua/api' });
 
@@ -21,7 +22,10 @@ export const registration = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(
+        e.message,
+        toast.error('Oops. Something went wrong 😭')
+      );
     }
   }
 );
@@ -38,7 +42,10 @@ export const logIn = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(
+        e.message,
+        toast.error('Oops. Something went wrong 😭')
+      );
     }
   }
 );
@@ -48,7 +55,10 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await backend.delete(`/auth/sign-out`);
     token.unset();
   } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+    return thunkAPI.rejectWithValue(
+      e.message,
+      toast.error('Oops. Something went wrong 😭')
+    );
   }
 });
 
@@ -67,7 +77,10 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await backend.get('/users/current');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.message,
+        toast.error('Oops. Something went wrong 😭')
+      );
     }
   }
 );

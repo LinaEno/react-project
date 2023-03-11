@@ -1,7 +1,8 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import {
   selectRefreshed,
   selectIsLoggedIn,
@@ -57,6 +58,12 @@ export const App = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="*" element={<PageNotFound404 />} />
           </Routes>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            closeOnClick
+            theme="colored"
+          />
         </Suspense>
       )}
     </>
