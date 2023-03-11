@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { backend, fetchCurrentUser } from 'redux/auth/authOperation';
 
 export const fetchTransactions = createAsyncThunk(
@@ -8,7 +9,10 @@ export const fetchTransactions = createAsyncThunk(
       const response = await backend.get('/transactions');
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(
+        e.message,
+        toast.error('Oops. Something went wrong 😭')
+      );
     }
   }
 );
@@ -21,7 +25,10 @@ export const addTransaction = createAsyncThunk(
       thunkAPI.dispatch(fetchCurrentUser());
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(
+        e.message,
+        toast.error('Oops. Something went wrong 😭')
+      );
     }
   }
 );
@@ -34,7 +41,10 @@ export const deleteTransaction = createAsyncThunk(
       thunkAPI.dispatch(fetchCurrentUser());
       return transactionId;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(
+        e.message,
+        toast.error('Oops. Something went wrong 😭')
+      );
     }
   }
 );
@@ -44,16 +54,17 @@ export const updateTransaction = createAsyncThunk(
   async (data, thunkAPI) => {
     console.log(data);
     try {
-
       const response = await backend.patch(`/transactions/${data.id}`, {
         amount: data.amount,
-        comment: data.comment
+        comment: data.comment,
       });
-      thunkAPI.dispatch(fetchCurrentUser())
+      thunkAPI.dispatch(fetchCurrentUser());
       return response.data;
-
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(
+        e.message,
+        toast.error('Oops. Something went wrong 😭')
+      );
     }
   }
 );
@@ -66,7 +77,10 @@ export const fetchCategories = createAsyncThunk(
 
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(
+        e.message,
+        toast.error('Oops. Something went wrong 😭')
+      );
     }
   }
 );
@@ -85,7 +99,10 @@ export const summaryTransactions = createAsyncThunk(
 
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(
+        e.message,
+        toast.error('Oops. Something went wrong 😭')
+      );
     }
   }
 );

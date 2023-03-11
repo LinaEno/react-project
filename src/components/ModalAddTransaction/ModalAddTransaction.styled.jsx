@@ -53,18 +53,20 @@ export const Select = styled.select`
   font-size: 18px;
   line-height: 1.5;
   width: 100%;
-  min-width: 280px;
+  /* min-width: 280px; */
+  width: 280px;
   height: 32px;
   margin-top: 30px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   border-top: none;
   border-left: none;
   border-right: none;
   border-bottom: 1px solid #e0e0e0;
   @media screen and (min-width: 480px) {
+    width: 394px;
   }
   @media screen and (min-width: 768px) {
-    min-width: 394px;
+    width: 394px;
   }
   &:required:invalid {
     color: gray;
@@ -80,35 +82,16 @@ export const Options = styled.option`
   & .one {
     /* color: #c3c3c4; */
   }
-  /* select:required:invalid {
-    color: gray;
-  } */
-  /* &[value=''][disabled] {
-    display: none;
-  } */
-  /* option {
-    color: black;
-  } */
-  /* &::disabled {
-    color: #c3c3c4;
-  } */
 `;
 
-// select:required:invalid {
-//   color: gray;
-// }
-// option[value=""][disabled] {
-//   display: none;
-// }
-// option {
-//   color: black;
-// }
-
 export const ContainAmountDatetime = styled.div`
+  /* margin-top: 30px; */
+  /* width: 100%; */
   @media screen and (min-width: 768px) {
     width: 394px;
     display: flex;
     justify-content: space-between;
+    /* margin-top: 30px; */
   }
 `;
 
@@ -119,16 +102,19 @@ export const FormInputAmount = styled.input`
   font-size: 18px;
   line-height: 1.5;
   width: 100%;
+  /* min-width: 280px; */
   width: 280px;
   height: 32px;
-  /* margin-top: 30px; */
-  /* padding: 10px; */
-  margin-bottom: 40px;
+  margin-top: 30px;
   border-top: none;
   border-left: none;
   border-right: none;
   border-bottom: 1px solid #e0e0e0;
+  @media screen and (min-width: 480px) {
+    width: 394px;
+  }
   @media screen and (min-width: 768px) {
+    min-width: 0;
     width: 190px;
   }
 `;
@@ -141,14 +127,19 @@ export const DateInput = styled(Datetime)`
     font-size: 18px;
     line-height: 1.5;
     width: 100%;
+    /* min-width: 250px; */
     width: 250px;
     height: 32px;
-    /* margin-bottom: 40px; */
+    margin-top: 30px;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid #e0e0e0;
+    @media screen and (min-width: 480px) {
+      width: 375px;
+    }
     @media screen and (min-width: 768px) {
+      min-width: 0;
       width: 160px;
     }
   }
@@ -156,14 +147,15 @@ export const DateInput = styled(Datetime)`
 export const Icon = styled.img`
   width: 24px;
   height: 24px;
-  /* padding-bottom: 10px; */
-  /* margin-bottom: 40px; */
-  /* border-bottom: 1px solid #e0e0e0; */
+`;
+export const ContIcon = styled.div`
+  margin-top: 30px;
+  height: 32px;
+  border-bottom: 1px solid #e0e0e0;
 `;
 
 export const ContainerDate = styled.div`
   display: flex;
-  /* border-bottom: 1px solid #e0e0e0; */
 `;
 
 export const FormInputComment = styled.textarea`
@@ -173,7 +165,6 @@ export const FormInputComment = styled.textarea`
   width: 100%;
   min-width: 280px;
   height: 84px;
-  /* padding-bottom: 60px; */
   margin-top: 30px;
   padding-left: 10px;
   padding-top: 0px;
@@ -182,6 +173,9 @@ export const FormInputComment = styled.textarea`
   border-left: none;
   border-right: none;
   border-bottom: 1px solid #e0e0e0;
+  @media screen and (min-width: 480px) {
+    width: 394px;
+  }
   @media screen and (min-width: 768px) {
     min-width: 394px;
     height: 32px;
@@ -204,7 +198,9 @@ export const AddButtonForm = styled.button`
   margin-top: 30px;
   /* margin: 20px auto 0; */
   &:hover {
-    /* box-shadow: 2px 4px 6px 2px rgb(17, 133, 133); */
+    border: 1px solid #4a56e2;
+    background-color: #4a56e2;
+    color: #fff;
   }
 `;
 
@@ -224,6 +220,8 @@ export const CloseButtonForm = styled.button`
   margin-top: 10px;
   /* margin: 20px auto 0; */
   &:hover {
-    /* box-shadow: 2px 4px 6px 2px rgb(17, 133, 133); */
+    border: 1px solid #4a56e2;
+    background-color: #4a56e2;
+    color: #fff;
   }
 `;

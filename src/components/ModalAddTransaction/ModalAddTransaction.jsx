@@ -29,6 +29,7 @@ import {
   Select,
   TitleH2,
   ToggleContainer,
+  ContIcon,
 } from './ModalAddTransaction.styled';
 
 import dateSvg from 'images/svg/baseline-date.svg';
@@ -183,9 +184,9 @@ export default function ModalAddTransaction() {
                 );
               }}
             />
-            <div style={{ height: '32px', borderBottom: '1px solid #e0e0e0' }}>
+            <ContIcon>
               <Icon src={dateSvg} alt="" />
-            </div>
+            </ContIcon>
           </ContainerDate>
         </ContainAmountDatetime>
         <label>
