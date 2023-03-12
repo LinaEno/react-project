@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-project/static/css/main.375c9551.css",
-    "main.js": "/react-project/static/js/main.b90df7da.js",
+    "main.js": "/react-project/static/js/main.354b85aa.js",
     "static/js/131.17e10e05.chunk.js": "/react-project/static/js/131.17e10e05.chunk.js",
     "static/js/992.74802b46.chunk.js": "/react-project/static/js/992.74802b46.chunk.js",
     "static/css/966.e7a060bd.chunk.css": "/react-project/static/css/966.e7a060bd.chunk.css",
@@ -23,6 +23,7 @@
     "static/media/Circe-Bold.woff2": "/react-project/static/media/Circe-Bold.b64357adbf12b109fcf2.woff2",
     "static/media/Circe-Regular.woff2": "/react-project/static/media/Circe-Regular.2c54c074533cf5620761.woff2",
     "static/media/frameLogin.svg": "/react-project/static/media/frameLogin.37ab339af3744e199768b84739787d44.svg",
+    "static/media/frameRegister.svg": "/react-project/static/media/frameRegister.6482bf58b8331cd41b4782a94b40f71b.svg",
     "static/media/Group.svg": "/react-project/static/media/Group.d1c3ce12538c3874ccfb76b01d670d1e.svg",
     "static/media/logo.svg": "/react-project/static/media/logo.2e8c127a95c7317a83a5e9e275a21ef5.svg",
     "index.html": "/react-project/index.html",
@@ -38,7 +39,7 @@
     "static/media/add.svg": "/react-project/static/media/add.3cefa75d9f1798ab4f9fa2f298997d8b.svg",
     "static/media/close.svg": "/react-project/static/media/close.7f5e241076aa8c68c0f01b4cbe98d66f.svg",
     "main.375c9551.css.map": "/react-project/static/css/main.375c9551.css.map",
-    "main.b90df7da.js.map": "/react-project/static/js/main.b90df7da.js.map",
+    "main.354b85aa.js.map": "/react-project/static/js/main.354b85aa.js.map",
     "131.17e10e05.chunk.js.map": "/react-project/static/js/131.17e10e05.chunk.js.map",
     "992.74802b46.chunk.js.map": "/react-project/static/js/992.74802b46.chunk.js.map",
     "966.e7a060bd.chunk.css.map": "/react-project/static/css/966.e7a060bd.chunk.css.map",
@@ -58,6 +59,6 @@
   },
   "entrypoints": [
     "static/css/main.375c9551.css",
-    "static/js/main.b90df7da.js"
+    "static/js/main.354b85aa.js"
   ]
 }
