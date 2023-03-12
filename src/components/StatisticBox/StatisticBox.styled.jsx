@@ -62,7 +62,8 @@ export const SelectDate = styled.ul`
   position: absolute;
   margin-bottom: 0;
   padding: 0;
-  opacity: 0;
+  /* opacity: 0; */
+  display: none;
   padding: 8px 0;
   background-color: #e5e5e5;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
@@ -189,7 +190,8 @@ export const DropdownMenu = styled.div`
   &.dropdownShown {
     ${SelectDate} {
       pointer-events: all;
-      opacity: 1;
+      /* opacity: 1; */
+      display: block;
     }
     & ${SelectButton} {
       border-color: #000;
@@ -210,7 +212,9 @@ export const DropdownMenuMonth = styled.div`
   &.dropdownShown {
     ${SelectDate} {
       pointer-events: all;
-      opacity: 1;
+      /* opacity: 1;
+       */
+      display: block;
     }
     & ${SelectButton} {
       border-color: #000;
