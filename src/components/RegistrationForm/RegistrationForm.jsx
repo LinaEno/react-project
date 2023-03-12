@@ -18,7 +18,6 @@ import {
   Content,
   FormBox,
   LogoBox,
-  Link,
   Label,
   Icon,
   Eye,
@@ -30,6 +29,7 @@ import {
   Error,
   Ribbon,
   IconSvg,
+  TitleH1,
 } from './Registration.styled';
 import { ReactComponent as Logo } from '../../images/svg/logo.svg';
 // import { ReactComponent as FrameRegister } from '../../images/svg/frameRegister.svg';
@@ -125,11 +125,19 @@ const RegistrationForm = () => {
       <Default>
         <Preview>
           <Tablet>
-            <IconSvg src={svgIcon} alt="img" />
+            <IconSvg
+              src={svgIcon}
+              alt="img"
+              style={{ width: '260px', height: '250px' }}
+            />
             {/* <FrameRegister width={260} height={250} /> */}
           </Tablet>
           <Desktop>
-            <IconSvg src={svgIcon} alt="email" />
+            <IconSvg
+              src={svgIcon}
+              alt="email"
+              style={{ width: '435px', height: '420px' }}
+            />
             {/* <FrameRegister width={435} height={420} /> */}
           </Desktop>
           <Title>{t('appText')}</Title>
@@ -144,7 +152,7 @@ const RegistrationForm = () => {
             <Default>
               <Logo width={40} height={40} />
             </Default>
-            <Link>{t('register.title')}</Link>
+            <TitleH1>{t('register.title')}</TitleH1>
             <LangSwitcher />
           </LogoBox>
 

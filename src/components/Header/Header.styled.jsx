@@ -91,14 +91,15 @@ export const Avatar = styled.div`
   }
 `;
 
-export const Title = styled.span`
-  font-size: 40px;
-  line-height: 50px;
+export const Title = styled.h1`
+  font-size: 25px;
+  line-height: 1.5;
   /* font-family: Verdana, sans-serif; */
   font-family: 'Poppins';
   font-weight: 900;
   position: relative;
-  background: white;
+  background: #ffffff;
+  /* background: transparent; */
   overflow: hidden;
   /* text-transform: uppercase; */
   text-align: center;
@@ -117,18 +118,18 @@ export const Title = styled.span`
         transparent,
         transparent 1em,
         #bfe2ff 1em,
-        #337ab7 50%
+        #4a56e2 50%
       ),
       repeating-linear-gradient(
         45deg,
-        #337ab7,
-        #337ab7 1em,
+        #4a56e2,
+        #4a56e2 1em,
         #fff 1em,
         #bfe2ff 50%
       );
     background-size: 3em 3em, 2em 2em;
     animation-name: ani;
-    animation-duration: 10s;
+    animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -141,10 +142,8 @@ export const Title = styled.span`
       background-position: 100% 0;
     }
   }
-  @media (max-width: 690px) {
-    .pouring {
-      font-size: 20px;
-    }
+  @media screen and (min-width: 768px) {
+    font-size: 35px;
   }
 `;
 
