@@ -18,7 +18,6 @@ import {
   Stat,
   StatSum,
 } from './TransactionsList.styled';
-
 import {
   fetchTransactions,
   fetchCategories,
@@ -56,7 +55,7 @@ export function TransactionsList() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  if (transactions.length === 0) return null;
+  // if (transactions.length === 0) return null;
 
   const handleDeleteTransaction = transactionId => {
     dispatch(deleteTransaction(transactionId)).then(() => {
@@ -132,40 +131,42 @@ export function TransactionsList() {
               </tr>
             </thead>
 
-            <tbody>
-              {currentTransactions.map(transaction => (
-                <tr key={transaction.id}>
-                  <TableBody>
-                    {moment(transaction.transactionDate).format('L')}
-                  </TableBody>
-                  <TableBody>
-                    {transaction.type === 'INCOME' ? '+' : '-'}
-                  </TableBody>
-                  <TableBody>{transaction?.category?.name}</TableBody>
-                  <TableBody>{transaction.comment}</TableBody>
-                  <TableBody type={transaction.type}>
-                    {Math.abs(transaction.amount)
-                      .toFixed(2)
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
-                  </TableBody>
-                  <TableBody>
-                    <EditButton
-                      onClick={() =>
-                        dispatch(openModalEditTransaction(transaction))
-                      }
-                    >
-                      <EditIcon />
-                    </EditButton>
-                    <DeleteButton
-                      onClick={() => handleDeleteTransaction(transaction.id)}
-                    >
-                      {t('btnDelete')}
-                    </DeleteButton>
-                  </TableBody>
-                </tr>
-              ))}
-            </tbody>
+            {currentTransactions.length === 0 ? null : (
+              <tbody>
+                {currentTransactions.map(transaction => (
+                  <tr key={transaction.id}>
+                    <TableBody>
+                      {moment(transaction.transactionDate).format('L')}
+                    </TableBody>
+                    <TableBody>
+                      {transaction.type === 'INCOME' ? '+' : '-'}
+                    </TableBody>
+                    <TableBody>{transaction?.category?.name}</TableBody>
+                    <TableBody>{transaction.comment}</TableBody>
+                    <TableBody type={transaction.type}>
+                      {Math.abs(transaction.amount)
+                        .toFixed(2)
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                    </TableBody>
+                    <TableBody>
+                      <EditButton
+                        onClick={() =>
+                          dispatch(openModalEditTransaction(transaction))
+                        }
+                      >
+                        <EditIcon />
+                      </EditButton>
+                      <DeleteButton
+                        onClick={() => handleDeleteTransaction(transaction.id)}
+                      >
+                        {t('btnDelete')}
+                      </DeleteButton>
+                    </TableBody>
+                  </tr>
+                ))}
+              </tbody>
+            )}
           </Table>
         )}
 
