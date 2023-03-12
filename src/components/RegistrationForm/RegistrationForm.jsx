@@ -39,8 +39,7 @@ import nameIcon from '../../images/svg/name.svg';
 import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
 import css from './Ribbon.module.css';
 
-import svgIcon from '../../images/svg/frameLogin.svg';
-
+import svgIcon from '../../images/svg/frameRegister.svg';
 
 const RegistrationForm = () => {
   const { t } = useTranslation();
@@ -81,13 +80,11 @@ const RegistrationForm = () => {
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(false);
 
-
   const onSubmit = ({ username, email, password }) => {
     dispatch(registration({ username, email, password }));
 
     reset();
   };
-
 
   const [ribbon, setRibbon] = useState('');
   const [pass, setPass] = useState('pass');
