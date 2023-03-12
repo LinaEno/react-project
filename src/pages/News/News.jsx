@@ -44,7 +44,6 @@ export const useNews = () => {
 
 const News = () => {
   const { news } = useNews();
-  console.log(news);
   const [newsAPi, setNewsApi] = useState(
     () => JSON.parse(localStorage.getItem('newsAPi')) ?? []
   );

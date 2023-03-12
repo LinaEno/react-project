@@ -95,7 +95,7 @@ export default function ModalAddTransaction() {
         })
       );
     } else {
-      const a = dispatch(
+      dispatch(
         addTransaction({
           transactionDate,
           type: typeOftransaction,
@@ -106,7 +106,6 @@ export default function ModalAddTransaction() {
             typeOftransaction === INCOME_STR ? Number(amount) : -Number(amount),
         })
       );
-      console.log(a);
     }
     reset();
     dispatch(closeModalAddTransaction());

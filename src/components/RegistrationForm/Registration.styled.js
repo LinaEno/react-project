@@ -33,8 +33,8 @@ export const IconSvg = styled.img`
   @media screen and (min-width: 768px) {
     width: 260;
     height: 250;
-    transform-origin: 0 0;
-    animation: leaves 3s ease-in-out infinite alternate;
+    transform-origin: 50% 0;
+    animation: leaves 6s ease-in-out infinite alternate;
     @keyframes leaves {
       0% {
         transform: scale(1);

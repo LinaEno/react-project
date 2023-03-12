@@ -52,7 +52,6 @@ export const deleteTransaction = createAsyncThunk(
 export const updateTransaction = createAsyncThunk(
   'transactions/updateTransaction',
   async (data, thunkAPI) => {
-    console.log(data);
     try {
       const response = await backend.patch(`/transactions/${data.id}`, {
         amount: data.amount,

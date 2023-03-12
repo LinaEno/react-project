@@ -49,20 +49,20 @@ const RegistrationForm = () => {
       username: yup
         .string()
         .required(t('registerFormUser'))
-        .min(2, (t('registerFormEmailIsTooShort')))
-        .max(12, (t('registerFormEmailIsTooLong'))),
+        .min(2, t('registerFormEmailIsTooShort'))
+        .max(12, t('registerFormEmailIsTooLong')),
       email: yup.string().email().required(t('registerFormEmail')),
       password: yup
         .string()
         .required(t('registerFormPassword'))
-        .min(6, (t('registerFormPasswordIsTooShort')))
-        .max(12, (t('registerFormPasswordIsTooLong'))),
+        .min(6, t('registerFormPasswordIsTooShort'))
+        .max(12, t('registerFormPasswordIsTooLong')),
       cpassword: yup
         .string()
         .required(t('registerFormConfirmPassword'))
-        .min(6, (t('registerFormPasswordIsTooShort')))
-        .max(12, (t('registerFormPasswordIsTooLong')))
-        .oneOf([yup.ref('password')], (t('passwordError'))),
+        .min(6, t('registerFormPasswordIsTooShort'))
+        .max(12, t('registerFormPasswordIsTooLong'))
+        .oneOf([yup.ref('password')], t('passwordError')),
     })
     .required();
   const {
@@ -108,7 +108,6 @@ const RegistrationForm = () => {
     switch (name) {
       case 'password':
         setPass(value);
-        console.log(pass);
         break;
 
       case 'cpassword':
