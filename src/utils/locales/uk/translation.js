@@ -50,7 +50,7 @@ export const uk = {
 
   appText: 'Фінансовий додаток',
   btnDelete: 'Видалити',
-  registerFormUser: "Потрібно ввести ім'я користувача",
+  
 
   monthStatJanuary: 'Січень',
   monthStatFebruary: 'Лютий',
@@ -114,4 +114,15 @@ export const uk = {
 
   // modalAddTransactionTitle: "Додайте транзакцію",
   modalAddTransactionSelectPlaceholder: 'Виберіть категорію',
+  
+
+  registerFormEmail: "Електронна пошта обов'язкова",
+  registerFormUser: "Потрібно ввести ім'я користувача",
+  registerFormPassword: "Необхідно ввести пароль",
+  registerFormConfirmPassword: "Потрібно підтвердити пароль",
+  registerFormEmailIsTooShort: "Довжина імені користувача має бути не менше 2 символів",
+  registerFormEmailIsTooLong: "Ім'я користувача не може перевищувати більше 12 символів",
+  registerFormPasswordIsTooShort: "Пароль має бути не менше 6 символів",
+  registerFormPasswordIsTooLong: "Пароль не може перевищувати 12 символів", 
+  passwordError:"Паролі не збігаються",
 };
