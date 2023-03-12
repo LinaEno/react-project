@@ -95,7 +95,7 @@ export default function ModalAddTransaction() {
         })
       );
     } else {
-      dispatch(
+      const a = dispatch(
         addTransaction({
           transactionDate,
           type: typeOftransaction,
@@ -105,7 +105,8 @@ export default function ModalAddTransaction() {
           amount:
             typeOftransaction === INCOME_STR ? Number(amount) : -Number(amount),
         })
-      ).unwrap();
+      );
+      console.log(a);
     }
     reset();
     dispatch(closeModalAddTransaction());
@@ -132,7 +133,7 @@ export default function ModalAddTransaction() {
         {BOOLEAN_TO_TRANSACTION_TYPE[type] === EXPENSE_STR && (
           <Select disabled={isEdit} {...register('categoryId')}>
             <Options className="one" value="" disabled selected hidden>
-             {t('modalAddTransactionSelectPlaceholder')}
+              {t('modalAddTransactionSelectPlaceholder')}
             </Options>
             {options.map(category => {
               return (

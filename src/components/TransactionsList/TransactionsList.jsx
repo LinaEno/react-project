@@ -41,10 +41,13 @@ export function TransactionsList() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactionsWithCategories);
+  const sortTransactions = transactions.sort((a, b) =>
+    b.transactionDate.localeCompare(a.transactionDate)
+  );
   const page = useSelector(selectPage);
   const itemsPerPage = useSelector(selectPerPage);
   const endOffset = page + itemsPerPage;
-  const currentTransactions = transactions.slice(page, endOffset);
+  const currentTransactions = sortTransactions.slice(page, endOffset);
 
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
