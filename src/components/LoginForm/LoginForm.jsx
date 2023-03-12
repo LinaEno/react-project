@@ -38,19 +38,20 @@ import svgIcon from '../../images/svg/frameLogin.svg';
 import { useTranslation } from 'react-i18next';
 import { TitleH1 } from 'components/RegistrationForm/Registration.styled';
 
-const schema = yup
-  .object({
-    email: yup.string().email().required('E-mail is required'),
-    password: yup
-      .string()
-      .required('Password is required')
-      .min(6, 'Password length should be at least 6 characters')
-      .max(12, 'Password cannot exceed more than 12 characters'),
-  })
-  .required();
+
 
 const LoginForm = () => {
   const { t } = useTranslation();
+  const schema = yup
+  .object({
+    email: yup.string().email().required(t('registerFormEmail')),
+    password: yup
+      .string()
+      .required(t('registerFormPassword'))
+      .min(6, (t('registerFormPasswordIsTooShort')))
+      .max(12, (t('registerFormPasswordIsTooLong'))),
+  })
+  .required();
   const {
     register,
     handleSubmit,

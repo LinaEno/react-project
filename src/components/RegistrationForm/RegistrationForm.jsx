@@ -48,21 +48,21 @@ const RegistrationForm = () => {
     .object({
       username: yup
         .string()
-        .required('Username is required')
-        .min(2, 'Username length should be at least 2 characters')
-        .max(12, 'Username cannot exceed more than 12 characters'),
-      email: yup.string().email().required('E-mail is required'),
+        .required(t('registerFormUser'))
+        .min(2, (t('registerFormEmailIsTooShort')))
+        .max(12, (t('registerFormEmailIsTooLong'))),
+      email: yup.string().email().required(t('registerFormEmail')),
       password: yup
         .string()
-        .required('Password is required')
-        .min(6, 'Password length should be at least 6 characters')
-        .max(12, 'Password cannot exceed more than 12 characters'),
+        .required(t('registerFormPassword'))
+        .min(6, (t('registerFormPasswordIsTooShort')))
+        .max(12, (t('registerFormPasswordIsTooLong'))),
       cpassword: yup
         .string()
-        .required('Confirm Password is required')
-        .min(6, 'Password length should be at least 6 characters')
-        .max(12, 'Password cannot exceed more than 12 characters')
-        .oneOf([yup.ref('password')], 'Passwords do not match'),
+        .required(t('registerFormConfirmPassword'))
+        .min(6, (t('registerFormPasswordIsTooShort')))
+        .max(12, (t('registerFormPasswordIsTooLong')))
+        .oneOf([yup.ref('password')], (t('passwordError'))),
     })
     .required();
   const {

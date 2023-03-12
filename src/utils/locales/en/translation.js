@@ -84,26 +84,15 @@ export const en = {
     transactionsTableAmount: 'Sum',
   },
 
-  modalEditTransactionTitle: 'Edit transaction',
-  modalAddTransactionSelectPlaceholder: 'Select a category',
-  modalAddTransactionErrorMsg:
-    'The process of adding a transaction can take a little more time because of you add an old transaction.',
-  modalAddTransactionValType:
-    "Select the transaction type 'Incomes' or 'Outcomes'. This is a required field ",
-  modalAddTransactionValAmount: 'Enter the amount. This is a required field',
-  modalAddTransactionValCommentMax:
-    'The maximum allowable comment length is 15 characters',
-  modalAddTransactionValNewCategoryMax:
-    'The maximum allowable category length is 15 characters',
-  registerFormEmailErrorValidation:
-    'Invalid email. Email must match this pattern: email@mail.com',
-  registerFormIsRequired: 'This is a required field',
-  registerFormEmailIsTooShort: 'Minimum 6 characters!',
-  registerFormEmailIsTooLong: 'Maximum 30 characters!',
-  registerFormPasswordErrorValidation: 'Please set a password.',
-  registerFormPasswordIsTooShort: 'Minimum 6 characters!',
-  registerFormPasswordIsTooLong: 'Maximum 12 characters!',
-  registerFormPasswordDontMatch: "Passwords don't match",
-  registerFormNameIsTooShort: 'Minimum 1 character!',
-  registerFormNameIsTooLong: 'Maximum 12 characters!',
+  registerFormEmail: "E-mail is required",
+  registerFormUser: "Username is required",
+  registerFormPassword: "Password is required",
+  registerFormConfirmPassword: "Confirm Password is required",
+  registerFormEmailIsTooShort: "Username length should be at least 2 characters",
+  registerFormEmailIsTooLong: "Username cannot exceed more than 12 character",
+   registerFormPasswordIsTooShort: "Password length should be at least 6 characters",
+  registerFormPasswordIsTooLong: "Password cannot exceed more than 12 characters",
+  passwordError:"Passwords do not match",
+
+
 };
