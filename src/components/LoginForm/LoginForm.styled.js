@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const LoginSection = styled.section`
-
-
   @media screen and (min-width: 768px) {
     padding-bottom: 40px;
   }
@@ -54,58 +52,12 @@ export const IconSvg = styled.img`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 30px;
   line-height: calc(45 / 30);
-  color: #000;
-
-  /* text-transform: uppercase; */
-  /* font-weight: 900;
-  position: relative;
-  background: transparent;
-  overflow: hidden;
-  text-align: center;
-
-  &:before {
-    content: '';
-    position: absolute;
-    filter: blur(10px);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    mix-blend-mode: screen;
-    background-image: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 1em,
-        #bfe2ff 1em,
-        #337ab7 50%
-      ),
-      repeating-linear-gradient(
-        45deg,
-        #337ab7,
-        #337ab7 1em,
-        #fff 1em,
-        #bfe2ff 50%
-      );
-    background-size: 3em 3em, 2em 2em;
-    animation-name: ani;
-    animation-duration: 10s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-  }
-  @keyframes ani {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 100% 0;
-    }
-  } */
+  color: #4a56e2;
 `;
 
 export const Backdrop = styled.div`
@@ -155,16 +107,16 @@ export const LogoBox = styled.div`
   }
 `;
 
-export const Link = styled.h2`
-  font-weight: 700;
-  font-size: 24px;
-  line-height: calc(30 / 24);
-  color: #000;
-  @media screen and (min-width: 768px) {
-    font-size: 30px;
-    line-height: calc(45 / 30);
-  }
-`;
+// export const Link = styled.h2`
+//   font-weight: 700;
+//   font-size: 24px;
+//   line-height: calc(30 / 24);
+//   color: #000;
+//   @media screen and (min-width: 768px) {
+//     font-size: 30px;
+//     line-height: calc(45 / 30);
+//   }
+// `;
 
 export const Label = styled.label`
   position: relative;

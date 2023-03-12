@@ -16,7 +16,6 @@ import {
   Content,
   FormBox,
   LogoBox,
-  Link,
   Label,
   Icon,
   Eye,
@@ -37,6 +36,7 @@ import { Desktop, Tablet, Mobile, Default } from '../Media/Media';
 import svgIcon from '../../images/svg/frameLogin.svg';
 
 import { useTranslation } from 'react-i18next';
+import { TitleH1 } from 'components/RegistrationForm/Registration.styled';
 
 const schema = yup
   .object({
@@ -75,12 +75,20 @@ const LoginForm = () => {
       <Default>
         <Preview>
           <Tablet>
-            <IconSvg src={svgIcon} alt="img" />
+            <IconSvg
+              src={svgIcon}
+              alt="img"
+              style={{ width: '260px', height: '250px' }}
+            />
             {/* <FrameLogin width={260} height={250} /> */}
           </Tablet>
           <Desktop>
             {/* <FrameLogin width={435} height={420} /> */}
-            <IconSvg src={svgIcon} alt="email" />
+            <IconSvg
+              src={svgIcon}
+              alt="img"
+              style={{ width: '435px', height: '420px' }}
+            />
           </Desktop>
           <Title>{t('appText')}</Title>
         </Preview>
@@ -94,7 +102,7 @@ const LoginForm = () => {
             <Default>
               <Logo width={40} height={40} />
             </Default>
-            <Link>{t('register.title')}</Link>
+            <TitleH1>{t('register.title')}</TitleH1>
             <LangSwitcher />
           </LogoBox>
           <FormBox onSubmit={handleSubmit(onSubmit)} autoComplete="off">

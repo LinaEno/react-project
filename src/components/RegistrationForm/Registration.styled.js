@@ -52,19 +52,26 @@ export const IconSvg = styled.img`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 30px;
   line-height: calc(45 / 30);
-  color: #000;
+  color: #4a56e2;
+`;
 
-  /*font-weight: 900;
+export const TitleH1 = styled.h1`
+  font-size: 25px;
+  line-height: 1.5;
+  /* font-family: Verdana, sans-serif; */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
   position: relative;
-  background: transparent;
+  background: #ffffff;
+  /* background: transparent; */
   overflow: hidden;
   /* text-transform: uppercase; */
-  /* text-align: center;
+  text-align: center;
 
   &:before {
     content: '';
@@ -75,23 +82,27 @@ export const Title = styled.h1`
     width: 100%;
     height: 100%;
     mix-blend-mode: screen;
+    /* color: #337ab7;
+      color:  #337ab7 1em;
+        #fff 1em,
+        #bfe2ff 50% */
     background-image: repeating-linear-gradient(
         -45deg,
         transparent,
         transparent 1em,
         #bfe2ff 1em,
-        #337ab7 50%
+        #4a56e2 50%
       ),
       repeating-linear-gradient(
         45deg,
-        #337ab7,
-        #337ab7 1em,
+        #4a56e2,
+        #4a56e2 1em,
         #fff 1em,
         #bfe2ff 50%
       );
     background-size: 3em 3em, 2em 2em;
     animation-name: ani;
-    animation-duration: 10s;
+    animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -102,8 +113,11 @@ export const Title = styled.h1`
     }
     to {
       background-position: 100% 0;
-    } 
-  } */
+    }
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+  }
 `;
 
 export const Backdrop = styled.div`
@@ -153,16 +167,16 @@ export const LogoBox = styled.div`
   }
 `;
 
-export const Link = styled.h2`
-  font-weight: 700;
-  font-size: 24px;
-  line-height: calc(30 / 24);
-  color: #000;
-  @media screen and (min-width: 768px) {
-    font-size: 30px;
-    line-height: calc(45 / 30);
-  }
-`;
+// export const Link = styled.h2`
+//   /* font-weight: 700;
+//   font-size: 24px;
+//   line-height: calc(30 / 24);
+//   color: #000; */
+//   @media screen and (min-width: 768px) {
+//     font-size: 30px;
+//     line-height: calc(45 / 30);
+//   }
+// `;
 
 export const Label = styled.label`
   position: relative;
