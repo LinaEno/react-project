@@ -19,36 +19,60 @@ import css from '../../components/Pagination/Pagination.module.css';
 const backendNews = axios.create({
   baseURL: 'https://api.worldnewsapi.com/search-news',
 });
-const apiKey = '1ea1dfcd65a843c58fc95d0f9ae2dab9';
+const apiKey = 'f58d05baff494e2691c84d86891aab2d';
 
-const newsApi = async () => {
+export async function newsAPI() {
   const news = await backendNews.get(
     `?api-key=${apiKey}&text=finance&number=100`
   );
-  console.log(news.data);
   return news.data;
-};
+}
 
-const News = () => {
-  const [newsAPi, setNewsApi] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+export const useNews = () => {
+  const [details, setDetails] = useState([]);
 
   useEffect(() => {
-    const getNews = async () => {
-      try {
-        setLoading(true);
-        const { news } = await newsApi();
-        setNewsApi(news);
-        setError('');
-      } catch (error) {
-        setError('Oops. Something went wrong 😭');
-      } finally {
-        setLoading(false);
-      }
-    };
-    getNews();
-  }, []);
+    newsAPI().then(data => {
+      setDetails(data);
+    });
+  }, [details]);
+
+  return details;
+};
+
+// const apiKey = '1ea1dfcd65a843c58fc95d0f9ae2dab9';
+
+const News = () => {
+  const { news } = useNews();
+  console.log(news);
+  const [newsAPi, setNewsApi] = useState(
+    () => JSON.parse(localStorage.getItem('newsAPi')) ?? []
+  );
+  const [loading] = useState(false);
+  const [error] = useState('');
+
+  // useEffect(() => {
+  //   const getNews = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const { news } = await newsApi();
+  //       setNewsApi(news);
+  //       setError('');
+  //     } catch (error) {
+  //       setError('Oops. Something went wrong 😭');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   getNews();
+  // }, []);
+
+  useEffect(() => {
+    if (!news) return;
+    setNewsApi(news);
+    localStorage.setItem('newsAPi', JSON.stringify(newsAPi));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [news, newsAPi, 'newsAPi']);
 
   useEffect(() => {
     if (error) {
