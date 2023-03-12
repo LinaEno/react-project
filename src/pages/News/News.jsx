@@ -48,8 +48,8 @@ const News = () => {
   const [newsAPi, setNewsApi] = useState(
     () => JSON.parse(localStorage.getItem('newsAPi')) ?? []
   );
-  const [loading] = useState(false);
-  const [error] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   // useEffect(() => {
   //   const getNews = async () => {
@@ -68,9 +68,15 @@ const News = () => {
   // }, []);
 
   useEffect(() => {
-    if (!news) return;
-    setNewsApi(news);
-    localStorage.setItem('newsAPi', JSON.stringify(newsAPi));
+    try {
+      if (!news) return;
+      setNewsApi(news);
+      localStorage.setItem('newsAPi', JSON.stringify(newsAPi));
+    } catch (error) {
+      setError('Oops. Something went wrong 😭');
+    } finally {
+      setLoading(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [news, newsAPi, 'newsAPi']);
 
