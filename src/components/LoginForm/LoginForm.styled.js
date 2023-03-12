@@ -224,7 +224,6 @@ export const StyledNavLink = styled(NavLink)`
 `;
 
 export const Error = styled.div`
-  text-transform: capitalize;
   color: red;
   position: absolute;
 `;

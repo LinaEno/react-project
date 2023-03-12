@@ -1,6 +1,6 @@
 export const uk = {
   register: {
-    title: 'Гаманець',
+    title: 'Wallet',
     email: 'Електронна пошта',
     password: 'Пароль',
     cpassword: 'Підтвердити пароль',
