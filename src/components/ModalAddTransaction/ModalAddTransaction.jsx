@@ -132,7 +132,7 @@ export default function ModalAddTransaction() {
         {BOOLEAN_TO_TRANSACTION_TYPE[type] === EXPENSE_STR && (
           <Select disabled={isEdit} {...register('categoryId')}>
             <Options className="one" value="" disabled selected hidden>
-              {t('modalAddTransactionSelectPlaceholder')}
+              Select category
             </Options>
             {options.map(category => {
               return (
