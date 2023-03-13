@@ -4,7 +4,7 @@ import { Box, Wrapper } from 'components/Layout/Layout.styled';
 import { Default } from 'components/Media/Media';
 import Navigation from 'components/Navigation/Navigation';
 import { Currency } from 'components/Currency/Currency';
-import News from './News';
+import News from './News2';
 import { Header } from 'components/Header/Header';
 import { useSelector } from 'react-redux';
 import { selectLogoutModalOpen } from 'redux/global/selectors';
