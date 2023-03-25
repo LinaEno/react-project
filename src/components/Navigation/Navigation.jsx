@@ -7,13 +7,13 @@ import {
   Nav,
   NavItem,
   NavList,
-  NewsIcon,
+  // NewsIcon,
   Text,
 } from './Navigation.styled';
 import { ReactComponent as Currency } from '../../images/svg/Exclude.svg';
 import { ReactComponent as Home } from '../../images/svg/home.svg';
 import { ReactComponent as Stats } from '../../images/svg/Stats.svg';
-import { BiNews } from 'react-icons/bi';
+// import { BiNews } from 'react-icons/bi';
 
 const Navigation = () => {
   const { t } = useTranslation();
