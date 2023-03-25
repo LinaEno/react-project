@@ -46,7 +46,7 @@ const Navigation = () => {
             <Text to={'/diagram'}>{t('navStatisticsLink')}</Text>
           </Default>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <Mobile>
             <NavLink to={'/news'}>
               <NewsIcon>
@@ -60,7 +60,7 @@ const Navigation = () => {
             </NewsIcon>
             <Text to={'/news'}>{t('navNewsLink')}</Text>
           </Default>
-        </NavItem>
+        </NavItem> */}
         <Mobile>
           <li>
             <NavLink to={'/currency'}>

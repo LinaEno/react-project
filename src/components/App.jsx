@@ -15,7 +15,7 @@ const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 const CurrencyPage = lazy(() => import('pages/Currency/Currency'));
 const SummaryPage = lazy(() => import('pages/SummaryPage/SummaryPage'));
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
-const NewsPage = lazy(() => import('pages/News/NewsPage'));
+// const NewsPage = lazy(() => import('pages/News/NewsPage'));
 const PageNotFound404 = lazy(() =>
   import('pages/PageNotFound404/PageNotFound404')
 );
@@ -73,14 +73,14 @@ export const App = () => {
                   </AuthRoute>
                 }
               />
-              <Route
+              {/* <Route
                 path="/news"
                 element={
                   <AuthRoute redirectPath="/login">
                     <NewsPage />
                   </AuthRoute>
                 }
-              />
+              /> */}
             </Route>
             <Route
               path="/login"
