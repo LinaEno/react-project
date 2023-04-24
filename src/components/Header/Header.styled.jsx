@@ -147,27 +147,4 @@ export const Title = styled.h1`
   }
 `;
 
-// export const Title = styled.span`
-//   font-family: 'Poppins';
-//   text-align: center;
-//   /* font-size: 40px; */
-//   font-size: 30px;
-//   line-height: 1.5;
-//   color: #000000;
-//   /* letter-spacing: 1px; */
-//   font-weight: 700;
-//   /* text-transform: uppercase; */
-//   animation: blur 1.5s ease-out infinite;
-//   text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
 
-//   @keyframes blur {
-//     from {
-//       text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 15px #fff,
-//         0px 0px 15px #fff, 0px 0px 15px #fff, 0px 0px 15px #fff,
-//         0px 0px 15px #fff, 0px 0px 15px #fff, 0px 0px 25px #fff,
-//         0px 0px 25px #fff, 0px 0px 25px #9fc2ec, 0px 0px 30px #9fc2ec,
-//         0px 10px 20px #9fc2ec, 0px 10px 20px #9fc2ec, 0px 10px 20px #9fc2ec,
-//         0px 10px 20px #9fc2ec, 0px -10px 20px #9fc2ec, 0px -10px 20px #9fc2ec;
-//     }
-//   }
-// `;
